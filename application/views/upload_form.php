@@ -8,9 +8,9 @@
 
 <?php echo form_open_multipart('upload/do_upload');?>
 
-Title: <input type="text" name="title">
-Description: <input type="text" name="description">
-Location: <input type="text" name="location">
+Title: <input type="text" name="title"><br>
+Description: <input type="text" name="description"><br>
+Location: <input type="text" name="location"><br>
 
 <input type="file" name="userfile" size="20" />
 
