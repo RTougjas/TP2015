@@ -81,7 +81,8 @@ class Upload extends CI_Controller {
             $this->ftp->close();
             $this->load->view('templates/header');
             print_r($list);
-            $this->load->view('templates/footer');*/
+            $this->load->view('templates/footer');
+            }*/
         
         $ftp_server="ftp://steffi.ee";
         $ftp_user_name=getenv('FTP_USER');
@@ -96,7 +97,6 @@ class Upload extends CI_Controller {
         var_dump($contents);
         // close the connection
         ftp_close($conn_id); 
-        }
     }
 }
 ?>
