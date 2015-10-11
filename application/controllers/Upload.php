@@ -76,7 +76,6 @@ class Upload extends CI_Controller {
 
             $this->ftp->close();
             $this->load->view('templates/header');
-            $this->load->view('ftplist', $list);
             $this->load->view('templates/footer');
         }
     }
