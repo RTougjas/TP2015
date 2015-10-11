@@ -46,13 +46,15 @@ class Upload extends CI_Controller {
 						$this->db->insert('pictures', $info);
 						
 						$this->load->library('ftp');
-						$config['hostname'] = 'ftp://steffi.ee';
+						$config['hostname'] = 'ftp.steffi.ee';
 						$config['username'] = getenv('FTP_USER');
 						$config['password'] = getenv('FTP_PASSWORD');
 						$config['debug']	= TRUE;
 						
 						$this->ftp->connect($config);
 						$this->ftp->upload('/uploads/Swedistan.png', '/fotod/Swedistan.png', 'auto', 0775);
+						$this->ftp->close();
+
 						
 						$this->load->view('templates/header');
                         $this->load->view('upload_success', $data);
