@@ -10,7 +10,7 @@
 
 Title: <input type="text" name="title"><br>
 Description: <input type="text" name="description"><br>
-Location: <input type="text" name="location"><br>
+//Location: <input type="text" name="location"><br>
 
 <input type="file" name="userfile" size="20" />
 

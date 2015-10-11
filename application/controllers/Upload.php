@@ -22,7 +22,15 @@ class Upload extends CI_Controller {
                 $config['max_height']           = 768;
 
                 $this->load->library('upload', $config);
+				
+				$data = array(
+					'title' => title ,
+					'description' => description ,
+					'location' => 'Tartu' 
+				);
 
+				$this->db->insert('pictures', $data);
+				
                 if ( ! $this->upload->do_upload('userfile'))
                 {
                         $error = array('error' => $this->upload->display_errors());
