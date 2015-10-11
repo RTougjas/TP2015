@@ -36,7 +36,7 @@
             $this->db->limit(1);
             $query = $this->db->get();
 
-            if ($query->num_rows() == 1 && password_vertify($password, $query->result()->password)) {
+            if ($query->num_rows() == 1 && password_verify($password, $query->result()->password)) {
                 return true;
             } else {
                 return false;
