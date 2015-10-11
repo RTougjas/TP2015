@@ -42,6 +42,15 @@ class Upload extends CI_Controller {
 						$this->load->database();
 						$this->db->insert('pictures', $info);
 						
+						$this->load->library('ftp');
+						$config['hostname'] = 'ftp://steffi.ee';
+						$config['username'] = getenv('FTP_USER');
+						$config['password'] = getenv('FTP_PASSWORD');
+						$config['debug']	= TRUE;
+						
+						$this->ftp->connect($config);
+						$this->ftp->upload('https://glacial-meadow-6358.herokuapp.com/uploads/'.$data['upload_data']['file_name']), '/fotod/'.$data['upload_data']['file_name'], 'auto', 0775);
+
 						
                         $this->load->view('upload_success', $data);
                 }
