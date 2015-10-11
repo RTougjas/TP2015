@@ -23,15 +23,6 @@ class Upload extends CI_Controller {
 
                 $this->load->library('upload', $config);
 				
-				$info = array(
-					'title' => $this->input->post('title'),
-					'description' => $this->input->post('description'),
-					'location' => 'Tartu' 
-				);
-
-				$this->load->database();
-				$this->db->insert('pictures', $info);
-				
                 if ( ! $this->upload->do_upload('userfile'))
                 {
                         $error = array('error' => $this->upload->display_errors());
@@ -42,6 +33,16 @@ class Upload extends CI_Controller {
                 {
                         $data = array('upload_data' => $this->upload->data());
 
+						$info = array(
+						'title' => $this->input->post('title'),
+						'description' => $this->input->post('description'),
+						'location' => 'https://glacial-meadow-6358.herokuapp.com/uploads/'+$data['file_name']
+						);
+
+						$this->load->database();
+						$this->db->insert('pictures', $info);
+						
+						
                         $this->load->view('upload_success', $data);
                 }
         }
