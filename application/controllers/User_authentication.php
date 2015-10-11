@@ -67,7 +67,7 @@
                     $this->session->set_userdata(array(
                         'username' => $username,
                     ));
-                    redirect($this->session->userdata('referred_from'), 'refresh');
+                    redirect(base_url());
                 }else{
                     $this->session->set_flashdata('error_message', 'Invalid Username or Password');
                     redirect('login');
