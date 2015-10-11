@@ -9,7 +9,7 @@ function __Construct(){
  }
  
  public function index() {
-   data['pictures'] = $this->GalleryModel->getPictures(); 
+   $this->data['pictures'] = $this->GalleryModel->getPictures(); 
    $this->load->view('gallery', $this->data); // load the view file , we are passing $data array to view file
  }
  
