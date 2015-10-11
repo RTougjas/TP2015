@@ -62,7 +62,7 @@ class Upload extends CI_Controller {
                 }
         }
     public function getlist(){
-        /*$this->load->library('ftp');
+        $this->load->library('ftp');
         $config['hostname'] = 'ftp://steffi.ee';
         $config['username'] = getenv('FTP_USER');
         $config['password'] = getenv('FTP_PASSWORD');
@@ -82,21 +82,7 @@ class Upload extends CI_Controller {
             $this->load->view('templates/header');
             print_r($list);
             $this->load->view('templates/footer');
-            }*/
-        
-        $ftp_server="ftp://steffi.ee";
-        $ftp_user_name=getenv('FTP_USER');
-        $ftp_user_pass=getenv('FTP_PASSWORD');
-
-        // set up basic connection
-        $conn_id = ftp_connect($ftp_server);
-
-        // login with username and password
-        $login_result = ftp_login($conn_id, $ftp_user_name, $ftp_user_pass);
-        $contents = ftp_nlist($conn_id, ".");
-        var_dump($contents);
-        // close the connection
-        ftp_close($conn_id); 
+        }
     }
 }
 ?>
