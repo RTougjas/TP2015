@@ -47,8 +47,8 @@ class Upload extends CI_Controller {
 						
 						$this->load->library('ftp');
 						$config['hostname'] = 'ftp.steffi.ee';
-						$config['username'] = getenv('FTP_USER');
-						$config['password'] = getenv('FTP_PASSWORD');
+						$config['username'] = 'vhost41039f0';
+						$config['password'] = 'ftpparool';
 						$config['debug']	= TRUE;
 						
 						echo $this->ftp->connect($config);
