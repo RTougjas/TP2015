@@ -38,7 +38,7 @@
             } else {
                 $data = array(
                     'username' => $this->input->post('username'),
-                    'password' => $this->input->post('password'),
+                    'password' => password_hash($this->input->post('password'), PASSWORD_DEFAULT),
                 );
                 $result = $this->Login_model->registration_insert($data) ;
                 if ($result == TRUE) {
