@@ -38,8 +38,7 @@
             } else {
                 $data = array(
                     'username' => $this->input->post('username'),
-                    'password' => $this->input->post('password'),
-                    'admin' => 'false'
+                    'password' => password_hash($this->input->post('password'), PASSWORD_DEFAULT),
                 );
                 $result = $this->Login_model->registration_insert($data) ;
                 if ($result == TRUE) {
@@ -67,9 +66,8 @@
                     $result = $this->Login_model->read_user_information($username);
                     $this->session->set_userdata(array(
                         'username' => $username,
-                        'admin' => $result[0]->admin
                     ));
-                    redirect($this->session->userdata('referred_from'), 'refresh');
+                    redirect(base_url());
                 }else{
                     $this->session->set_flashdata('error_message', 'Invalid Username or Password');
                     redirect('login');
