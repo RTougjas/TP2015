@@ -68,10 +68,11 @@ class Upload extends CI_Controller {
         $config['password'] = getenv('FTP_PASSWORD');
         $config['debug']	= TRUE;
         echo "test1";
-
-        if(!$this->ftp->connect($config)){
+        
+        $ftp_con = $this->ftp->connect($config);
+        if($ftp_con === FALSE){
             echo "test2";
-            redirect(baseurl());
+            //redirect(baseurl());
         }
         else{
             echo "test3";
@@ -79,6 +80,7 @@ class Upload extends CI_Controller {
             echo "test4";
             $this->ftp->close();
             $this->load->view('templates/header');
+            print_r($list);
             $this->load->view('templates/footer');
         }
     }
