@@ -24,7 +24,7 @@ class Upload extends CI_Controller {
                 $this->load->library('upload', $config);
 				
 				$info = array(
-					'title' => "nizmo",
+					'title' => $ttle,
 					'description' => 'dscription' ,
 					'location' => 'Tartu' 
 				);
