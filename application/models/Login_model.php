@@ -57,6 +57,19 @@
                 return false;
             }
         }
+        
+        public function count_posts($id){
+            $this->db->select('count(*) as posts');
+            $this->db->from('pictures');
+            $this->db->where('user_id', $id);
+            
+            $query = $this->db->get();
+            if ($query->num_rows() == 1) {
+                return $query->result()[0]->posts;
+            } else {
+                return 0;
+            }
+        }
     }
 
 ?>

@@ -1,10 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-  </head>
-  <body>
-   
- 
+    
     <h4>Display Pictures</h4>
     <table>
      <tr>
@@ -20,7 +14,3 @@
       </tr>     
      <?php }?>  
    </table>
- 
- 
-  </body>
-</html>

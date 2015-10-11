@@ -81,8 +81,6 @@
                 $data = array(
                     'id' => $result[0]->id,
                     'username' =>$result[0]->username,
-                    'password' =>$result[0]->password,
-                    'admin' => $result[0]->admin,
                     'posts' => $this->Login_model->count_posts($result[0]->id)
                 );
                 $this->load->view('templates/header');
