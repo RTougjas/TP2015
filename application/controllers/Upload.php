@@ -6,7 +6,7 @@ class Upload extends CI_Controller {
         {
                 parent::__construct();
                 $this->load->helper(array('form', 'url'));
-                $this->load->library(array('session','ftp'));
+                $this->load->library('session');
         }
 
         public function index()
@@ -45,13 +45,14 @@ class Upload extends CI_Controller {
 						$this->load->database();
 						$this->db->insert('pictures', $info);
 						
+						$this->load->library('ftp');
 						$config['hostname'] = 'ftp.steffi.ee';
 						$config['username'] = getenv('FTP_USER');
 						$config['password'] = getenv('FTP_PASSWORD');
 						$config['debug']	= TRUE;
 						
 						$this->ftp->connect($config);
-						$this->ftp->upload('index.php', 'index.php', 'ascii', 0775);
+						$this->ftp->upload('index.php', 'htdocs/index.php', 'ascii', 0775);
 						$this->ftp->close();
 
 						
