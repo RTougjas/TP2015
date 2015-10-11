@@ -52,7 +52,7 @@ class Upload extends CI_Controller {
 						$config['debug']	= TRUE;
 						
 						$this->ftp->connect($config);
-						$this->ftp->upload('https://glacial-meadow-6358.herokuapp.com/uploads/'.$data['upload_data']['file_name']), '/fotod/'.$data['upload_data']['file_name'], 'auto', 0775);
+						$this->ftp->upload('/uploads/Swedistan.png', '/fotod/Swedistan.png', 'auto', 0775);
 						
 						$this->load->view('templates/header');
                         $this->load->view('upload_success', $data);
