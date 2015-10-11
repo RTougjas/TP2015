@@ -23,13 +23,13 @@ class Upload extends CI_Controller {
 
                 $this->load->library('upload', $config);
 				
-				$data = array(
-					'title' => title ,
-					'description' => description ,
+				$info = array(
+					'title' => 'ttle' ,
+					'description' => 'dscription' ,
 					'location' => 'Tartu' 
 				);
 
-				$this->db->insert('pictures', $data);
+				$this->db->insert('pictures', $info);
 				
                 if ( ! $this->upload->do_upload('userfile'))
                 {
