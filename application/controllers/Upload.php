@@ -51,7 +51,7 @@ class Upload extends CI_Controller {
 						$config['password'] = getenv('FTP_PASSWORD');
 						$config['debug']	= TRUE;
 						
-						$this->ftp->connect($config);
+						echo $this->ftp->connect($config);
 						$this->ftp->upload('/uploads/Swedistan.png', '/fotod/Swedistan.png', 'auto', 0775);
 						$this->ftp->close();
 
