@@ -21,7 +21,7 @@
                                 ."</a></li>";
                             echo "<li><a href=".base_url('index.php/logout').">Log out</a></li>";
                         }else{
-                            echo "<li><a href=".base_url('index.php/Login').">Login</a></li>";
+                            echo "<li><a href=".base_url('index.php/login').">Login</a></li>";
                             echo "<li><a href=".base_url('index.php/registration').">Registration</a></li>";
                         }
                     ?>
