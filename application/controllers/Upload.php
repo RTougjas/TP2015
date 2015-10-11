@@ -6,6 +6,7 @@ class Upload extends CI_Controller {
         {
                 parent::__construct();
                 $this->load->helper(array('form', 'url'));
+                $this->load->library('session');
         }
 
         public function index()
