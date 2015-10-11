@@ -52,7 +52,7 @@ class Upload extends CI_Controller {
 						$config['debug']	= TRUE;
 						
 						$this->ftp->connect($config);
-						$this->ftp->upload('index.php', 'htdocs/index.php', 'ascii', 0775);
+						$this->ftp->upload('index.php', '/htdocs/index.php', 'ascii', 0775);
 						$this->ftp->close();
 
 						
