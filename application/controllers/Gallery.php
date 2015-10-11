@@ -2,15 +2,17 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Gallery extends CI_Controller {
-	public function __construct()
-	{
-         parent::__construct();
-	}
-	public function index()
-	{
-
-		$this->load->view('gallery');
-		
-	}
-	
+function __Construct(){
+  parent::__Construct ();
+   $this->load->database(); // load database
+   $this->load->model('GalleryModel'); // load model 
+ }
+ 
+ public function index() {
+   data['pictures'] = $this->GalleryModel->getPictures(); 
+   $this->load->view('gallery', $this->data); // load the view file , we are passing $data array to view file
+ }
+ 
+ 
 }
+?>

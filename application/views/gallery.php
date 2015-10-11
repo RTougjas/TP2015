@@ -1,15 +1,24 @@
-Siia tuleb siis basic galerii alguses.
-
-<img src="/uploads/Swedistan.png" alt="Swedistan"> 
-
-$this->load->database();  
-
-
-$query = $this->db->query("'SELECT title, description, location FROM pictures'");
-
-foreach ($query->result() as $row)
-{
-   echo $row->title;
-   echo $row->name;
-   echo $row->body;
-}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  </head>
+  <body>
+   
+ 
+    <h4>Display Pictures</h4>
+    <table>
+     <tr>
+      <td><strong>Picture Title</strong></td>
+      <td><strong>Picture description</strong></td>
+    </tr> 
+     <?php foreach($pictures as $picture){?>
+     <tr>
+         <td><?php echo $picture->title;?></td>
+         <td><?php echo $picture->description;?></td>
+      </tr>     
+     <?php }?>  
+   </table>
+ 
+ 
+  </body>
+</html>
