@@ -8,11 +8,8 @@ class Gallery extends CI_Controller {
 	}
 	public function index()
 	{
-		$this->load->database();  
-		
-		$data = array($this->db->query('SELECT title, description, location FROM pictures'));
 
-		$this->load->view('gallery', $data);
+		$this->load->view('gallery');
 		
 	}
 	
