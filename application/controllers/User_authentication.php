@@ -39,7 +39,6 @@
                 $data = array(
                     'username' => $this->input->post('username'),
                     'password' => $this->input->post('password'),
-                    'admin' => 'false'
                 );
                 $result = $this->Login_model->registration_insert($data) ;
                 if ($result == TRUE) {
@@ -67,7 +66,6 @@
                     $result = $this->Login_model->read_user_information($username);
                     $this->session->set_userdata(array(
                         'username' => $username,
-                        'admin' => $result[0]->admin
                     ));
                     redirect($this->session->userdata('referred_from'), 'refresh');
                 }else{
