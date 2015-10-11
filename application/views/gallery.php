@@ -15,6 +15,7 @@
      <tr>
          <td><?php echo $picture->title;?></td>
          <td><?php echo $picture->description;?></td>
+		 <td><?php echo '<img src='".$picture->location."' width="100" height="100" />';?></td>
       </tr>     
      <?php }?>  
    </table>
