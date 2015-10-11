@@ -27,7 +27,9 @@ class Upload extends CI_Controller {
                 {
                         $error = array('error' => $this->upload->display_errors());
 
+                        $this->load->view('templates/header');
                         $this->load->view('upload_form', $error);
+                        $this->load->view('templates/footer');
                 }
                 else
                 {
@@ -42,8 +44,9 @@ class Upload extends CI_Controller {
 						$this->load->database();
 						$this->db->insert('pictures', $info);
 						
-						
+						$this->load->view('templates/header');
                         $this->load->view('upload_success', $data);
+                        $this->load->view('templates/footer');
                 }
         }
 }
