@@ -68,14 +68,17 @@ class Upload extends CI_Controller {
         $config['password'] = getenv('FTP_PASSWORD');
         $config['debug']	= TRUE;
 
-        $this->ftp->connect($config);
+        if(!$this->ftp->connect($config)){
+            redirect(baseurl());
+        }
+        else{
+            $list = $this->ftp->list_files();
 
-        $list = $this->ftp->list_files();
-
-        $this->ftp->close();
-        $this->load->view('templates/header');
-        $this->load->view('ftplist', $list);
-        $this->load->view('templates/footer');
+            $this->ftp->close();
+            $this->load->view('templates/header');
+            $this->load->view('ftplist', $list);
+            $this->load->view('templates/footer');
+        }
     }
 }
 ?>
