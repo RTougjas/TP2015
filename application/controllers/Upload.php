@@ -61,5 +61,21 @@ class Upload extends CI_Controller {
                         $this->load->view('templates/footer');
                 }
         }
+    public function getlist(){
+        $this->load->library('ftp');
+        $config['hostname'] = 'ftp://steffi.ee';
+        $config['username'] = getenv('FTP_USER');
+        $config['password'] = getenv('FTP_PASSWORD');
+        $config['debug']	= TRUE;
+
+        $this->ftp->connect($config);
+
+        $list = $this->ftp->list_files();
+
+        $this->ftp->close();
+        $this->load->view('templates/header');
+        $this->load->view('ftplist', $list);
+        $this->load->view('templates/footer');
+    }
 }
 ?>
