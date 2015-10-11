@@ -24,8 +24,8 @@ class Upload extends CI_Controller {
                 $this->load->library('upload', $config);
 				
 				$info = array(
-					'title' => $this->input->get('ttle'),
-					'description' => 'dscription' ,
+					'title' => $this->input->post('title'),
+					'description' => $this->input->post('description'),
 					'location' => 'Tartu' 
 				);
 

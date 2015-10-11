@@ -8,8 +8,8 @@
 
 <?php echo form_open_multipart('upload/do_upload');?>
 
-Title: <input type="text" name="ttle"><br>
-Description: <input type="text" name="dscription"><br>
+Title: <input type="text" name="title"><br>
+Description: <input type="text" name="description"><br>
 
 <input type="file" name="userfile" size="20" />
 
