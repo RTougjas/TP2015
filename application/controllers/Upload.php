@@ -72,6 +72,7 @@ class Upload extends CI_Controller {
         $config['username'] = getenv('FTP_USER');
         $config['password'] = getenv('FTP_PASSWORD');
         $config['debug']	= TRUE;
+        $config['timeout'] = 10;
         echo "test1";
         
         $ftp_con = $this->ftp->connect($config);
