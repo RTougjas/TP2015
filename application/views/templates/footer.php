@@ -1,5 +1,5 @@
     <div class="container">
-        <p><em>Tarkvaratehnika</em></p>
+        <p><em>Tarkvaraprojekt</em></p>
     </div>
     </body>
 </html>

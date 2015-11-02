@@ -76,6 +76,7 @@
         }
         
         public function show_user_info($username){
+            $username = urldecode($username);
             $result = $this->Login_model->read_user_information($username);
             if($result != false){
                 $data = array(

@@ -16,13 +16,13 @@
                     <li><a href=<?php echo site_url("/upload"); ?>>Upload</a></li>
                     <?php
                         if($this->session->userdata('username')){
-                            echo "<li><a href=".site_url('/profile/'.url_title($this->session->userdata('username'))).">"
+                            echo "<li><a href=".site_url('/profile/'.urlencode($this->session->userdata('username'))).">"
                                 .$this->session->userdata('username')
                                 ."</a></li>";
                             echo "<li><a href=".site_url('auth/logout').">Log out</a></li>";
                         }else{
                             echo "<li><a href=".site_url('auth/login').">Login</a></li>";
-                            echo "<li><a href=".site_url('auth/registration').">Registration</a></li>";
+                            echo "<li><a href=".site_url('auth/create_user').">Registration</a></li>";
                         }
                     ?>
                 </ul>
