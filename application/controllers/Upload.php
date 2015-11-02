@@ -6,7 +6,7 @@ class Upload extends CI_Controller {
     {
         parent::__construct();
         $this->load->helper(array('form', 'url'));
-        $this->load->library('session');
+        $this->load->library(array('session', 'ion_auth'));
     }
 
     public function index()
