@@ -62,3 +62,11 @@ CREATE TABLE "login_attempts" (
   PRIMARY KEY("id"),
   CONSTRAINT "check_id" CHECK(id >= 0)
 );
+
+create table pictures(
+	id serial not null primary key,
+	title character varying(64),
+	description text,
+	location character varying(64) not null,
+	user_id integer references users(id)
+);
