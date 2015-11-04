@@ -41,7 +41,7 @@ class Upload extends CI_Controller {
             $info = array(
             'title' => $this->input->post('title'),
             'description' => $this->input->post('description'),
-            'location' => 'https://glacial-meadow-6358.herokuapp.com/uploads/'.$data['upload_data']['file_name']
+            'location' => '/tp2015/uploads/'.$data['upload_data']['file_name']
             );
 
             $this->load->database();
