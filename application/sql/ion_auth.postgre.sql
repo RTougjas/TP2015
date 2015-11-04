@@ -63,6 +63,15 @@ CREATE TABLE "login_attempts" (
   CONSTRAINT "check_id" CHECK(id >= 0)
 );
 
+CREATE TABLE "ci_sessions" (
+        "id" varchar(40) NOT NULL,
+        "ip_address" varchar(45) NOT NULL,
+        "timestamp" bigint DEFAULT 0 NOT NULL,
+        "data" text DEFAULT '' NOT NULL
+);
+
+CREATE INDEX "ci_sessions_timestamp" ON "ci_sessions" ("timestamp");
+
 create table pictures(
 	id serial not null primary key,
 	title character varying(64),
