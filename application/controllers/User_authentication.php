@@ -8,6 +8,7 @@
             $this->load->library('form_validation');
             // Load session library
             $this->load->library('session');
+            $this->load->library('ion_auth');
             // Load database
             $this->load->model('Login_model');
             
@@ -82,6 +83,8 @@
                 $data = array(
                     'id' => $result[0]->id,
                     'username' =>$result[0]->username,
+                    'first_name' =>$result[0]->first_name,
+                    'last_name' =>$result[0]->last_name,
                     'posts' => $this->Login_model->count_posts($result[0]->id)
                 );
                 $this->load->view('templates/header');
