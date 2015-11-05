@@ -6,13 +6,13 @@ class Gallery extends CI_Controller {
       parent::__Construct ();
        $this->load->database(); // load database
        $this->load->model('GalleryModel'); // load model 
-        $this->load->library('session');
+       $this->load->library('session');
      }
 
     public function index() {
-        $this->data['pictures'] = $this->GalleryModel->getPictures();
+		$this->data['pictures'] = $this->GalleryModel->getPictures();
         $this->load->view('templates/header');
-        $this->load->view('gallery', $this->data); // load the view file , we are passing $data array to view file
+        $this->load->view('gallery', $this->data); 
         $this->load->view('templates/footer');
     }
  
