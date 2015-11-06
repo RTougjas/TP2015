@@ -6,7 +6,7 @@ class Picture extends CI_Controller {
     parent::__Construct ();
        $this->load->database(); // load database
        $this->load->model('PictureModel'); // load model 
-       $this->load->library('session');
+       $this->load->library(array('ion_auth', 'session'));
      }
 
     public function photo() {
