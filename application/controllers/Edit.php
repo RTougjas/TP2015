@@ -13,7 +13,7 @@ class Edit extends CI_Controller {
      }
 
     public function index() {
-	    $this->data['picture'] = $this->EditModel->getPicture($this->uri->segment(3, 1));
+	    $this->data['picture'] = $this->EditModel->getPicture($this->uri->segment(2, 1));
         $this->load->view('templates/header');
         $this->load->view('edit', $this->data);
         $this->load->view('templates/footer');
