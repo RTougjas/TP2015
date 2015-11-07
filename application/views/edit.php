@@ -3,7 +3,7 @@
 
 <?php echo '<img src="'.$picture->location.'" alt="borked">';?>
 
-<?php echo form_open_multipart('edit/do_edit/'.$this->uri->segment(3, 1));?>
+<?php echo form_open_multipart('edit/do_edit/'.$this->uri->segment(2, 1));?>
 
 Title: <input type="text" name="title"><br>
 Description: <input type="text" name="description"><br>

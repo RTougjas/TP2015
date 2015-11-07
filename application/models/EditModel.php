@@ -21,7 +21,13 @@ class EditModel extends CI_Model {
 			$this->db->where('id', $id);
 			$this->db->update('pictures', $data); 
 	}
-	function editDescription(){
+	function editDescription($id, $description){
+	$data = array(
+               'description' => $description,
+            );
+
+			$this->db->where('id', $id);
+			$this->db->update('pictures', $data); 
 	}
  
 }

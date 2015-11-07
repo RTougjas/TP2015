@@ -39,7 +39,7 @@ class Upload extends CI_Controller {
             $data = array('upload_data' => $this->upload->data());
 
             $info = array(
-			'user_id' => $this->input->post($this->ion_auth->get_user_id()),
+			'user_id' => $this->ion_auth->get_user_id(),
             'title' => $this->input->post('title'),
             'description' => $this->input->post('description'),
             'location' => '/tp2015/uploads/'.$data['upload_data']['file_name']
