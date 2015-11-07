@@ -10,7 +10,7 @@ class Picture extends CI_Controller {
      }
 
     public function photo() {
-	    $this->data['picture'] = $this->PictureModel->getPicture($this->uri->segment(3, 4));
+	    $this->data['picture'] = $this->PictureModel->getPicture($this->uri->segment(2, 1));
         $this->load->view('templates/header');
         $this->load->view('picture', $this->data);
         $this->load->view('templates/footer');

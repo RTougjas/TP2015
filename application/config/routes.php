@@ -51,6 +51,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 */
 $route['default_controller'] = 'Gallery';
 $route['registration'] = 'user_authentication/user_registration_show';
+<<<<<<< HEAD
 $route['profile/(:any)'] = 'profile/show_user_info/$1';
+=======
+$route['profile/(:any)'] = 'user_authentication/show_user_info/$1';
+$route['picture/(:any)'] = 'picture/photo/$1';
+>>>>>>> eeab54fccca98b1666c67bd49d12c1350c06465d
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
