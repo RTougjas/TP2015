@@ -20,9 +20,9 @@ class Upload extends CI_Controller {
     {
         $config['upload_path']          = './uploads/';
         $config['allowed_types']        = 'gif|jpg|png';
-        $config['max_size']             = 10000;
-        $config['max_width']            = 10240;
-        $config['max_height']           = 7680;
+        $config['max_size']             = 100000;
+        $config['max_width']            = 102400;
+        $config['max_height']           = 76800;
 
         $this->load->library('upload', $config);
 
@@ -39,6 +39,7 @@ class Upload extends CI_Controller {
             $data = array('upload_data' => $this->upload->data());
 
             $info = array(
+			'user_id' => $this->input->post($this->ion_auth->get_user_id()),
             'title' => $this->input->post('title'),
             'description' => $this->input->post('description'),
             'location' => '/tp2015/uploads/'.$data['upload_data']['file_name']
