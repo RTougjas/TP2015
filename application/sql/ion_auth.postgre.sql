@@ -79,3 +79,24 @@ create table pictures(
 	location character varying(64) not null,
 	user_id integer references users(id)
 );
+
+
+create table tags(
+	id serial primary key not null,
+	tag character varying(30) not null
+);
+
+create table pictures_tags(
+	id serial primary key not null,
+	picture_id integer not null,
+	tag_id integer not null,
+	constraint unique_picture_tag unique (picture_id, tag_id)
+);
+
+create table comments(
+	id serial primary key not null,
+	user_id integer not null,
+	picture_id integer not null,
+	comment text,
+	created integer not null
+);
