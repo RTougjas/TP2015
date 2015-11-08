@@ -1,0 +1,106 @@
+html {
+    font-family: Arial, Helvetica, sans-serif; /* 1 */
+    -ms-text-size-adjust: 100%; /* 2 */
+    -webkit-text-size-adjust: 100%; /* 2 */
+}
+
+body {
+    margin-top: 0px;
+    background-color: #ece8e5;
+}
+
+
+h1 {
+    margin-top: 50px;
+    color: Blue;
+    text-align: left;
+}
+
+
+h4 {
+    color: Blue;
+    text-align: left;
+}
+
+p {
+    font-family: "Times New Roman";
+    font-size: 20px;
+    text-align: justify;
+}
+
+/*table css*/
+
+.container_title{
+}
+/*navbar css*/
+.navbar {
+    height: 40px;
+    width: 100%;
+    background: #222222;
+    font-size: 11pt;
+    font-family: 'PT Sans', Arial, sans-serif;
+    font-weight: bold;
+    position: fixed;
+    top: 0px;
+    left:0px;
+    right:0px;
+    border-bottom: 2px solid #283744;
+}
+
+.navbar ul {
+    padding: 0;
+    margin: 0 auto;
+    width: 600px;
+    height: 40px;
+}
+.navbar li {
+    display: inline;
+    float: left;
+}
+.navbar a {
+    color: #fff;
+    display: inline-block;
+    width: 100px;
+    text-align: center;
+    text-decoration: none;
+    line-height: 40px;
+    text-shadow: 1px 1px 0px #283744;
+}
+.navbar li a {
+    border-right: 1px solid #576979;
+    box-sizing:border-box;
+    -moz-box-sizing:border-box;
+    -webkit-box-sizing:border-box;
+}
+.navbar li:last-child a {
+    border-right: 0;
+}
+.navbar a:hover, nav a:active {
+    background-color: #8c99a4;
+}
+
+.navbar a#pull {
+    display: none;
+}
+
+
+
+
+
+table {
+    border-collapse: inherit;
+    width: 100%;
+}
+
+table, th, td {
+    border: 1px solid black;
+}
+td{
+    color: Blue;
+    text-align: center;
+}
+
+th{
+    height: 50px;
+}
+
