@@ -14,7 +14,7 @@ if(!$this->session->has_userdata('username')){
         <li>Username: " . $username."</li>
         <li>First name: " . $first_name."</li>
         <li>Last name: " . $last_name."</li>
-        <li>Uploads: ".$posts."</li>
+        <li>Uploads: <a href=".site_url("profile/uploads/".$id).">".$posts."</a></li>
         </ul>";
     ?>
 </div>
