@@ -74,7 +74,7 @@ $active_group = 'default';
 $query_builder = TRUE;
 
 $db['default'] = array(
-	'dsn'   => getenv('DATABASE_URL'),
+	'dsn'   => 'postgres://postgres:root@localhost:5432/postgres',
 	'hostname' => '',
 	'username' => '',
 	'password' => '',
