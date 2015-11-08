@@ -1,3 +1,4 @@
+uploads/
 .DS_Store
 
 application/cache/*
@@ -25,3 +26,4 @@ user_guide_src/cilexer/pycilexer.egg-info/*
 *.stTheme.cache
 *.sublime-workspace
 *.sublime-project
+
