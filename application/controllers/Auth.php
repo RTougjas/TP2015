@@ -44,20 +44,6 @@ class Auth extends CI_Controller {
 		}
 	}
 	
-	function search() {
-		$this->data['title'] = "Search";
-		$search_key = $this->input->post('search_key');
-		
-		$this->data['search_key'] = array('search_key' => 'search_key',
-			'id'   => 'search_key',
-			'type' => 'search_key',
-		);
-		
-		
-		$this->_render_page('auth/search', $this->data);
-		
-	}
-
 	// log the user in
 	function login()
 	{
