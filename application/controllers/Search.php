@@ -10,11 +10,24 @@ class Search extends CI_Controller {
      }
 
     public function index() {
-        $this->data['pictures'] = $this->SearchModel->getSearchResults($_POST['search_key']);
+		
+		$search_input = $_POST['search_key'];
+		$keywords = explode(" ", $search_input);
 		$this->load->view('templates/header');
-        $this->load->view('gallery', $this->data); 
-        $this->load->view('templates/footer');
+		if(strlen($search_input) > 0) {
+			$this->data['pictures'] = $this->SearchModel->getSearchResults($keywords);
+	        $this->load->view('gallery', $this->data);
+		}
+		$this->load->view('templates/footer');
     }
+ 
+ 	public function Searchkey() {
+ 		
+		//$keyword = $_POST['search_key'];
+		//$keywords = explode(" ", $keyword);
+		
+		return $keyword;
+ 	}
  
  
 }
