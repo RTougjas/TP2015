@@ -43,7 +43,7 @@ class Auth extends CI_Controller {
 			$this->_render_page('auth/index', $this->data);
 		}
 	}
-
+	
 	// log the user in
 	function login()
 	{

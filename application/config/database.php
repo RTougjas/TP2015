@@ -75,6 +75,10 @@ $query_builder = TRUE;
 
 $db['default'] = array(
 	'dsn'   => getenv('DATABASE_URL'),
+	//'hostname' => 'localhost',
+	//'username' => 'postgres',
+	//'password' => 'root',
+	//'database' => 'postgres',
 	'hostname' => '',
 	'username' => '',
 	'password' => '',
