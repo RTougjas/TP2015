@@ -1,14 +1,19 @@
-<?php echo $error;?>
 
-<?php echo form_open_multipart('upload/do_upload');?>
 
-Title: <input type="text" name="title"><br>
-Description: <input type="text" name="description"><br>
 
-<input type="file" name="userfile" size="20" />
 
-<br /><br />
+<div class = "form-container" >
+    Title: <input type="text" name="title">
+    Description: <input type="text" name="description">
 
-<input type="submit" value="upload" />
+    <input type="file" name="userfile" size="20" />
+<div class = "error_message">
+    <?php echo $error;?>
+    <?php echo form_open_multipart('upload/do_upload');?>
+    </div>
+
+    <input type="submit" value="upload" />
+</div>
+
 
 </form>
