@@ -2,12 +2,13 @@
 <html>
     <head>
         <meta charset="utf-8"> 
-        <title>Archive</title>
+        <title>Fotoarhiiv</title>
         <?php $this->load->helper('url'); ?>
+        <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>css/main.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
     </head>
     <body>
         <div class="container">
-        <h1>Archive</h1>
         </div>
         <div class="navbar">
             <div class="navbar-inner">
@@ -31,3 +32,11 @@
                 </ul>
             </div>
         </div>
+        </div>
+	    <div class="search">
+	        <form action="<?php echo site_url("/Search")?>" method="POST">
+	            <input type="text" name="search_key">
+	            <input type="submit" value="Search">
+	        </form>
+	    </div>
+

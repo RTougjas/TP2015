@@ -1,0 +1,156 @@
+html {
+    font-family: Arial, Helvetica, sans-serif; /* 1 */
+    -ms-text-size-adjust: 100%; /* 2 */
+    -webkit-text-size-adjust: 100%; /* 2 */
+}
+
+body {
+    margin-top: 0px;
+    background-color: #ece8e5;
+}
+
+
+h1 {
+    margin-top: 50px;
+    color: #222222;
+    text-align: left;
+}
+
+
+h4 {
+    color: #222222;
+    text-align: left;
+}
+
+p {
+    font-family: "Times New Roman";
+    font-size: 20px;
+    text-align: justify;
+}
+
+/*navbar css*/
+.navbar {
+    height: 40px;
+    width: 100%;
+    background: #222222;
+    font-size: 11pt;
+    font-family: 'PT Sans', Arial, sans-serif;
+    font-weight: bold;
+	position: relative;
+    top: 0px;
+    left:0px;
+    right:0px;
+    border-bottom: 2px solid #283744;
+}
+
+.navbar frst{
+    padding: 0;
+    margin: 0 auto;
+
+}
+.error_message{
+    margin
+}
+
+.navbar ul {
+    padding: 0;
+    margin: 0 auto;
+    width: 600px;
+    height: 40px;
+}
+.navbar li {
+    display: inline;
+    text-align:center;
+    float: left;
+}
+.navbar a {
+    color: #fff;
+    display: inline-block;
+    width: 100px;
+    text-align: center;
+    text-decoration: none;
+    line-height: 40px;
+    text-shadow: 1px 1px 0px #283744;
+}
+.navbar li a {
+    border-right: 1px solid #576979;
+    box-sizing:border-box;
+    -moz-box-sizing:border-box;
+    -webkit-box-sizing:border-box;
+}
+.navbar li:last-child a {
+    border-right: 0;
+}
+.navbar a:hover, nav a:active {
+    background-color: #8c99a4;
+}
+
+.navbar a#pull {
+    display: none;
+}
+
+
+/*Container CSS*/
+
+.form-container{
+    margin-left: 25%;
+    margin-right: 25%;
+    position: relative;
+    border: 1px solid gray;
+    border-spacing: 10px 50 px;
+    padding: 10px;
+    border-radius: 10px;
+    margin-top: 50px;
+    background-color: #ece8e5;
+    text-align: center;
+}
+
+input    {
+    width:375px;
+    display:block;
+    border: 1px solid #999;
+    height: 25px;
+    margin: auto;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+
+
+
+
+
+
+
+/*Table CSS*/
+
+table {
+
+
+    width: 100%;
+}
+th{
+    border: 1px solid gray;
+    border-spacing: 0;
+    padding:0;
+    border-radius: 0px;
+    margin-top: 0;
+    background-color: #222222;
+    color: #fff;
+    text-align: center;
+    height: 30px;
+}
+
+
+td {
+    border: 1px solid gray;
+    border-spacing: 10px 50 px;
+    padding: 10px;
+    border-radius: 10px;
+    margin-top: 50px;
+}
+td{
+    color: #222222;
+    text-align: center;
+}
+

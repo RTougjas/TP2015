@@ -1,4 +1,4 @@
-CREATE TABLE "users" (
+CREATE TABLE IF NOT EXISTS "users" (
     "id" SERIAL NOT NULL,
     "ip_address" varchar(15),
     "username" varchar(100) NOT NULL,
@@ -22,7 +22,7 @@ CREATE TABLE "users" (
 );
 
 
-CREATE TABLE "groups" (
+CREATE TABLE IF NOT EXISTS "groups" (
     "id" SERIAL NOT NULL,
     "name" varchar(20) NOT NULL,
     "description" varchar(100) NOT NULL,
@@ -31,7 +31,7 @@ CREATE TABLE "groups" (
 );
 
 
-CREATE TABLE "users_groups" (
+CREATE TABLE IF NOT EXISTS "users_groups" (
     "id" SERIAL NOT NULL,
     "user_id" integer NOT NULL,
     "group_id" integer NOT NULL,
@@ -54,7 +54,7 @@ INSERT INTO users_groups (user_id, group_id) VALUES
     (1,1),
     (1,2);
 
-CREATE TABLE "login_attempts" (
+CREATE TABLE IF NOT EXISTS "login_attempts" (
     "id" SERIAL NOT NULL,
     "ip_address" varchar(15),
     "login" varchar(100) NOT NULL,
@@ -72,28 +72,28 @@ CREATE TABLE "ci_sessions" (
 
 CREATE INDEX "ci_sessions_timestamp" ON "ci_sessions" ("timestamp");
 
-create table pictures(
+create table IF NOT EXISTS pictures(
 	id serial not null primary key,
 	title character varying(64),
 	description text,
-	location character varying(64) not null,
+	location character varying(128) not null,
 	user_id integer references users(id)
 );
 
 
-create table tags(
+create table IF NOT EXISTS tags(
 	id serial primary key not null,
 	tag character varying(30) not null
 );
 
-create table pictures_tags(
+create table IF NOT EXISTS pictures_tags(
 	id serial primary key not null,
 	picture_id integer not null,
 	tag_id integer not null,
 	constraint unique_picture_tag unique (picture_id, tag_id)
 );
 
-create table comments(
+create table IF NOT EXISTS comments(
 	id serial primary key not null,
 	user_id integer not null,
 	picture_id integer not null,
