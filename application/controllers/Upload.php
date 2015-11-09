@@ -25,7 +25,7 @@ class Upload extends CI_Controller {
         $config['max_height']           = 76800;
 
         $this->load->library('upload', $config);
-
+		
         if ( ! $this->upload->do_upload('userfile'))
         {
             $error = array('error' => $this->upload->display_errors());
@@ -36,6 +36,7 @@ class Upload extends CI_Controller {
         }
         else
         {
+			//picture table
             $data = array('upload_data' => $this->upload->data());
 
             $info = array(
@@ -47,20 +48,41 @@ class Upload extends CI_Controller {
 
             $this->load->database();
             $this->db->insert('pictures', $info);
+			
+			$this->db->select("id"); 
+			$this->db->from('pictures');
+			$this->db->where('location', '/tp2015/uploads/'.$data['upload_data']['file_name']);
+			$query = $this->db->get();
+			$picture_id = $query->result()[0]->id;
+			
+			
+			$tags = preg_split("/,/",$this->input->post('tags'));
+			for($i = 0; $i < count($tags); ++$i) {
+				if ($this->db->get_where('tags', array('tag' => $tags[$i]))-> num_rows() == 0) {
+					$info = array(
+					'tag' => $tags[$i]
+					);
 
-            //todo:fix ftp connection
-            /* 
-            $this->load->library('ftp');
-            $config['hostname'] = 'ftp.steffi.ee';
-            $config['username'] = getenv('FTP_USER');
-            $config['password'] = getenv('FTP_PASSWORD');
-            $config['debug']	= TRUE;
+					$this->load->database();
+					$this->db->insert('tags', $info);
+				}
+					
+				$this->db->select("id"); 
+				$this->db->from('tags');
+				$this->db->where('tag',  $tags[$i]);
+				$query = $this->db->get();
+				$tag_id = $query->result()[0]->id;
+				
+				$info = array(
+				'picture_id' => $picture_id ,
+				'tag_id' => $tag_id
+				);
 
-            $this->ftp->connect($config);
-            $this->ftp->upload('index.php', '/htdocs/index.php', 'ascii', 0775);
-            $this->ftp->close();
-
-            */
+				$this->load->database();
+				$this->db->insert('pictures_tags', $info);
+				
+			}
+			
             $this->load->view('templates/header');
             $this->load->view('upload_success', $data);
             $this->load->view('templates/footer');

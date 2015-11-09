@@ -11,6 +11,7 @@ class Picture extends CI_Controller {
 
     public function photo() {
 	    $this->data['picture'] = $this->PictureModel->getPicture($this->uri->segment(2, 1));
+		$this->data['tags'] = $this->PictureModel->getTags($this->uri->segment(2, 1));
         $this->load->view('templates/header');
         $this->load->view('picture', $this->data);
         $this->load->view('templates/footer');

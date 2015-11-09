@@ -29,7 +29,34 @@ class Edit extends CI_Controller {
 			if (! $this->input->post('description') == ''){
 				$this->EditModel->editDescription($id, $this->input->post('description'));
 			}
+			if (! $this->input->post('tags') == ''){
 
+			$tags = preg_split("/,/",$this->input->post('tags'));
+			for($i = 0; $i < count($tags); ++$i) {
+				if ($this->db->get_where('tags', array('tag' => $tags[$i]))-> num_rows() == 0) {
+					$info = array(
+					'tag' => $tags[$i]
+					);
+
+					$this->load->database();
+					$this->db->insert('tags', $info);
+				}
+					
+				$this->db->select("id"); 
+				$this->db->from('tags');
+				$this->db->where('tag',  $tags[$i]);
+				$query = $this->db->get();
+				$tag_id = $query->result()[0]->id;
+				
+				$info = array(
+				'picture_id' => $id ,
+				'tag_id' => $tag_id
+				);
+
+				$this->load->database();
+				$this->db->insert('pictures_tags', $info);
+				}
+			}
             
             $this->load->view('templates/header');
             $this->load->view('edit_success');

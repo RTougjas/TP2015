@@ -1,6 +1,7 @@
 
 <?php echo "Title: ".$picture->title;?><br>
 <?php echo "Description: ".$picture->description;?><br>
+<?php echo "Tags: ".implode(', ',$tags);?><br>
 
 <?php echo '<img src="'.$picture->location.'" alt="borked">';?><br>
 
