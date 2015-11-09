@@ -36,7 +36,7 @@ p {
     font-size: 11pt;
     font-family: 'PT Sans', Arial, sans-serif;
     font-weight: bold;
-    position: fixed;
+	position: relative;
     top: 0px;
     left:0px;
     right:0px;

@@ -9,7 +9,6 @@
     </head>
     <body>
         <div class="container">
-
         </div>
         <div class="navbar">
             <div class="navbar-inner">
@@ -33,3 +32,11 @@
                 </ul>
             </div>
         </div>
+        </div>
+	    <div class="search">
+	        <form action="<?php echo site_url("/Search")?>" method="POST">
+	            <input type="text" name="search_key">
+	            <input type="submit" value="Search">
+	        </form>
+	    </div>
+
