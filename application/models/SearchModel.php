@@ -17,10 +17,10 @@ class SearchModel extends CI_Model {
 			 if(strlen($keywords[$i]) > 2) {
 			 
 				 if(strlen($query_string) == 0) {
-					 $query_string = "title = '$keywords[$i]' OR description = '$keywords[$i]'";
+					 $query_string = "lower(title) = '$keywords[$i]' OR lower(description) = '$keywords[$i]'";
 				 }
 				 else {
-					 $query_string = $query_string."OR title = '$keywords[$i]' OR description = '$keywords[$i]'";
+					 $query_string = $query_string."OR lower(title) = '$keywords[$i]' OR lower(description) = '$keywords[$i]'";
 				 }
 			 }
 		 }
