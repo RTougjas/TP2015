@@ -26,8 +26,3 @@ uploads
 *.stTheme.cache
 *.sublime-workspace
 *.sublime-project
-<<<<<<< HEAD
-application/config/database.php
-=======
-
->>>>>>> Searchh
