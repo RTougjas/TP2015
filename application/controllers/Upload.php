@@ -15,16 +15,26 @@ class Upload extends CI_Controller {
         $this->load->view('upload_form', array('error' => ' ' ));
         $this->load->view('templates/footer');
     }
+	public function checkTag($picture_id, $tag_id){
+			$this->db->select("picture_id"); 
+			$this->db->from('pictures_tags');
+			$this->db->where('picture_id', $picture_id);
+			$this->db->where('tag_id', $tag_id);
+			if ($this->db->get()->num_rows() == 0){
+				return TRUE;
+			} else {
+				return FALSE;
+				}
+    }
 
     public function do_upload()
     {
-		
         $config['upload_path']          = './uploads/';
         $config['allowed_types']        = 'gif|jpg|png';
         $config['max_size']             = 100000;
         $config['max_width']            = 102400;
         $config['max_height']           = 76800;
-		
+
         $this->load->library('upload', $config);
 		
         if ( ! $this->upload->do_upload('userfile'))
@@ -80,7 +90,9 @@ class Upload extends CI_Controller {
 				);
 
 				$this->load->database();
+				if ($this->checkTag($picture_id,$tag_id)){
 				$this->db->insert('pictures_tags', $info);
+				}
 				
 			}
 			
@@ -114,5 +126,6 @@ class Upload extends CI_Controller {
             $this->load->view('templates/footer');
         }
     }
+	
 }
 ?>

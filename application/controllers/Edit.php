@@ -54,7 +54,10 @@ class Edit extends CI_Controller {
 				);
 
 				$this->load->database();
+				$this->load->database();
+				if ($this->checkTag($id,$tag_id)){
 				$this->db->insert('pictures_tags', $info);
+				}
 				}
 			}
             
@@ -62,7 +65,17 @@ class Edit extends CI_Controller {
             $this->load->view('edit_success');
             $this->load->view('templates/footer');
         }
-    
+    public function checkTag($picture_id, $tag_id){
+			$this->db->select("picture_id"); 
+			$this->db->from('pictures_tags');
+			$this->db->where('picture_id', $picture_id);
+			$this->db->where('tag_id', $tag_id);
+			if ($this->db->get()->num_rows() == 0){
+				return TRUE;
+			} else {
+				return FALSE;
+				}
+    }
     
  
 }
