@@ -63,6 +63,8 @@ class Upload extends CI_Controller {
 		 $this->load->view('templates/footer');
 		}
 		
+		ftp_close($conn_id);
+		
 		/*
         $config['upload_path']          = './uploads/';
         $config['allowed_types']        = 'gif|jpg|png';
