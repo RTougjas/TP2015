@@ -29,6 +29,16 @@ class EditModel extends CI_Model {
 			$this->db->where('id', $id);
 			$this->db->update('pictures', $data); 
 	}
- 
+	function getTags($id){
+		$tags = array();
+		
+		
+		for($i = 0; $i < $this->db->get_where('pictures_tags', array('picture_id' => $id))-> num_rows(); ++$i){
+			array_push($tags, ($this->db->get_where('tags', array('id' => $this->db->get_where('pictures_tags', 
+			array('picture_id' => $id))->result()[$i]->tag_id))->result()[0]->tag));
+		}
+		
+		return $tags;
+	}
 }
 ?>

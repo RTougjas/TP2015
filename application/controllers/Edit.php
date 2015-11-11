@@ -14,6 +14,7 @@ class Edit extends CI_Controller {
 
     public function index() {
 	    $this->data['picture'] = $this->EditModel->getPicture($this->uri->segment(2, 1));
+		$this->data['tags'] = $this->EditModel->getTags($this->uri->segment(2, 1));
         $this->load->view('templates/header');
         $this->load->view('edit', $this->data);
         $this->load->view('templates/footer');
@@ -21,8 +22,24 @@ class Edit extends CI_Controller {
  
 	public function do_edit($id)
     {
-			
+	
+			if(! empty($_POST['tag'])){
+				$tags = $_POST['tag'];
+				for($i = 0; $i < count($tags); ++$i){
+					$this->db->select("id"); 
+					$this->db->from('tags');
+					$this->db->where('tag',  $tags[$i]);
+					$query = $this->db->get();
+					$tag_id = $query->result()[0]->id;
+					
+					$this->db->where('picture_id', $id);
+					$this->db->where('tag_id',$tag_id);
+					$this->db->delete('pictures_tags'); 
 
+				}
+			}
+			
+			
 			if (! $this->input->post('title') == ''){
 				$this->EditModel->editTitle($id, $this->input->post('title'));
 			}
