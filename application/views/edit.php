@@ -11,6 +11,7 @@ Description: <input type="text" name="description"><br>
 Add Tags: <input type="tags" name="tags"> (Eralda komaga, ilma tühikuteta)<br>
 <br /><br />
 
+<?php echo "Delete tags";?><br><br>
 
  <?php for($i = 0; $i < count($tags); ++$i){?>
     <?php echo $tags[$i].'<input type="checkbox" name="tag[]" value="'.$tags[$i].'">';?>
