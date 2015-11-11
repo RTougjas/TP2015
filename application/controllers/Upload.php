@@ -29,6 +29,41 @@ class Upload extends CI_Controller {
 
     public function do_upload()
     {
+		
+		$file = $_FILES['userfile']['tmp_name'];
+		$remote_dir = "uploads/";
+		$remote_file = $remote_dir . $_FILES['userfile']['name'];
+		$ftp_server = "ftp.steffi.ee";
+
+		$conn_id = ftp_connect($ftp_server) or die("Couldn't connect to $ftp_server");
+		//$login = ftp_login($conn_id, 'upload_steffi.ee', 'uXZNKBA');
+		$login = ftp_login($conn_id, getenv('FTP_USER'), getenv('FTP_PASSWORD'));
+		if (ftp_put($conn_id, $remote_file, $file, FTP_ASCII)) {
+		 //echo "successfully uploaded $file\n";
+ 
+		 $info = array(
+		'user_id' => $this->ion_auth->get_user_id(),
+		 'title' => $this->input->post('title'),
+		 'description' => $this->input->post('description'),
+		 'location' => 'http://www.steffi.ee/'.$remote_file
+		 );
+ 
+		 $this->load->database();
+		 $this->db->insert('pictures', $info);
+ 
+		 $this->load->view('templates/header');
+		 $this->load->view('upload_success');
+		 $this->load->view('templates/footer');
+ 
+		} else {
+		 $error = array('error' => $this->upload->display_errors());
+ 
+		 $this->load->view('templates/header');
+		 $this->load->view('upload_form', $error);
+		 $this->load->view('templates/footer');
+		}
+		
+		/*
         $config['upload_path']          = './uploads/';
         $config['allowed_types']        = 'gif|jpg|png';
         $config['max_size']             = 100000;
@@ -100,11 +135,12 @@ class Upload extends CI_Controller {
             $this->load->view('upload_success', $data);
             $this->load->view('templates/footer');
         }
+		*/
     }
     
     public function getlist(){
         $this->load->library('ftp');
-        $config['hostname'] = 'ftp://steffi.ee';
+        $config['hostname'] = 'http://www.steffi.ee';
         $config['username'] = getenv('FTP_USER');
         $config['password'] = getenv('FTP_PASSWORD');
         $config['debug']	= TRUE;
