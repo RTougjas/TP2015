@@ -16,13 +16,13 @@
 	      </div>
 	      <div>
 	        <ul class="nav navbar-nav">
+  			  <li>
+  				  <form action="<?php echo site_url("/Search")?>" method="POST">
+  					  <input type="text" name="search_key" class="form-control" id="text" placeholder="otsing">
+  				  </form>
+  			  </li>
 	          <li><a href=<?php echo site_url("/gallery"); ?>>Galerii</a></li>
 	          <li><a href=<?php echo site_url("/upload"); ?>>Lae pilt</a></li>
-			  <li>
-				  <form action="<?php echo site_url("/Search")?>" method="POST">
-					  <input type="text" name="search_key" class="form-control" id="text" placeholder="otsing">
-				  </form>
-			  </li>
 		  	</ul>
 			<ul class="nav navbar-nav navbar-right">
               <?php

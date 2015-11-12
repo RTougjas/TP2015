@@ -3,7 +3,7 @@ echo form_open("auth/login");
 ?>
 
 <div class="container">
-	<div class="container">
+	<div class="col-xs-5 col-cs-offset-5">
 		<h3><?php echo lang('login_heading')?></h3>
 			<form>
       			<div class="form-group">
