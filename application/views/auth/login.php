@@ -1,29 +1,28 @@
-<h1><?php echo lang('login_heading');?></h1>
-<p><?php echo lang('login_subheading');?></p>
+<?php
+echo form_open("auth/login");
+?>
 
-<div id="infoMessage"><?php echo $message;?></div>
-
-<?php echo form_open("auth/login");?>
-
-  <p>
-    <?php echo lang('login_identity_label', 'identity');?>
-    <?php echo form_input($identity);?>
-  </p>
-
-  <p>
-    <?php echo lang('login_password_label', 'password');?>
-    <?php echo form_input($password);?>
-  </p>
-
-  <p>
-    <?php echo lang('login_remember_label', 'remember');?>
-    <?php echo form_checkbox('remember', '1', FALSE, 'id="remember"');?>
-  </p>
-
-
-  <p><?php echo form_submit('submit', lang('login_submit_btn'));?></p>
-
-<?php echo form_close();?>
-
-<p><a href="forgot_password"><?php echo lang('login_forgot_password');?></a></p>
-<p><a href="create_user"><?php echo lang('create_user_heading');?></a></p>
+<div class="container">
+	<div class="container">
+		<h3><?php echo lang('login_heading')?></h3>
+			<form>
+      			<div class="form-group">
+        			<label for="email">Emaili aadress</label>
+        			<input type="email" class="form-control" id="identity" name="identity"placeholder="Email">
+      	  		</div>
+      	  		<div class="form-group">
+        			<label for="password">Parool</label>
+        			<input type="password" class="form-control" id="password" name="password" placeholder="Password">
+     	   		</div>
+      	  		<div class="checkbox">
+        			<label>
+          			<input type="checkbox"> Remember me
+        			</label>
+      	  		</div>
+      	  		<button type="submit" class="btn btn-default">Logi sisse</button>
+    		</form>
+			<br>
+			<p><a href="forgot_password"><?php echo lang('login_forgot_password');?></a></p>
+			<p><a href="create_user"><?php echo lang('create_user_heading');?></a></p>
+	</div>
+</div>
