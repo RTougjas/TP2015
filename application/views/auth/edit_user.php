@@ -3,7 +3,7 @@
 <?php echo form_open(uri_string());?>
 
   <div class="container">
-	  <div class="container">
+	  <div class="col-xs-5 col-cs-offset-5">
     	 <h3>Accound settings</h3>
 		 <form>
       		<div class="form-group">
