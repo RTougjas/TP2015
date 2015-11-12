@@ -29,8 +29,7 @@ class Upload extends CI_Controller {
 
     public function do_upload()
     {
-		
-		//$config['upload_path']          = 'http://www.steffi.ee/uploads/';
+
         $config['upload_path']          = './uploads/';
         $config['allowed_types']        = 'gif|jpg|png';
         $config['max_size']             = 100000;
@@ -57,7 +56,7 @@ class Upload extends CI_Controller {
             'title' => $this->input->post('title'),
             'description' => $this->input->post('description'),
             'location' => '/tp2015/uploads/'.$data['upload_data']['file_name']
-			//'location' => 'http://www.steffi.ee/uploads/'.$data['upload_data']['file_name']
+			
             );
 
             $this->load->database();
@@ -66,7 +65,6 @@ class Upload extends CI_Controller {
 			$this->db->select("id"); 
 			$this->db->from('pictures');
 			$this->db->where('location', '/tp2015/uploads/'.$data['upload_data']['file_name']);
-			//$this->db->where('location', 'http://www.steffi.ee/uploads/'.$data['upload_data']['file_name']);
 			$query = $this->db->get();
 			$picture_id = $query->result()[0]->id;
 			
