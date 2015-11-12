@@ -1,41 +1,32 @@
-<h1><?php echo lang('create_user_heading');?></h1>
-<p><?php echo lang('create_user_subheading');?></p>
-
-<div id="infoMessage"><?php echo $message;?></div>
-
-<?php echo form_open("auth/create_user");?>
-
-    <p>
-        <?php echo lang('create_user_identity_label', 'identity');?> <br />
-        <?php echo form_input($identity);?>
-    </p>
-
-    <p>
-        <?php echo lang('create_user_email_label', 'email');?> <br />
-        <?php echo form_input($email);?>
-    </p>
-
-    <p>
-        <?php echo lang('create_user_fname_label', 'first_name');?> <br />
-        <?php echo form_input($first_name);?>
-    </p>
-
-    <p>
-        <?php echo lang('create_user_lname_label', 'last_name');?> <br />
-        <?php echo form_input($last_name);?>
-    </p>
-
-    <p>
-        <?php echo lang('create_user_password_label', 'password');?> <br />
-        <?php echo form_input($password);?>
-    </p>
-
-    <p>
-        <?php echo lang('create_user_password_confirm_label', 'password_confirm');?> <br />
-        <?php echo form_input($password_confirm);?>
-    </p>
-
-
-    <p><?php echo form_submit('submit', lang('create_user_submit_btn'));?></p>
-
-<?php echo form_close();?>
+<?php echo form_open('auth/create_user')?>
+<div class="container">
+	  <div class="col-xs-5 col-cs-offset-5">
+    	 <h3><?php echo lang('create_user_heading');?></h3>
+		 <form>
+      		<div class="form-group">
+        		<label for="text">Kasutajanimi</label>
+        		<input type="text" class="form-control" id="identity" name="identity" placeholder="Username">
+      	  	</div>
+      	  	<div class="form-group">
+        		<label for="email">Email</label>
+        		<input type="email" class="form-control" id="email" name="email" placeholder="Email">
+     	   	</div>
+      		<div class="form-group">
+        		<label for="text">Eesnimi</label>
+        		<input type="text" class="form-control" id="first_name" name="first_name" placeholder="Eesnimi">
+      	  	</div>
+      		<div class="form-group">
+        		<label for="text">Perenimi</label>
+        		<input type="text" class="form-control" id="last_name" name="last_name "placeholder="Perenimi">
+      	  	</div>
+      	  	<div class="form-group">
+        		<label for="password">Parool</label>
+        		<input type="password" class="form-control" id="password" name="password" placeholder="Password">
+     	   	</div><div class="form-group">
+        		<label for="password">Parool uuesti</label>
+        		<input type="password" class="form-control" id="password_confirm" name="password_confirm" placeholder="Password">
+     	   	</div>
+      	  	<input type="submit" class="btn btn-default" value="Loo kasutaja">
+    	</form>
+	</div>
+  </div>
