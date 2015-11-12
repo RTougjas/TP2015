@@ -7,9 +7,11 @@ class Picture extends CI_Controller {
        $this->load->database(); // load database
        $this->load->model('PictureModel'); // load model 
        $this->load->library(array('ion_auth', 'session'));
+	   $this->load->helper('form');
      }
 
     public function photo() {
+		$this->data['comments'] = $this->PictureModel->getComments($this->uri->segment(2, 1));
 	    $this->data['picture'] = $this->PictureModel->getPicture($this->uri->segment(2, 1));
 		$this->data['tags'] = $this->PictureModel->getTags($this->uri->segment(2, 1));
         $this->load->view('templates/header');
@@ -17,7 +19,10 @@ class Picture extends CI_Controller {
         $this->load->view('templates/footer');
     }
  
-	
+	public function comment($id){
+                $this->PictureModel->enterComment($id, $this->input->post('comment'));
+				redirect('/picture/'.$id);
+        }
  
 }
 ?>
