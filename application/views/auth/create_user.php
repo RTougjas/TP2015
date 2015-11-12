@@ -1,6 +1,6 @@
 <?php echo form_open('auth/create_user')?>
 <div class="container">
-	  <div class="container">
+	  <div class="col-xs-5 col-cs-offset-5">
     	 <h3><?php echo lang('create_user_heading');?></h3>
 		 <form>
       		<div class="form-group">

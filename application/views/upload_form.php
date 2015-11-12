@@ -3,7 +3,7 @@
 <?php echo form_open_multipart('upload/do_upload');?>
 
   <div class="container">
-	  <div class="container">
+	  <div class="col-xs-5 col-cs-offset-5">
     	 <h3>Lisa pilt</h3>
 		 <form>
       		<div class="form-group">
