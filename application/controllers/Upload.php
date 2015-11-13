@@ -5,8 +5,8 @@ class Upload extends CI_Controller {
     public function __construct()
     {
         parent::__construct();
+        $this->load->model('upload_model');
         $this->load->helper(array('form', 'url'));
-        $this->load->library(array('session', 'ion_auth'));
     }
 
     public function index()
@@ -15,20 +15,10 @@ class Upload extends CI_Controller {
         $this->load->view('upload_form', array('error' => ' ' ));
         $this->load->view('templates/footer');
     }
-	public function checkTag($picture_id, $tag_id){
-			$this->db->select("picture_id"); 
-			$this->db->from('pictures_tags');
-			$this->db->where('picture_id', $picture_id);
-			$this->db->where('tag_id', $tag_id);
-			if ($this->db->get()->num_rows() == 0){
-				return TRUE;
-			} else {
-				return FALSE;
-				}
-    }
 
     public function do_upload()
     {
+        $this->output->enable_profiler(TRUE);
 
         $config['upload_path']          = './uploads/';
         $config['allowed_types']        = 'gif|jpg|png';
@@ -56,44 +46,30 @@ class Upload extends CI_Controller {
             'title' => $this->input->post('title'),
             'description' => $this->input->post('description'),
             'location' => '/tp2015/uploads/'.$data['upload_data']['file_name']
-			
             );
 
-            $this->load->database();
-            $this->db->insert('pictures', $info);
-			
-			$this->db->select("id"); 
-			$this->db->from('pictures');
-			$this->db->where('location', '/tp2015/uploads/'.$data['upload_data']['file_name']);
-			$query = $this->db->get();
-			$picture_id = $query->result()[0]->id;
-			
+			$this->upload_model->upload($info);
+            
+            $picture_id = $this->upload_model->get_picture_id($info['location']);
 			
 			$tags = preg_split("/,/",$this->input->post('tags'));
 			for($i = 0; $i < count($tags); ++$i) {
-				if ($this->db->get_where('tags', array('tag' => $tags[$i]))-> num_rows() == 0) {
+                if (!$this->upload_model->tag_exists($tags[$i])){
 					$info = array(
-					'tag' => $tags[$i]
+					   'tag' => $tags[$i]
 					);
-
-					$this->load->database();
-					$this->db->insert('tags', $info);
+                    $this->upload_model->add_tag($info);
 				}
 					
-				$this->db->select("id"); 
-				$this->db->from('tags');
-				$this->db->where('tag',  $tags[$i]);
-				$query = $this->db->get();
-				$tag_id = $query->result()[0]->id;
+                $tag_id = $this->upload_model->get_tag_id($tags[$i]);
 				
 				$info = array(
-				'picture_id' => $picture_id ,
-				'tag_id' => $tag_id
+                    'picture_id' => $picture_id,
+                    'tag_id' => $tag_id
 				);
 
-				$this->load->database();
-				if ($this->checkTag($picture_id,$tag_id)){
-				$this->db->insert('pictures_tags', $info);
+				if (!$this->upload_model->check_tag_picture_exists($picture_id, $tag_id)){
+				    $this->upload_model->add_tag_to_picture($info);
 				}
 				
 			}

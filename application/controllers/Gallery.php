@@ -6,7 +6,7 @@ class Gallery extends CI_Controller {
       parent::__Construct ();
        $this->load->database(); // load database
        $this->load->model('GalleryModel'); // load model 
-	   $this->load->library(array('session', 'ion_auth'));
+	   $this->load->library(array('session'));
      }
 
     public function index() {

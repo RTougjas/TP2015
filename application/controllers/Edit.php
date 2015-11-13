@@ -9,7 +9,7 @@ class Edit extends CI_Controller {
        $this->load->model('EditModel'); // load model 
        $this->load->library('session');
 	   $this->load->helper(array('form', 'url'));
-       $this->load->library(array('session', 'ion_auth'));
+       $this->load->library(array('session'));
      }
 
     public function index() {

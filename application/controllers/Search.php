@@ -6,7 +6,6 @@ class Search extends CI_Controller {
       parent::__Construct ();
        $this->load->database(); // load database
        $this->load->model('SearchModel');
-	   $this->load->library(array('session', 'ion_auth'));
      }
 
     public function index() {
