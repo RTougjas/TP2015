@@ -1,3 +1,4 @@
+<div class="container">
 <h1><?php echo lang('deactivate_heading');?></h1>
 <p><?php echo sprintf(lang('deactivate_subheading'), $user->username);?></p>
 
@@ -16,3 +17,4 @@
   <p><?php echo form_submit('submit', lang('deactivate_submit_btn'));?></p>
 
 <?php echo form_close();?>
+</div>
