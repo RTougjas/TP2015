@@ -1,3 +1,4 @@
+<div class="container">
 <?php echo "Title: ".$picture->title;?><br>
 <?php echo "Description: ".$picture->description;?><br>
 <?php echo "Tags: ".implode(', ',$tags);?><br>
@@ -19,5 +20,5 @@ Add Tags: <input type="tags" name="tags"> (Eralda komaga, ilma tühikuteta)<br>
 <input type="submit" value="edit" />
 
 </form>
-
+</div>
 

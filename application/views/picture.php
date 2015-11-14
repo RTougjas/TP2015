@@ -1,4 +1,4 @@
-
+<div class="container">
 <?php echo "Title: ".$picture->title;?><br>
 <?php echo "Description: ".$picture->description;?><br>
 <?php echo "Tags: ".implode(', ',$tags);?><br>
@@ -22,3 +22,4 @@ Enter Comment: <input type="text" name="comment"><br>
 <input type="submit" value="send" />
  
 </form>
+</div>

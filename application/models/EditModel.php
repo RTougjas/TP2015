@@ -1,6 +1,5 @@
 <?php
 class EditModel extends CI_Model {
- 	
 	
 	public function __construct() {
 		$this->load->database();
@@ -12,7 +11,8 @@ class EditModel extends CI_Model {
 		$this->db->where('id', $id);
 		$query = $this->db->get();
 		return $query->result()[0];
- }
+    }
+    
 	function editTitle($id, $title){
 		$data = array(
                'title' => $title,
@@ -21,15 +21,17 @@ class EditModel extends CI_Model {
 			$this->db->where('id', $id);
 			$this->db->update('pictures', $data); 
 	}
-	function editDescription($id, $description){
-	$data = array(
-               'description' => $description,
-            );
+    
+	public function editDescription($id, $description){
+        $data = array(
+            'description' => $description,
+        );
 
-			$this->db->where('id', $id);
-			$this->db->update('pictures', $data); 
+        $this->db->where('id', $id);
+        $this->db->update('pictures', $data); 
 	}
-	function getTags($id){
+    
+	public function getTags($id){
 		$tags = array();
 		
 		
@@ -40,5 +42,12 @@ class EditModel extends CI_Model {
 		
 		return $tags;
 	}
+    
+    public function remove_tag($tag_id, $picture_id){
+        $this->db->where('picture_id', $picture_id);
+        $this->db->where('tag_id', $tag_id);
+        return $this->db->delete('pictures_tags'); 
+    }
+        
 }
 ?>

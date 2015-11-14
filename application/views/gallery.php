@@ -1,4 +1,4 @@
-    
+<div class="container">
     <h4>Display Pictures</h4>
     <table>
      <tr>
@@ -14,3 +14,4 @@
       </tr>     
      <?php }?>  
    </table>
+</div>

@@ -74,7 +74,7 @@ $active_group = 'default';
 $query_builder = TRUE;
 
 $db['default'] = array(
-	'dsn'   => 'postgres://ijlrltmbevbjbs:B6oPlAR6epFovL3C0zymz5QAlF@ec2-54-247-170-228.eu-west-1.compute.amazonaws.com:5432/d1b16f6gt7n1tk',
+	'dsn'   => getenv('DATABASE_URL'),
 	'hostname' => '',
 	'username' => '',
 	'password' => '',

@@ -4,7 +4,7 @@
             parent::__construct();
             
             $this->load->helper(array('url', 'form'));
-            $this->load->library(array('session', 'ion_auth', 'form_validation'));
+            $this->load->library(array('form_validation'));
             $this->load->model('Profile_model');
         }
         

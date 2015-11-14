@@ -1,3 +1,4 @@
+<div class="container">
 <div id="infoMessage"><?php echo $message;?></div>
 
 <?php echo form_open(uri_string());?>
@@ -26,4 +27,4 @@
     	</form>
 	</div>
   </div>
-
+</div>
