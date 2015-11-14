@@ -89,3 +89,16 @@ create table IF NOT EXISTS comments(
 	comment text,
 	created integer not null
 );
+
+CREATE TABLE IF NOT EXISTS albums(
+    id serial primary key not null,
+    title varchar(64),
+    description text,
+    user_id integer not null references users(id)
+);
+
+CREATE TABLE IF NOT EXISTS pictures_albums(
+	picture_id integer not null references pictures(id),
+	album_id integer not null references albums(id),
+	constraint unique_picture_album unique (picture_id, album_id)
+);
