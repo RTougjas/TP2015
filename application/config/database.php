@@ -74,11 +74,11 @@ $active_group = 'default';
 $query_builder = TRUE;
 
 $db['default'] = array(
-	'dsn'   => getenv('DATABASE_URL'),
-	'dsn'	=> getenv('DB_HOST'),
-	'username' => getenv('DB_USER'),
-	'password' => getenv('DB_PASSWORD'),
-	'database' => getenv('DB'),
+	'dsn'   => 'postgres://ijlrltmbevbjbs:B6oPlAR6epFovL3C0zymz5QAlF@ec2-54-247-170-228.eu-west-1.compute.amazonaws.com:5432/d1b16f6gt7n1tk',
+	'dsn'	=> '',
+	'username' => '',
+	'password' => '',
+	'database' => '',
 	//'hostname' => 'ec2-54-247-170-228.eu-west-1.compute.amazonaws.com',
 	//'username' => 'ijlrltmbevbjbs',
 	//'password' => 'B6oPlAR6epFovL3C0zymz5QAlF',
