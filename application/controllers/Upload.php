@@ -19,7 +19,7 @@ class Upload extends CI_Controller {
     public function do_upload()
     {
 		
-        $config['upload_path']          = '//uploads/';
+        $config['upload_path']          = './uploads/';
         $config['allowed_types']        = 'gif|jpg|png';
         $config['max_size']             = 100000;
         $config['max_width']            = 102400;
@@ -44,7 +44,7 @@ class Upload extends CI_Controller {
 			'user_id' => $this->ion_auth->get_user_id(),
             'title' => $this->input->post('title'),
             'description' => $this->input->post('description'),
-            'location' => '//uploads/'.$data['upload_data']['file_name']
+            'location' => './uploads/'.$data['upload_data']['file_name']
             );
 
 			$this->upload_model->upload($info);
