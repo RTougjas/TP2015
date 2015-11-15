@@ -10,6 +10,8 @@ class Search extends CI_Controller {
 
     public function index() {
 		
+		//test
+		
 		$search_input = $_POST['search_key'];
 		$keywords = explode(" ", strtolower($search_input));
 		$this->load->view('templates/header');
