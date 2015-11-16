@@ -9,7 +9,6 @@ class SearchModel extends CI_Model {
  }
  
  function getSearchResults($keywords) {
-     //$this->db->select("id, title, description, location, tag"); 
      $this->db->distinct();
 	 $this->db->select('id');
 	 $this->db->from('v_photo_search');
@@ -17,7 +16,6 @@ class SearchModel extends CI_Model {
 	 if(sizeOf($keywords) > 0) {
 		 for($i = 0; $i < sizeOf($keywords); $i++) {
 			 if(strlen($keywords[$i]) > 2) {
-				echo $keywords[$i];
 				$this->db->like('lower(title)', $keywords[$i]);
 				$this->db->or_like('lower(description)', $keywords[$i]);
 				$this->db->or_like('lower(tag)', $keywords[$i]);
