@@ -1,8 +1,8 @@
 <?php echo form_open('auth/create_user')?>
-<div class="container">
-	  <div class="col-xs-5 col-cs-offset-5">
-    	 <h3><?php echo lang('create_user_heading');?></h3>
-		 <form>
+<div class="col-lg-5 col-md-4 col-sm-4"></div>
+<div class="col-lg-3 col-md-4 col-sm-4">
+    <h3><?php echo lang('create_user_heading');?></h3>
+		<form>
       		<div class="form-group">
         		<label for="text">Kasutajanimi</label>
         		<input type="text" class="form-control" id="identity" name="identity" placeholder="Username">
@@ -29,4 +29,4 @@
       	  	<input type="submit" class="btn btn-default" value="Loo kasutaja">
     	</form>
 	</div>
-  </div>
+<div class="col-lg-5 col-md-4 col-sm-4"></div>
