@@ -1,4 +1,5 @@
 <div class="container">
+<?php echo "(remove after development cycle) ID: ".$picture->id;?><br>
 <?php echo "Title: ".$picture->title;?><br>
 <?php echo "Description: ".$picture->description;?><br>
 <?php echo "Tags: ".implode(', ',$tags);?><br>
