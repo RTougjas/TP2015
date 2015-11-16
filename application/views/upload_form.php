@@ -1,11 +1,11 @@
 <?php echo $error;?>
 
 <?php echo form_open_multipart('upload/do_upload');?>
-
-  <div class="container">
-	  <div class="col-xs-5 col-cs-offset-5">
-    	 <h3>Lisa pilt</h3>
-		 <form>
+<div class="col-lg-5 col-md-4 col-sm-4"></div>
+<div class="col-lg-3 col-md-4 col-sm-4">
+    
+	<h3>Lisa pilt</h3>
+		<form>
       		<div class="form-group">
         		<label for="text">Pildi pealkiri</label>
         		<input type="text" class="form-control" id="title" name="title" placeholder="Pealkiri">
@@ -25,5 +25,5 @@
       		</div>
       	  	<input type="submit" class="btn btn-default" value="upload">
     	</form>
-	</div>
-  </div>
+</div>
+<div class="col-lg-5 col-md-4 col-sm-4"></div>
