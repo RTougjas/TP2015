@@ -16,6 +16,16 @@ class GalleryModel extends CI_Model {
 		
 		return $query->result();
 	}
+	
+	function getAlbumData($id) {
+		$this->db->select("title, description, user_id");
+		$this->db->from("albums");
+		$this->db->where("id", $id);
+		$query = $this->db->get();
+		
+		return $query->result();
+		
+	}
  
 }
 ?>

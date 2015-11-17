@@ -26,7 +26,7 @@
         		<label for="password">Parool uuesti</label>
         		<input type="password" class="form-control" id="password_confirm" name="password_confirm" placeholder="Password">
      	   	</div>
-      	  	<input type="submit" class="btn btn-default" value="Loo kasutaja">
+      	  	<input type="submit" class="btn btn-primary" value="Loo kasutaja">
     	</form>
 	</div>
 <div class="col-lg-5 col-md-4 col-sm-4"></div>
