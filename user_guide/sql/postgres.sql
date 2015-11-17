@@ -102,3 +102,11 @@ CREATE TABLE IF NOT EXISTS pictures_albums(
 	album_id integer not null references albums(id),
 	constraint unique_picture_album unique (picture_id, album_id)
 );
+
+CREATE VIEW v_photo_search AS
+SELECT pictures.id, title, description, location, user_id, tag FROM 
+pictures
+LEFT JOIN pictures_tags
+ON pictures.id = pictures_tags.picture_id
+LEFT JOIn tags
+ON pictures_tags.tag_id = tags.id;
