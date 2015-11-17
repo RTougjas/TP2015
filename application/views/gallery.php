@@ -12,6 +12,15 @@
 		 <img src="'.$picture->location.'" alt="borked" height="42" width="42">';?>
 		 </a></td>
       </tr>     
-     <?php }?>  
+     <?php }?> 
+	 
+     <td><strong>Album ID</strong></td>
+  	<td><strong>Album Title</strong></td>
+     <?php foreach($albums as $album){?>
+     <tr>
+         <td><?php echo $album->id;?></td>
+		 <td><?php echo $album->title;?></td>
+      </tr>     
+     <?php }?> 
    </table>
 </div>

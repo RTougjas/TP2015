@@ -10,11 +10,21 @@ class Gallery extends CI_Controller {
      }
 
     public function index() {
+		$this->data['albums'] = $this->GalleryModel->getAlbums();
 		$this->data['pictures'] = $this->GalleryModel->getPictures();
 		$this->load->view('templates/header');
-        $this->load->view('gallery', $this->data); 
+        //sellega saadab gallery viewi muutujad 'albums' ja 'pictures'. Ning kõik töötab.
+		$this->load->view('gallery', $this->data);
+		//Sellega peaks saatma upload_formi viewi muutujad 'albums' ja 'pictures'. Asi ei 			tööta.
+		//$this->load->view('upload_form', $this->data);
         $this->load->view('templates/footer');
     }
+	
+	public function showAlbums() {
+		$this->data['albums'] = $this->GalleryModel->getAlbums();
+		$this->load->view('templates/header');
+		$this->load->view('templates/footer');
+	}
  
  
 }
