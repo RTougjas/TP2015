@@ -22,8 +22,6 @@
         			<input type="file" id="userfile" name="userfile" size="20">
        				<p class="help-block">.jpg .png .gif</p>
       			</div>
-				<p id="selected_album">javascript muudab</p>
-				<p id="new" value="pask">javascript</p>
 				<div class="dropdown">
 			  		<button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">Lisa albumisse
 			  	  	  <span class="caret"></span></button>
