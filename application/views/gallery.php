@@ -9,7 +9,7 @@
 				</tr>
 				<tr>
 					<td><?php echo '<a href='.site_url("picture/".$pictures[$i]->id).'>
-						 <img src="'.$pictures[$i]->location.'" alt="borked" height="42" width="42">';?></td>
+						 <img src="'.$pictures[$i]->location.'" alt="borked" height="200" width="200">';?></td>
 				</tr>
 			</table>
 		</div>
