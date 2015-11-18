@@ -18,7 +18,7 @@ echo form_open("auth/login");
       			<input type="checkbox"> Remember me
     			</label>
   	  		</div>
-  	  		<button type="submit" class="btn btn-default">Logi sisse</button>
+  	  		<button type="submit" class="btn btn-primary">Logi sisse</button>
 		</form>
 		<br>
 		<p><a href="forgot_password"><?php echo lang('login_forgot_password');?></a></p>

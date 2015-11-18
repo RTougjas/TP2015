@@ -10,12 +10,12 @@ class Gallery extends CI_Controller {
      }
 
     public function index() {
+		$this->data['albums'] = $this->GalleryModel->getAlbums();
 		$this->data['pictures'] = $this->GalleryModel->getPictures();
+		
 		$this->load->view('templates/header');
-        $this->load->view('gallery', $this->data); 
+		$this->load->view('gallery', $this->data);
         $this->load->view('templates/footer');
     }
- 
- 
 }
 ?>

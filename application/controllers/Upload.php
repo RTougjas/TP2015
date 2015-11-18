@@ -6,13 +6,16 @@ class Upload extends CI_Controller {
     {
         parent::__construct();
         $this->load->model('upload_model');
+		$this->load->model('GalleryModel');
         $this->load->helper(array('form', 'url'));
     }
 
     public function index()
     {
+		$this->data['albums'] = $this->GalleryModel->getAlbums();
         $this->load->view('templates/header');
-        $this->load->view('upload_form', array('error' => ' ' ));
+        //$this->load->view('upload_form', array('error' => ' ' ));
+		$this->load->view('upload_form', $this->data);
         $this->load->view('templates/footer');
     }
 

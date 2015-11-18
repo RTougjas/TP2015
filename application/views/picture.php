@@ -42,7 +42,7 @@
 			<form>
   	  			<label for="comment">Kommenteeri:</label>
   				<textarea class="form-control" type="text" rows="5" id="comment" name="comment"></textarea>
-				<input type="submit" class="btn btn-default" value="kommenteeri">
+				<input type="submit" class="btn btn-primary" value="kommenteeri">
 			</form>
 		</div>
 	</div>
