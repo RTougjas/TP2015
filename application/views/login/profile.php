@@ -20,6 +20,7 @@ if(!$this->session->has_userdata('username')){
 					<td><?php echo "<a href=".site_url("profile/uploads/".$id).">".$posts."</a>";?></td>
 				</tr>
 			</table>
+			<?php if($this->ion_auth->logged_in() && $this->session->userdata('user_id') == $id) {?>
 		 	<form>
       			<div class="form-group">
         			<label for="text">First Name</label>
@@ -40,6 +41,8 @@ if(!$this->session->has_userdata('username')){
       	  		<button type="submit" class="btn btn-default">Save user</button>
 				<br>
     		</form>
+			<?php } else {
+			}?>
 	  </div>
 	</div>
 </div>

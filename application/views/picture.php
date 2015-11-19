@@ -3,10 +3,15 @@
 	<div class="panel panel-default">
   	  	<div class="panel-heading"><?php echo "<h3>".$picture->title."</h3><br>";?></div>
   	  	<div class="panel-body">
-	  	  	<?php echo '<a href='.site_url("edit/".$picture->id).'>Muuda pildi andmeid</a>';?>
 					<div class="row">
-					  <div class="col-lg-6 col-md-6 col-xs-12"><?php echo '<img src="'.$picture->location.'" class="img-responsive">';?></div>
-					  <div class="col-lg-6 col-md-6 col-xs-6"><?php echo "Description: ".$picture->description;?></div>
+					  <div class="col-lg-6 col-md-6 col-xs-12">
+						  	<?php echo '<img src="'.$picture->location.'" class="img-responsive">';?>
+					  		<br>
+							<a class="btn btn-info" href="<?php echo site_url("edit/".$picture->id);?>">Andmed</a>
+							<a class="btn btn-warning" href="<?php echo $picture->location;?>">Täismõõdus</a>
+							<a class="btn btn-danger" href="#">Kustuta</a>
+					  </div>
+					  <div class="col-lg-6 col-md-6 col-xs-6"><?php echo "<br>Description: ".$picture->description;?></div>
 					</div>
   		</div>
   	  	<div class="panel-footer"><?php echo implode(', ',$tags);?><br></div>
