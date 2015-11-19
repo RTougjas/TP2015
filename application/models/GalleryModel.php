@@ -8,10 +8,11 @@ class GalleryModel extends CI_Model {
   	  	
 		return $query->result();
  	}
-	
-	function getAlbums() {
-		$this->db->select("id, title, description, user_id");
-		$this->db->from("albums");
+
+	function getAlbums() { 
+		$this->db->select('albums.id, albums.title, albums.description, albums.user_id, users.username');
+		$this->db->from('albums');
+		$this->db->join('users', 'albums.user_id = users.id', 'inner');
 		$query = $this->db->get();
 		
 		return $query->result();
