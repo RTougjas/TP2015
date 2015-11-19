@@ -18,6 +18,14 @@ class Gallery extends CI_Controller {
         $this->load->view('templates/footer');
     }
 	
-	
+	public function albums($id) {
+		$this->data['albums'] = $this->GalleryModel->getUserAlbums($id);
+		$this->data['pictures'] = $this->GalleryModel->getPictures();
+		$this->data['pictures_in_albums'] = $this->GalleryModel->getAlbumPhotoCount();
+        $this->load->view('templates/header');
+        $this->load->view('gallery', $this->data); 
+        $this->load->view('templates/footer');
+		
+	}
 }
 ?>

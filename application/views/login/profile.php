@@ -12,12 +12,14 @@ if(!$this->session->has_userdata('username')){
 	  <div class="panel-body">
 		  	<table>
 				<tr>
-					<td><small>Photos</small><td>
-					<td><?php echo "<a href=".site_url("profile/uploads/".$id).">".$posts."</a>";?></td>
-				</tr>
-				<tr>
-					<td><small>Albums created</small><td>
-					<td><?php echo "<a href=".site_url("profile/uploads/".$id).">".$posts."</a>";?></td>
+					<td>
+						<a class="btn btn-primary" href="<?php echo site_url("profile/uploads/".$id);?>">Photos
+						<span class="badge"><?php echo $posts;?></span></a>
+					</td>
+					<td>
+						<a class="btn btn-primary" href="<?php echo site_url("gallery/albums/".$id);?>">Albums
+						<span class="badge"><?php echo $album_count;?></span></a>
+					</td>
 				</tr>
 			</table>
 			<?php if($this->ion_auth->logged_in() && $this->session->userdata('user_id') == $id) {?>

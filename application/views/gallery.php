@@ -10,7 +10,7 @@
 			}?>
 		    <h3 class="panel-title"><?php echo $albums[$i]->title;?></h3>
 			<small>
-				<?php echo "<a href=".site_url('/profile/'.urlencode($albums[$i]->username)).">"
+					<?php echo "<a href=".site_url('/profile/'.urlencode($albums[$i]->username)).">"
                     		.$albums[$i]->username."</a>";?>
 			</small>
 		  </div>
