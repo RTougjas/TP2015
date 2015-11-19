@@ -1,5 +1,4 @@
-<div class="container">
-<h3>Your file was successfully uploaded!</h3>
-
-<p><?php echo anchor('upload', 'Upload Another File!'); ?></p>
+<div class="alert alert-success" role="alert">
+	Your file was successfully uploaded
+	<p><?php echo anchor('upload', 'Upload Another File!'); ?></p>
 </div>
