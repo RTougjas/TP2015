@@ -18,15 +18,13 @@ class GalleryModel extends CI_Model {
 		return $query->result();
 	}
 	
-	function getAlbumData($id) {
-		$this->db->select("title, description, user_id");
-		$this->db->from("albums");
-		$this->db->where("id", $id);
+	function getAlbumPhotoCount() {
+		$this->db->select('album_id, COUNT(picture_id) AS count');
+		$this->db->from('v_pictures_in_albums');
+		$this->db->group_by('album_id', 'album_title');
 		$query = $this->db->get();
 		
 		return $query->result();
-		
-	}
- 
+	} 
 }
 ?>

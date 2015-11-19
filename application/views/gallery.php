@@ -3,7 +3,11 @@
 	<div class="col-lg-4 col-md-4 col-sm-4">
 		<div class="panel panel-default">
 		  <div class="panel-heading">
-			<span class="badge" style="float:right">42</span>
+			<?php for($j = 0; $j < sizeOf($pictures_in_albums); $j++) {
+				if($pictures_in_albums[$j]->album_id == $albums[$i]->id) {?>
+					<span class="badge" style="float:right"><?php echo $pictures_in_albums[$j]->count;?></span>
+			<?php }
+			}?>
 		    <h3 class="panel-title"><?php echo $albums[$i]->title;?></h3>
 			<small>
 				<?php echo "<a href=".site_url('/profile/'.urlencode($albums[$i]->username)).">"
