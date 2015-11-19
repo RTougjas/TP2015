@@ -412,6 +412,10 @@ class Auth extends CI_Controller {
 	function create_user()
     {
         $this->data['title'] = "Create User";
+        
+        //Add recaptcha to registration
+        $this->load->library('recaptcha');
+        $this->data['recaptcha_html'] = $this->recaptcha->recaptcha_get_html();
 
         /*if (!$this->ion_auth->logged_in() || !$this->ion_auth->is_admin())
         {
@@ -439,6 +443,7 @@ class Auth extends CI_Controller {
 
         if ($this->form_validation->run() == true)
         {
+            $this->recaptcha->recaptcha_check_answer();
             $email    = strtolower($this->input->post('email'));
             $identity = $this->input->post('identity');
             $password = $this->input->post('password');
@@ -448,7 +453,7 @@ class Auth extends CI_Controller {
                 'last_name'  => $this->input->post('last_name'),
             );
         }
-        if ($this->form_validation->run() == true && $this->ion_auth->register($identity, $password, $email, $additional_data))
+        if ($this->form_validation->run() == true && $this->ion_auth->register($identity, $password, $email, $additional_data) && $this->recaptcha->getIsValid())
         {
             // check to see if we are creating the user
             // redirect them back to the admin page
