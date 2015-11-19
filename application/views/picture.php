@@ -5,9 +5,8 @@
   	  	<div class="panel-body">
 	  	  	<?php echo '<a href='.site_url("edit/".$picture->id).'>Muuda pildi andmeid</a>';?>
 					<div class="row">
-					  <div class="col-lg-4 col-md-4"><?php echo '<img src="'.$picture->location.'" alt="borked">';?></div>
-					  <div class="col-lg-4 col-md-4"><?php echo "Description: ".$picture->description;?></div>
-					  <div class="col-lg-4 col-md-4"></div>
+					  <div class="col-lg-6 col-md-6 col-xs-12"><?php echo '<img src="'.$picture->location.'" class="img-responsive">';?></div>
+					  <div class="col-lg-6 col-md-6 col-xs-6"><?php echo "Description: ".$picture->description;?></div>
 					</div>
   		</div>
   	  	<div class="panel-footer"><?php echo implode(', ',$tags);?><br></div>
@@ -42,6 +41,7 @@
 			<form>
   	  			<label for="comment">Kommenteeri:</label>
   				<textarea class="form-control" type="text" rows="5" id="comment" name="comment"></textarea>
+				<br>
 				<input type="submit" class="btn btn-primary" value="kommenteeri">
 			</form>
 		</div>
