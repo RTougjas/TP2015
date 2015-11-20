@@ -13,14 +13,14 @@ if(!$this->session->has_userdata('username')){
 		  	<table>
 				<tr>
 					<td>
-						<a class="btn btn-primary" href="<?php echo site_url("profile/uploads/".$id);?>">Photos
+						<a class="btn btn-primary" href="<?php echo site_url("profile/uploads/".$id."/".$username);?>">Photos
 						<span class="badge"><?php echo $posts;?></span></a>
 					</td>
 					<td>
 						&#160
 					</td>
 					<td>
-						<a class="btn btn-primary" href="<?php echo site_url("gallery/albums/".$id);?>">Albums
+						<a class="btn btn-primary" href="<?php echo site_url("gallery/albums/".$id."/".$username);?>">Albums
 						<span class="badge"><?php echo $album_count;?></span></a>
 					</td>
 				</tr>

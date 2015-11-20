@@ -14,6 +14,7 @@ class Search extends CI_Controller {
 		$this->load->view('templates/header');
 		if(strlen($search_input) > 0) {
 			$this->data['pictures'] = $this->SearchModel->getSearchResults($keywords);
+			$this->data['small_header'] = "Otsingu tulemused";
 	        $this->load->view('album_photos', $this->data);
 		}
 		$this->load->view('templates/footer');
