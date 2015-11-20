@@ -1,10 +1,6 @@
 <?php
 class PictureModel extends CI_Model {
- 	
-	
-	public function __construct() {
-		$this->load->database();
-	}
+    
 	//stdClass Object ( [user_id] => 0 [comment] => Canceriuo [created] => 1447321029 )
 	function getComments($id){
 				$this->load->database();

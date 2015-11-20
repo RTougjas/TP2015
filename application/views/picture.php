@@ -3,11 +3,15 @@
 	<div class="panel panel-default">
   	  	<div class="panel-heading"><?php echo "<h3>".$picture->title."</h3><br>";?></div>
   	  	<div class="panel-body">
-	  	  	<?php echo '<a href='.site_url("edit/".$picture->id).'>Muuda pildi andmeid</a>';?>
 					<div class="row">
-					  <div class="col-lg-4 col-md-4"><?php echo '<img src="'.$picture->location.'" alt="borked">';?></div>
-					  <div class="col-lg-4 col-md-4"><?php echo "Description: ".$picture->description;?></div>
-					  <div class="col-lg-4 col-md-4"></div>
+					  <div class="col-lg-6 col-md-6 col-xs-12">
+						  	<?php echo '<img src="'.$picture->location.'" class="img-responsive">';?>
+					  		<br>
+							<a class="btn btn-info" href="<?php echo site_url("edit/".$picture->id);?>">Andmed</a>
+							<a class="btn btn-warning" href="<?php echo $picture->location;?>">Täismõõdus</a>
+							<a class="btn btn-danger" href="#">Kustuta</a>
+					  </div>
+					  <div class="col-lg-6 col-md-6 col-xs-6"><?php echo "<br>Description: ".$picture->description;?></div>
 					</div>
   		</div>
   	  	<div class="panel-footer"><?php echo implode(', ',$tags);?><br></div>
@@ -25,7 +29,8 @@
         				<?php for($i = 0; $i < count($comments); ++$i){?>
 							<div class="panel panel-default">
 				  			  	<div class="panel-heading">
-				    				<h3 class="panel-title"><?php echo $comments[$i][0];?></h3>
+				    				<h3 class="panel-title"><a href="<?php echo site_url('/profile/'.urlencode($comments[$i][0]));?>">
+                    		<?php echo $comments[$i][0];?></a></h3>
 				  			  	</div>
 				  			  	<div class="panel-body" style="text:word-wrap"><?php echo $comments[$i][1]; ?></div>
 				  			  	<div class="panel-footer"><?php echo date("H:m d-m-Y", $comments[$i][2]); ?></div>
@@ -36,15 +41,18 @@
     		</div>
   	  	</div>
 	</div>
-	<?php echo form_open('picture/comment/'.$this->uri->segment(2, 1));?>
-	<div class="form-group">
-		<div class="col-lg-5 col-cs-offset-5">
-			<form>
-  	  			<label for="comment">Kommenteeri:</label>
-  				<textarea class="form-control" type="text" rows="5" id="comment" name="comment"></textarea>
-				<input type="submit" class="btn btn-primary" value="kommenteeri">
-			</form>
+	<?php if($this->ion_auth->logged_in()) {?>
+		<?php echo form_open('picture/comment/'.$this->uri->segment(2, 1));?>
+		<div class="form-group">
+			<div class="col-lg-5 col-cs-offset-5">
+				<form>
+  	  				<label for="comment">Kommenteeri:</label>
+  					<textarea class="form-control" type="text" rows="5" id="comment" name="comment"></textarea>
+					<br>
+					<input type="submit" class="btn btn-primary" value="kommenteeri">
+				</form>
+			</div>
 		</div>
-	</div>
+	<?php } ?>
 </div>
 <div class="col-md-2 col-sm-4"></div>

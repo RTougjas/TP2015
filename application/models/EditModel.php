@@ -1,10 +1,6 @@
 <?php
 class EditModel extends CI_Model {
-	
-	public function __construct() {
-		$this->load->database();
-	}
-
+    
 	function getPicture($id){
 		$this->db->select("title,description,location"); 
 		$this->db->from('pictures');

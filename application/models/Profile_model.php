@@ -1,10 +1,6 @@
 <?php
 
     class Profile_model extends CI_Model {
-        
-        public function __construct(){
-            $this->load->database();
-        }
 
         public function read_user_information($username) {
 
@@ -20,6 +16,18 @@
                 return false;
             }
         }
+		
+		public function count_albums($id) {
+			$this->db->select('count(albums.id) AS album_count');
+			$this->db->from('albums');
+			$this->db->where('albums.user_id', $id);
+			$query = $this->db->get();
+            if ($query->num_rows() == 1) {
+                return $query->result()[0]->album_count;
+            } else {
+                return 0;
+            }
+		}
         
         public function count_posts($id){
             $this->db->select('count(*) as posts');

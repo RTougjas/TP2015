@@ -28,7 +28,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 |	['pconnect'] TRUE/FALSE - Whether to use a persistent connection
 |	['db_debug'] TRUE/FALSE - Whether database errors should be displayed.
 |	['cache_on'] TRUE/FALSE - Enables/disables query caching
-|	['cachedir'] The path to the folder where cache files should be stored
+|	['dir'] The path to the folder where cache files should be stored
 |	['char_set'] The character set used in communicating with the database
 |	['dbcollat'] The character collation used in communicating with the database
 |				 NOTE: For MySQL and MySQLi databases, this setting is only used
@@ -75,20 +75,16 @@ $query_builder = TRUE;
 
 $db['default'] = array(
 	'dsn'   => getenv('DATABASE_URL'),
-	'hostname'	=> getenv('DB_HOST'),
+	'hostname' => getenv('DB_HOST'),
 	'username' => getenv('DB_USER'),
 	'password' => getenv('DB_PASSWORD'),
 	'database' => getenv('DB'),
-	//'hostname' => 'ec2-54-247-170-228.eu-west-1.compute.amazonaws.com',
-	//'username' => 'ijlrltmbevbjbs',
-	//'password' => 'B6oPlAR6epFovL3C0zymz5QAlF',
-	//'database' => 'd1b16f6gt7n1tk',
 	'dbdriver' => 'postgre',
 	'dbprefix' => '',
 	'pconnect' => FALSE,
 	'db_debug' => TRUE,
 	'cache_on' => FALSE,
-	'cachedir' => '',
+	'cachedir' => '/var/cache/steffi/',
 	'char_set' => 'utf8',
 	'dbcollat' => 'utf8_general_ci',
 	'swap_pre' => '',
@@ -96,5 +92,5 @@ $db['default'] = array(
 	'compress' => FALSE,
 	'stricton' => FALSE,
 	'failover' => array(),
-	'save_queries' => TRUE
+	'save_queries' => FALSE
 );
