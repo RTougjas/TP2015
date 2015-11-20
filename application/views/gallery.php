@@ -5,10 +5,17 @@
 		  <div class="panel-heading">
 			<?php for($j = 0; $j < sizeOf($pictures_in_albums); $j++) {
 				if($pictures_in_albums[$j]->album_id == $albums[$i]->id) {?>
+					<?php global $count;
+					 $count = $pictures_in_albums[$j]->count; ?>
 					<span class="badge" style="float:right"><?php echo $pictures_in_albums[$j]->count;?></span>
 			<?php }
 			}?>
-		   	<h3 class="panel-title"><a href="<?php echo site_url("gallery/albumPhotos/".$albums[$i]->id);?>"><?php echo $albums[$i]->title;?></a></h3>
+			<?php if($count > 0) { ?>
+				<h3 class="panel-title"><a href="<?php echo site_url("gallery/albumPhotos/".$albums[$i]->id);?>">
+		<?php } else {?>
+				<h3 class="panel-title"><a href="<?php echo site_url("gallery/albumPhotos/0");?>">
+		<?php }?>
+			<?php echo $albums[$i]->title;?></a></h3>
 			<small>
 					<?php echo "<a href=".site_url('/profile/'.urlencode($albums[$i]->username)).">"
                     		.$albums[$i]->username."</a>";?>
