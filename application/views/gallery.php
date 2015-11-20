@@ -1,4 +1,7 @@
 <div class="container">
+<div class="page-header">
+  <h1>Albumid <small><?php echo $small_header;?></small></h1>
+</div>
 <?php for($i = 0; $i < sizeOf($albums); $i++) {?>
 	<div class="col-lg-4 col-md-4 col-sm-4">
 		<div class="panel panel-default">
@@ -11,9 +14,9 @@
 			<?php }
 			}?>
 			<?php if($count > 0) { ?>
-				<h3 class="panel-title"><a href="<?php echo site_url("gallery/albumPhotos/".$albums[$i]->id);?>">
+				<h3 class="panel-title"><a href="<?php echo site_url("gallery/albumPhotos/".$albums[$i]->id."/".$albums[$i]->title);?>">
 		<?php } else {?>
-				<h3 class="panel-title"><a href="<?php echo site_url("gallery/albumPhotos/0");?>">
+				<h3 class="panel-title"><a href="<?php echo site_url("gallery/albumPhotos/0/".$albums[$i]->title);?>">
 		<?php }?>
 			<?php echo $albums[$i]->title;?></a></h3>
 			<small>

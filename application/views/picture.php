@@ -29,7 +29,8 @@
         				<?php for($i = 0; $i < count($comments); ++$i){?>
 							<div class="panel panel-default">
 				  			  	<div class="panel-heading">
-				    				<h3 class="panel-title"><?php echo $comments[$i][0];?></h3>
+				    				<h3 class="panel-title"><a href="<?php echo site_url('/profile/'.urlencode($comments[$i][0]));?>">
+                    		<?php echo $comments[$i][0];?></a></h3>
 				  			  	</div>
 				  			  	<div class="panel-body" style="text:word-wrap"><?php echo $comments[$i][1]; ?></div>
 				  			  	<div class="panel-footer"><?php echo date("H:m d-m-Y", $comments[$i][2]); ?></div>
@@ -40,16 +41,18 @@
     		</div>
   	  	</div>
 	</div>
-	<?php echo form_open('picture/comment/'.$this->uri->segment(2, 1));?>
-	<div class="form-group">
-		<div class="col-lg-5 col-cs-offset-5">
-			<form>
-  	  			<label for="comment">Kommenteeri:</label>
-  				<textarea class="form-control" type="text" rows="5" id="comment" name="comment"></textarea>
-				<br>
-				<input type="submit" class="btn btn-primary" value="kommenteeri">
-			</form>
+	<?php if($this->ion_auth->logged_in()) {?>
+		<?php echo form_open('picture/comment/'.$this->uri->segment(2, 1));?>
+		<div class="form-group">
+			<div class="col-lg-5 col-cs-offset-5">
+				<form>
+  	  				<label for="comment">Kommenteeri:</label>
+  					<textarea class="form-control" type="text" rows="5" id="comment" name="comment"></textarea>
+					<br>
+					<input type="submit" class="btn btn-primary" value="kommenteeri">
+				</form>
+			</div>
 		</div>
-	</div>
+	<?php } ?>
 </div>
 <div class="col-md-2 col-sm-4"></div>

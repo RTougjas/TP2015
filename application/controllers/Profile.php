@@ -26,8 +26,14 @@
             }
         }
         
-        public function uploads($id){
+        public function uploads($id, $username){
             $this->data['pictures'] = $this->Profile_model->get_user_pictures($id);
+			if($username == "0") {
+				$this->data['small_header'] = "";
+			}
+			else {
+				$this->data['small_header'] = $username;
+			}
             $this->load->view('templates/header');
             $this->load->view('album_photos', $this->data); 
             $this->load->view('templates/footer');

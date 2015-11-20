@@ -1,4 +1,8 @@
 <div class="container">
+<div class="page-header">
+  <h1>Pildid <small><?php echo $small_header;?></small></h1>
+  
+</div>
 	<?php for($i = 0; $i < sizeOf($pictures); $i++) {?>
 		<div class="col-lg-4 col-md-4 col-sm-4">
 			<table>
