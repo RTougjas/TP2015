@@ -28,6 +28,7 @@
         
         public function uploads($id, $username){
             $this->data['pictures'] = $this->Profile_model->get_user_pictures($id);
+            $username = rawurldecode($username);
 			if($username == "0") {
 				$this->data['small_header'] = "";
 			}
