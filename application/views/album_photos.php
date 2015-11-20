@@ -1,5 +1,6 @@
-<?php for($i = 0; $i < sizeOf($pictures); $i++) {?>
-	<div class="col-lg-4 col-md-4 col-sm-4">
+<div class="container">
+	<?php for($i = 0; $i < sizeOf($pictures); $i++) {?>
+		<div class="col-lg-4 col-md-4 col-sm-4">
 			<table>
 				<tr>
 					<th><?php echo $pictures[$i]->title?><th>
@@ -22,6 +23,7 @@
 			</table>
 			<br>
 		</div>
-<?php } ?>
+	<?php } ?>
+</div>
 
 

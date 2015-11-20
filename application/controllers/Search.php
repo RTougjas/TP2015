@@ -10,14 +10,12 @@ class Search extends CI_Controller {
 
     public function index() {
 		
-		//test
-		
 		$search_input = $_POST['search_key'];
 		$keywords = explode(" ", strtolower($search_input));		
 		$this->load->view('templates/header');
 		if(strlen($search_input) > 0) {
 			$this->data['pictures'] = $this->SearchModel->getSearchResults($keywords);
-	        $this->load->view('gallery', $this->data);
+	        $this->load->view('album_photos', $this->data);
 		}
 		$this->load->view('templates/footer');
     }

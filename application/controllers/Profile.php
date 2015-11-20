@@ -29,7 +29,7 @@
         public function uploads($id){
             $this->data['pictures'] = $this->Profile_model->get_user_pictures($id);
             $this->load->view('templates/header');
-            $this->load->view('photos', $this->data); 
+            $this->load->view('album_photos', $this->data); 
             $this->load->view('templates/footer');
         }
     }
