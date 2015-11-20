@@ -6,7 +6,6 @@ class Gallery extends CI_Controller {
         parent::__Construct ();
         $this->load->model('GalleryModel'); // load model 
         $this->load->library(array('session'));
-        $this->load->helper('form');
     }
 
     public function index() {
@@ -37,15 +36,27 @@ class Gallery extends CI_Controller {
 	}
     
     public function create_album(){
+        $this->load->helper('form');
+        $this->load->library('form_validation');
+        
+        $this->form_validation->set_rules('title', 'Title', 'alpha_numeric_spaces');
+        $this->form_validation->set_rules('description', 'Description', 'alpha_numeric_spaces');
         $this->output->enable_profiler(true);
-        $info = array(
-            'title' => $this->input->post('title'),
-            'description' => $this->input->post('description'),
-            'user_id' => $this->ion_auth->get_user_id()
-        );
-        
-        $this->GalleryModel->create_album($info);
-        
+        if ($this->form_validation->run() == TRUE){
+            if($this->input->post('title') == ''){
+                $title = 'untitled';
+            }
+            else{
+                $title = $this->input->post('title');
+            }
+            $info = array(
+                'title' => $title,
+                'description' => $this->input->post('description'),
+                'user_id' => $this->ion_auth->get_user_id()
+            );
+
+            $this->GalleryModel->create_album($info);
+        }
         $this->load->view('templates/header');
         $this->load->view('create_album');
         $this->load->view('templates/footer');
