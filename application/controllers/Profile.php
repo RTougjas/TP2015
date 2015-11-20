@@ -9,7 +9,7 @@
         }
         
         public function show_user_info($username){
-            $username = urldecode($username);
+            $username = rawurldecode($username);
             $result = $this->Profile_model->read_user_information($username);
             if($result != false){
                 $data = array(

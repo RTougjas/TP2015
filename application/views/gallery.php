@@ -14,9 +14,9 @@
 			<?php }
 			}?>
 			<?php if($count > 0) { ?>
-				<h3 class="panel-title"><a href="<?php echo site_url("gallery/albumPhotos/".$albums[$i]->id."/".$albums[$i]->title);?>">
+				<h3 class="panel-title"><a href="<?php echo site_url("gallery/albumPhotos/".$albums[$i]->id."/".rawurlencode($albums[$i]->title));?>">
 		<?php } else {?>
-				<h3 class="panel-title"><a href="<?php echo site_url("gallery/albumPhotos/0/".$albums[$i]->title);?>">
+				<h3 class="panel-title"><a href="<?php echo site_url("gallery/albumPhotos/0/".rawurlencode($albums[$i]->title));?>">
 		<?php }?>
 			<?php echo $albums[$i]->title;?></a></h3>
 			<small>
@@ -26,8 +26,8 @@
 		  </div>
 		  <div class="panel-body">
 			  	<div class="col-lg-6 col-md-6 col-xs-12">
-		  			<?php echo '<a href='.site_url("picture/".$pictures[6]->id).'>
-		  			<img src="'.$pictures[6]->location.'" class="img-responsive" alt="borked" height="200" width="200"></a>';?>
+		  			<?php echo '<a href='.site_url("picture/".$pictures[1]->id).'>
+		  			<img src="'.$pictures[1]->location.'" class="img-responsive" alt="borked" height="200" width="200"></a>';?>
 			  	</div>
 				<div class="col-lg-6 col-md-6 col-xs-12"></div>
 		  </div>

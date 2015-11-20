@@ -36,6 +36,7 @@ class Gallery extends CI_Controller {
 	
 	public function albumPhotos($album_id, $album_title) {
 		$this->data['pictures'] = $this->GalleryModel->getAlbumPhotos($album_id);
+        $album_title = rawurldecode($album_title);
 		if($album_title == "0") {
 			$this->data['small_header'] = "";
 		}
@@ -52,8 +53,8 @@ class Gallery extends CI_Controller {
         $this->load->helper('form');
         $this->load->library('form_validation');
         
-        $this->form_validation->set_rules('title', 'Title', 'alpha_numeric_spaces');
-        $this->form_validation->set_rules('description', 'Description', 'alpha_numeric_spaces');
+        $this->form_validation->set_rules('title', 'Title', 'min_length[0]');
+        $this->form_validation->set_rules('description', 'Description', 'min_length[0]');
         $this->output->enable_profiler(true);
         if ($this->form_validation->run() == TRUE){
             if($this->input->post('title') == ''){
