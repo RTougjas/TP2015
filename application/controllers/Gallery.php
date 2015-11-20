@@ -26,5 +26,13 @@ class Gallery extends CI_Controller {
         $this->load->view('templates/footer');
 		
 	}
+	
+	public function albumPhotos($album_id) {
+		$this->data['pictures'] = $this->GalleryModel->getAlbumPhotos($album_id);
+        $this->load->view('templates/header');
+        $this->load->view('album_photos', $this->data); 
+        $this->load->view('templates/footer');
+		
+	}
 }
 ?>

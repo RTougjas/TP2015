@@ -36,5 +36,14 @@ class GalleryModel extends CI_Model {
 	
 		return $query->result();
 	}
+	
+	public function getAlbumPhotos($album_id) {
+		$this->db->select('picture_id AS id, picture_title AS title, picture_description AS description, location');
+		$this->db->from('v_pictures_in_albums');
+		$this->db->where('album_id', $album_id);
+		$query = $this->db->get();
+		
+		return $query->result();
+	}
 }
 ?>
