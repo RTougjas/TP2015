@@ -1,10 +1,6 @@
 <?php
 
     class Profile_model extends CI_Model {
-        
-        public function __construct(){
-            $this->load->database();
-        }
 
         public function read_user_information($username) {
 

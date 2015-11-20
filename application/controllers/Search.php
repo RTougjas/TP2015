@@ -4,7 +4,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class Search extends CI_Controller {
     function __Construct(){
       parent::__Construct ();
-       $this->load->database(); // load database
        $this->load->model('SearchModel');
      }
 

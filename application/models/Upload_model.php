@@ -2,10 +2,6 @@
 
     class Upload_model extends CI_Model {
         
-        public function __construct(){
-            $this->load->database();
-        }
-        
         public function upload($info){
             return $this->db->insert('pictures', $info);
         }
