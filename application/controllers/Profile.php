@@ -17,7 +17,8 @@
                     'username' =>$result[0]->username,
                     'first_name' =>$result[0]->first_name,
                     'last_name' =>$result[0]->last_name,
-                    'posts' => $this->Profile_model->count_posts($result[0]->id)
+                    'posts' => $this->Profile_model->count_posts($result[0]->id),
+					'album_count' => $this->Profile_model->count_albums($result[0]->id)
                 );
                 $this->load->view('templates/header');
                 $this->load->view('login/profile', $data);
@@ -28,7 +29,7 @@
         public function uploads($id){
             $this->data['pictures'] = $this->Profile_model->get_user_pictures($id);
             $this->load->view('templates/header');
-            $this->load->view('gallery', $this->data); 
+            $this->load->view('album_photos', $this->data); 
             $this->load->view('templates/footer');
         }
     }
