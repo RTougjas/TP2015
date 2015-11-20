@@ -29,8 +29,13 @@
         				<?php for($i = 0; $i < count($comments); ++$i){?>
 							<div class="panel panel-default">
 				  			  	<div class="panel-heading">
-				    				<h3 class="panel-title"><a href="<?php echo site_url('/profile/'.urlencode($comments[$i][0]));?>">
-                    		<?php echo $comments[$i][0];?></a></h3>
+								<h3 class="panel-title">
+								<?php if ($comments[$i][0] == 'anonüümne'){?>
+									<?php echo $comments[$i][0];?></h3>
+								<?php } else { ?>
+				    				<a href="<?php echo site_url('/profile/'.urlencode($comments[$i][0]));?>">
+									<?php echo $comments[$i][0];?></a></h3>
+							<?php }?>
 				  			  	</div>
 				  			  	<div class="panel-body" style="text:word-wrap"><?php echo $comments[$i][1]; ?></div>
 				  			  	<div class="panel-footer"><?php echo date("H:m d-m-Y", $comments[$i][2]); ?></div>
