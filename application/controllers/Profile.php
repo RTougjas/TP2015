@@ -9,7 +9,7 @@
         }
         
         public function show_user_info($username){
-            $username = urldecode($username);
+            $username = rawurldecode($username);
             $result = $this->Profile_model->read_user_information($username);
             if($result != false){
                 $data = array(
@@ -28,6 +28,7 @@
         
         public function uploads($id, $username){
             $this->data['pictures'] = $this->Profile_model->get_user_pictures($id);
+            $username = rawurldecode($username);
 			if($username == "0") {
 				$this->data['small_header'] = "";
 			}

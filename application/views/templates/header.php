@@ -29,7 +29,7 @@
 			<ul class="nav navbar-nav navbar-right">
               <?php
                   if($this->ion_auth->logged_in()){
-                      echo "<li><a href=".site_url('/profile/'.urlencode($this->session->userdata('username'))).">"
+                      echo "<li><a href=".site_url('/profile/'.rawurlencode($this->session->userdata('username'))).">"
                           .$this->session->userdata('username')
                           ."</a></li>";
                       echo "<li><a href=".site_url('auth/logout').">Logi välja</a></li>";

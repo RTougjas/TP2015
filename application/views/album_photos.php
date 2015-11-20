@@ -7,7 +7,7 @@
 		<div class="col-lg-4 col-md-4 col-sm-4">
 			<table>
 				<tr>
-					<th><?php echo $pictures[$i]->title?><th>
+					<th><?php echo rawurldecode($pictures[$i]->title)?><th>
 				</tr>
 				<tr>
 					<td><?php
