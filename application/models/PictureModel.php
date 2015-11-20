@@ -3,7 +3,6 @@ class PictureModel extends CI_Model {
     
 	//stdClass Object ( [user_id] => 0 [comment] => Canceriuo [created] => 1447321029 )
 	function getComments($id){
-				$this->load->database();
                 $this->db->select("user_id,comment,created");
                 $this->db->from('comments');
                 $this->db->where('picture_id', $id);
@@ -30,8 +29,6 @@ class PictureModel extends CI_Model {
 				return $comments;
  }
 	function enterComment($id, $comment){
-			$this->load->database();
-
 				if (! $comment == ''){
 					//id, picture_id, user_id, comment
 					$data = array(
@@ -46,7 +43,6 @@ class PictureModel extends CI_Model {
 			}
 
 	function getPicture($id){
-		$this->load->database();
 		$this->db->select("id,title,description,location"); 
 		$this->db->from('pictures');
 		$this->db->where('id', $id);
@@ -54,7 +50,6 @@ class PictureModel extends CI_Model {
 		return $query->result()[0];
  }
 	function getTags($id){
-		$this->load->database();
 		$tags = array();
 		
 		
