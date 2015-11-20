@@ -18,6 +18,19 @@ class Gallery extends CI_Controller {
         $this->load->view('templates/footer');
     }
 	
+	//For getting all photos in database. 
+	public function AllPhotos() {
+		$this->data['pictures'] = $this->GalleryModel->getPictures();
+		$this->data['small_header'] = "Kõik pildid";
+		$this->load->view('templates/header');
+		$this->load->view('album_photos', $this->data);
+        $this->load->view('templates/footer');
+		
+	}
+	
+	/*	Gives all albums of one user specified by user_id. 
+		Username is for presenting purposes. 
+	*/
 	public function albums($id, $username) {
         $username = rawurldecode($username);
 		$this->data['albums'] = $this->GalleryModel->getUserAlbums($id);
@@ -35,6 +48,9 @@ class Gallery extends CI_Controller {
 		
 	}
 	
+	/*	Gives all photos of one album specified by album_id.
+		Album title is for presenting purposes.
+	*/
 	public function albumPhotos($album_id, $album_title) {
 		$this->data['pictures'] = $this->GalleryModel->getAlbumPhotos($album_id);
         $album_title = rawurldecode($album_title);
