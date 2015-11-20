@@ -45,5 +45,9 @@ class GalleryModel extends CI_Model {
 		
 		return $query->result();
 	}
+    
+    public function create_album($info){
+        return $this->db->insert('albums', $info);
+    }
 }
 ?>
