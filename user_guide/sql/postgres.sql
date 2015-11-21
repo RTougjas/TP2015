@@ -66,7 +66,8 @@ create table IF NOT EXISTS pictures(
 	title character varying(64),
 	description text,
 	location character varying(128) not null,
-	user_id integer references users(id)
+	user_id integer references users(id),
+	comments_enabled boolean 
 );
 
 

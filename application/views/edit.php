@@ -15,8 +15,22 @@ Add Tags: <input type="tags" name="tags"> (Eralda komaga, ilma tühikuteta)<br>
 <?php echo "Delete tags";?><br><br>
 
  <?php for($i = 0; $i < count($tags); ++$i){?>
-    <?php echo $tags[$i].'<input type="checkbox" name="tag[]" value="'.$tags[$i].'">';?>
+    <?php echo $tags[$i].'<input type="checkbox" name="tag[]" value="'.$tags[$i].'">';?><br />
      <?php }?>  
+	 
+	 
+	 <?php if($this->ion_auth->logged_in() && $owner) { ?>
+			<?php if($picture->comments_enabled == 't') { ?>
+				Kommentaarid lubatud
+				<input type="checkbox" name="comments" value="true" checked><br />
+			<?php } else { ?>
+				Kommentaarid lubatud
+				<input type="checkbox" name="comments" value="true"><br />
+			<?php } ?>
+	 <?php } ?>
+
+
+	 
 <input type="submit" value="edit" />
 
 </form>
