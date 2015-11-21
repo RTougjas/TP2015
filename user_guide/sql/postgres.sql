@@ -119,3 +119,18 @@ LEFT JOIN pictures_albums
 ON pictures.id = pictures_albums.picture_id
 RIGHT JOIN albums
 ON albums.id = pictures_albums.album_id;
+
+alter table pictures_albums drop constraint pictures_albums_album_id_fkey;
+
+alter table pictures_albums add constraint pictures_albums_album_id_fkey foreign key (album_id) 
+references albums(id) on update cascade on delete cascade;
+
+alter table pictures_albums drop constraint pictures_albums_picture_id_fkey;
+
+alter table pictures_albums add constraint pictures_albums_picture_id_fkey foreign key (picture_id) 
+references pictures(id) on update cascade on delete cascade;
+
+alter table pictures_tags add constraint pictures_tags_picture_id_fkey foreign key (picture_id)
+references pictures(id) on update cascade on delete cascade;
+
+alter table pictures_tags drop column id;
