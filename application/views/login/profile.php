@@ -4,7 +4,6 @@ if(!$this->session->has_userdata('username')){
 }
 ?>
 
-<?php echo form_open(uri_string());?>
 <div class="col-lg-4 col-md-4 col-sm-4"></div>
 <div class="col-lg-4 col-md-4 col-sm-4">
 	<div class="panel panel-default">
@@ -26,7 +25,7 @@ if(!$this->session->has_userdata('username')){
 				</tr>
 			</table>
 			<?php if($this->ion_auth->logged_in() && $this->session->userdata('user_id') == $id) {?>
-		 		<form>
+                <?php echo form_open('auth/edit_user/'.$id);?>
       				<div class="form-group">
         				<label for="text">First Name</label>
         				<input type="text" class="form-control" id="first_name" name="first_name" placeholder="<?php echo $first_name?>">
@@ -35,17 +34,10 @@ if(!$this->session->has_userdata('username')){
         				<label for="text">Last Name</label>
         				<input type="text" class="form-control" id="last_name" name="last_name" placeholder="<?php echo $last_name?>">
       	  			</div>
-      	  			<div class="form-group">
-        				<label for="password">Parool</label>
-        				<input type="password" class="form-control" id="password" placeholder="Password">
-     	   			</div>
-      	  			<div class="form-group">
-        				<label for="password">Parool</label>
-        				<input type="password" class="form-control" id="password_confirm" name="password_confirm" placeholder="Re-type Password">
-     	   			</div>
+                    <?php echo form_hidden('id', $id);?>
+                    <?php echo form_hidden($csrf); ?>
       	  			<button type="submit" class="btn btn-default">Save user</button>
 					<br>
-    			</form>
 			<?php } ?>
 	  </div>
 	</div>

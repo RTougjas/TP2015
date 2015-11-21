@@ -29,6 +29,7 @@ class PictureModel extends CI_Model {
 				return $comments;
  }
 	function enterComment($id, $comment){
+
 				if (! $comment == ''){
 					//id, picture_id, user_id, comment
 					$data = array(
