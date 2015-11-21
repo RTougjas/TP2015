@@ -18,7 +18,8 @@
                     'first_name' =>$result[0]->first_name,
                     'last_name' =>$result[0]->last_name,
                     'posts' => $this->Profile_model->count_posts($result[0]->id),
-					'album_count' => $this->Profile_model->count_albums($result[0]->id)
+					'album_count' => $this->Profile_model->count_albums($result[0]->id),
+                    'csrf' => $this->_get_csrf_nonce()
                 );
                 $this->load->view('templates/header');
                 $this->load->view('login/profile', $data);
@@ -39,5 +40,29 @@
             $this->load->view('album_photos', $this->data); 
             $this->load->view('templates/footer');
         }
+        
+    function _get_csrf_nonce()
+	{
+		$this->load->helper('string');
+		$key   = random_string('alnum', 8);
+		$value = random_string('alnum', 20);
+		$this->session->set_flashdata('csrfkey', $key);
+		$this->session->set_flashdata('csrfvalue', $value);
+
+		return array($key => $value);
+	}
+
+	function _valid_csrf_nonce()
+	{
+		if ($this->input->post($this->session->flashdata('csrfkey')) !== FALSE &&
+			$this->input->post($this->session->flashdata('csrfkey')) == $this->session->flashdata('csrfvalue'))
+		{
+			return TRUE;
+		}
+		else
+		{
+			return FALSE;
+		}
+	}
     }
 ?>

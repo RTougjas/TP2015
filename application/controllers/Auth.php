@@ -526,8 +526,8 @@ class Auth extends CI_Controller {
 		$currentGroups = $this->ion_auth->get_users_groups($id)->result();
 
 		// validate form input
-		$this->form_validation->set_rules('first_name', $this->lang->line('edit_user_validation_fname_label'), 'required');
-		$this->form_validation->set_rules('last_name', $this->lang->line('edit_user_validation_lname_label'), 'required');
+		$this->form_validation->set_rules('first_name', $this->lang->line('edit_user_validation_fname_label'), 'min_length[0]');
+		$this->form_validation->set_rules('last_name', $this->lang->line('edit_user_validation_lname_label'), 'min_length[0]');
 
 		if (isset($_POST) && !empty($_POST))
 		{
@@ -587,7 +587,7 @@ class Auth extends CI_Controller {
 					}
 					else
 					{
-						redirect('/', 'refresh');
+						redirect('profile/'.rawurlencode($this->ion_auth->user()->row()->username), 'refresh');
 					}
 
 			    }
@@ -601,7 +601,7 @@ class Auth extends CI_Controller {
 					}
 					else
 					{
-						redirect('/', 'refresh');
+						redirect('profile/'.rawurlencode($this->ion_auth->user()->row()->username), 'refresh');
 					}
 
 			    }
