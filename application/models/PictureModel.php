@@ -36,7 +36,7 @@ class PictureModel extends CI_Model {
 							   'user_id' => $this->ion_auth->get_user_id(),
 							   'comment' => $comment,
 							   'picture_id' => $id,
-							   'created' => now()
+							   'created' => time()
 				);
 	 
 							$this->db->insert('comments', $data);
