@@ -66,7 +66,7 @@ class GalleryModel extends CI_Model {
     }
     
     public function get_album_owner($album_id){
-        return $this->db->select('user_id')->from('albums')->get()->result();
+        return $this->db->select('user_id')->where('id', $album_id)->from('albums')->get()->result();
     }
 }
 ?>
