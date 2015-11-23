@@ -90,7 +90,7 @@ class Gallery extends CI_Controller {
             $this->GalleryModel->create_album($info);
         }
         $this->load->view('templates/header');
-        $this->load->view('login/profile');
+        $this->load->view('create_album');
         $this->load->view('templates/footer');
     }
     

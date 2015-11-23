@@ -61,7 +61,9 @@ if(!$this->session->has_userdata('username')){
 	  </div>
 	</div>
 	<?php if($this->ion_auth->logged_in() && $this->session->userdata('user_id') == $id) {?>
-		<!-- here comes code for creating album-->
+		
+		<a class="btn btn-primary" href="<?php echo site_url("gallery/create_album");?>">Loo uus album</a>
+		<br>
 	<?php } ?>	
 </div>
 <div class="col-lg-4 col-md-4 col-sm-4"></div>
