@@ -1,7 +1,10 @@
 
 <div class="col-lg-5 col-md-4 col-sm-4"></div>
 <div class="col-lg-3 col-md-4 col-sm-4">
-	<?php if($this->ion_auth->logged_in()) {?>
+	<?php if($this->ion_auth->logged_in()) {
+        if(isset($error)){
+            echo $error;
+        }?>
 		<?php echo form_open_multipart('upload/do_upload');?>
 		<h3>Lisa pilt</h3>
 			<form>
