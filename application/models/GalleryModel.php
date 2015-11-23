@@ -60,5 +60,9 @@ class GalleryModel extends CI_Model {
     public function create_album($info){
         return $this->db->insert('albums', $info);
     }
+    
+    public function remove_album($id){
+        return $this->db->delete('albums', array('id' => $id));
+    }
 }
 ?>

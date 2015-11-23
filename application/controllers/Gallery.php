@@ -53,6 +53,7 @@ class Gallery extends CI_Controller {
 	*/
 	public function albumPhotos($album_id, $album_title) {
 		$this->data['pictures'] = $this->GalleryModel->getAlbumPhotos($album_id);
+        $this->data['album_id'] = $album_id;
         $album_title = rawurldecode($album_title);
 		if($album_title == "0") {
 			$this->data['small_header'] = "";
@@ -90,6 +91,13 @@ class Gallery extends CI_Controller {
         }
         $this->load->view('templates/header');
         $this->load->view('login/profile');
+        $this->load->view('templates/footer');
+    }
+    
+    public function remove_album($id){
+        $this->GalleryModel->remove_album($id);
+        $this->load->view('templates/header');
+        $this->load->view('album_delete_success');
         $this->load->view('templates/footer');
     }
 }
