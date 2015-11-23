@@ -52,6 +52,7 @@ class Gallery extends CI_Controller {
 		Album title is for presenting purposes.
 	*/
 	public function albumPhotos($album_id, $album_title) {
+        $this->output->enable_profiler(true);
 		$this->data['pictures'] = $this->GalleryModel->getAlbumPhotos($album_id);
         $this->data['album_id'] = $album_id;
         $album_title = rawurldecode($album_title);

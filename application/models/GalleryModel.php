@@ -64,5 +64,9 @@ class GalleryModel extends CI_Model {
     public function remove_album($id){
         return $this->db->delete('albums', array('id' => $id));
     }
+    
+    public function get_album_owner($album_id){
+        return $this->db->select('user_id')->from('albums')->get()->result();
+    }
 }
 ?>
