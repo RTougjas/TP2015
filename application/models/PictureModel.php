@@ -3,7 +3,6 @@ class PictureModel extends CI_Model {
     
 	//stdClass Object ( [user_id] => 0 [comment] => Canceriuo [created] => 1447321029 )
 	function getComments($id){
-				$this->load->database();
                 $this->db->select("user_id,comment,created");
                 $this->db->from('comments');
                 $this->db->where('picture_id', $id);
@@ -30,7 +29,6 @@ class PictureModel extends CI_Model {
 				return $comments;
  }
 	function enterComment($id, $comment){
-			$this->load->database();
 
 				if (! $comment == ''){
 					//id, picture_id, user_id, comment
@@ -38,7 +36,7 @@ class PictureModel extends CI_Model {
 							   'user_id' => $this->ion_auth->get_user_id(),
 							   'comment' => $comment,
 							   'picture_id' => $id,
-							   'created' => now()
+							   'created' => time()
 				);
 	 
 							$this->db->insert('comments', $data);
@@ -46,15 +44,13 @@ class PictureModel extends CI_Model {
 			}
 
 	function getPicture($id){
-		$this->load->database();
-		$this->db->select("id,title,description,location"); 
+		$this->db->select("id,title,description,location,comments_enabled"); 
 		$this->db->from('pictures');
 		$this->db->where('id', $id);
 		$query = $this->db->get();
 		return $query->result()[0];
  }
 	function getTags($id){
-		$this->load->database();
 		$tags = array();
 		
 		

@@ -15,7 +15,7 @@
      	   		</div>
       	  		<div class="form-group">
         			<label for="text">Tagid</label>
-        			<input type="text" class="form-control" id="description" name="tags" placeholder="Eraldage komaga, ilma tühikuta">
+        			<input type="text" class="form-control" id="tags" name="tags" placeholder="Eraldage komaga, ilma tühikuta">
      	   		</div>
       	 		<div class="form-group">
         			<label for="fileInput">Lisa failina</label>
@@ -32,6 +32,10 @@
 				        	<?php }?>
 			  	  		</ul>
 				</div>
+				<div class="form-group">
+        			<label for="checkbox">Kommentaarid lubatud</label>
+        			<input type="checkbox" class="form-control" id="comments" name="comments" value='true' checked>
+     	   		</div>
 				<br>
       	  		<input type="submit" class="btn btn-primary" value="upload">
     	</form>

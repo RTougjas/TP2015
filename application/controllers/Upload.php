@@ -43,11 +43,18 @@ class Upload extends CI_Controller {
 			//picture table
             $data = array('upload_data' => $this->upload->data());
 
+			$comments_enabled = 'false';
+			if ( !empty($this->input->post('comments'))){
+				$comments_enabled = 'true';
+			}
+			print_r($comments_enabled);
+			
             $info = array(
 			'user_id' => $this->ion_auth->get_user_id(),
             'title' => $this->input->post('title'),
             'description' => $this->input->post('description'),
-            'location' => 'http://46.101.241.57/uploads/'.$data['upload_data']['file_name']
+            'location' => 'http://46.101.241.57/uploads/'.$data['upload_data']['file_name'],
+			'comments_enabled' => $comments_enabled
             );
 
 			$this->upload_model->upload($info);

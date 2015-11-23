@@ -1,14 +1,35 @@
 <?php
 class EditModel extends CI_Model {
     
+	function checkUserOwner($id, $user_id){
+		$this->db->select("title"); 
+		$this->db->from('pictures');	
+		$this->db->where('id',$id);
+		$this->db->where('user_id', $user_id);
+		$query = $this->db->get();
+		if ($query->num_rows() > 0){
+			return true;
+		} else {
+			return false;
+		}
+		}
+		
 	function getPicture($id){
-		$this->db->select("title,description,location"); 
+		$this->db->select("title,description,location,comments_enabled"); 
 		$this->db->from('pictures');
 		$this->db->where('id', $id);
 		$query = $this->db->get();
 		return $query->result()[0];
     }
     
+	function commentsEnabled($id, $value){
+		if ($value){
+			$this->db->update('pictures', array('comments_enabled' => 'true'), 'id ='.$id);
+		} else {
+			$this->db->update('pictures', array('comments_enabled' => 'false'), 'id ='.$id);
+		}
+	}
+	
 	function editTitle($id, $title){
 		$data = array(
                'title' => $title,
