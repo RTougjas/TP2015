@@ -73,7 +73,7 @@ class Gallery extends CI_Controller {
         
         $this->form_validation->set_rules('title', 'Title', 'min_length[0]');
         $this->form_validation->set_rules('description', 'Description', 'min_length[0]');
-        $this->output->enable_profiler(true);
+        //$this->output->enable_profiler(true);
         if ($this->form_validation->run() == TRUE){
             if($this->input->post('title') == ''){
                 $title = 'untitled';
