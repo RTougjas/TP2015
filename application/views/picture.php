@@ -39,7 +39,7 @@
 							<?php }?>
 				  			  	</div>
 				  			  	<div class="panel-body" style="text:word-wrap"><?php echo $comments[$i][1]; ?></div>
-				  			  	<div class="panel-footer"><?php echo date("h:i:s d.m.Y", $comments[$i][2]); ?></div>
+				  			  	<div class="panel-footer"><?php echo date("H:i:s d.m.Y", $comments[$i][2]); ?></div>
 							</div>	
 							<?php }?>
 					<?php } else { ?>
