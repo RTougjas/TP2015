@@ -10,18 +10,7 @@
 		<div class="col-lg-4 col-md-4 col-sm-4">
 			<table>
 				<tr>
-					<th><?php echo rawurldecode($pictures[$i]->title)?><th>
-				</tr>
-				<tr>
-					<td><?php
-						$description = $pictures[$i]->description;
-						
-						if(strlen($description) < 25) {
-							echo $description;
-						}else {
-							echo substr($description, 0, 25).'...';
-						}?>
-					<td>
+					<th><h4><?php echo rawurldecode($pictures[$i]->title)?></h4><th>
 				</tr>
 				<tr>
 					<td><?php echo '<a href='.site_url("picture/".$pictures[$i]->id).'>
