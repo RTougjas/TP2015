@@ -13,11 +13,8 @@
 					<span class="badge" style="float:right"><?php echo $pictures_in_albums[$j]->count;?></span>
 			<?php }
 			}?>
-			<?php if($count > 0) { ?>
-				<h3 class="panel-title"><a href="<?php echo site_url("gallery/albumPhotos/".$albums[$i]->id."/".rawurlencode($albums[$i]->title));?>">
-		<?php } else {?>
-				<h3 class="panel-title"><a href="<?php echo site_url("gallery/albumPhotos/0/".rawurlencode($albums[$i]->title));?>">
-		<?php }?>
+			<h3 class="panel-title"><a href="<?php echo site_url("gallery/albumPhotos/".$albums[$i]->id."/".rawurlencode($albums[$i]->title));?>">
+
 			<?php echo $albums[$i]->title;?></a></h3>
 			<small>
 					<?php echo "<a href=".site_url('/profile/'.urlencode($albums[$i]->username)).">"

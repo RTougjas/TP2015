@@ -53,6 +53,7 @@ class Gallery extends CI_Controller {
 	*/
 	public function albumPhotos($album_id, $album_title) {
 		$this->data['pictures'] = $this->GalleryModel->getAlbumPhotos($album_id);
+        $this->data['album_id'] = $album_id;
         $album_title = rawurldecode($album_title);
 		if($album_title == "0") {
 			$this->data['small_header'] = "";
@@ -72,7 +73,7 @@ class Gallery extends CI_Controller {
         
         $this->form_validation->set_rules('title', 'Title', 'min_length[0]');
         $this->form_validation->set_rules('description', 'Description', 'min_length[0]');
-        $this->output->enable_profiler(true);
+        //$this->output->enable_profiler(true);
         if ($this->form_validation->run() == TRUE){
             if($this->input->post('title') == ''){
                 $title = 'untitled';
@@ -90,6 +91,13 @@ class Gallery extends CI_Controller {
         }
         $this->load->view('templates/header');
         $this->load->view('create_album');
+        $this->load->view('templates/footer');
+    }
+    
+    public function remove_album($id){
+        $this->GalleryModel->remove_album($id);
+        $this->load->view('templates/header');
+        $this->load->view('album_delete_success');
         $this->load->view('templates/footer');
     }
 }

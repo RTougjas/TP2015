@@ -78,7 +78,6 @@ create table IF NOT EXISTS tags(
 );
 
 create table IF NOT EXISTS pictures_tags(
-	id serial primary key not null,
 	picture_id integer not null,
 	tag_id integer not null,
 	constraint unique_picture_tag unique (picture_id, tag_id)
