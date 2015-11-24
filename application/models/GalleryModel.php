@@ -4,6 +4,7 @@ class GalleryModel extends CI_Model {
 	function getPictures(){
   	  	$this->db->select("id,title,description,location"); 
   	  	$this->db->from('pictures');
+		$this->db->where('publicpic', 't');
   	  	$query = $this->db->get();
   	  	
 		return $query->result();

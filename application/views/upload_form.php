@@ -36,6 +36,10 @@
         			<label for="checkbox">Kommentaarid lubatud</label>
         			<input type="checkbox" class="form-control" id="comments" name="comments" value='true' checked>
      	   		</div>
+				<div class="form-group">
+        			<label for="checkbox">Avalik pilt</label>
+        			<input type="checkbox" class="form-control" id="ispublic" name="ispublic" value='true' checked>
+     	   		</div>
 				<br>
       	  		<input type="submit" class="btn btn-primary" value="upload">
     	</form>

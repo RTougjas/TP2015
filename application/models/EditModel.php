@@ -15,7 +15,7 @@ class EditModel extends CI_Model {
 		}
 		
 	function getPicture($id){
-		$this->db->select("title,description,location,comments_enabled"); 
+		$this->db->select("title,description,location,comments_enabled,publicpic"); 
 		$this->db->from('pictures');
 		$this->db->where('id', $id);
 		$query = $this->db->get();
@@ -27,6 +27,14 @@ class EditModel extends CI_Model {
 			$this->db->update('pictures', array('comments_enabled' => 'true'), 'id ='.$id);
 		} else {
 			$this->db->update('pictures', array('comments_enabled' => 'false'), 'id ='.$id);
+		}
+	}
+	
+	function publicPicture($id, $value){
+		if ($value){
+			$this->db->update('pictures', array('publicpic' => 'true'), 'id ='.$id);
+		} else {
+			$this->db->update('pictures', array('publicpic' => 'false'), 'id ='.$id);
 		}
 	}
 	
@@ -68,3 +76,5 @@ class EditModel extends CI_Model {
         
 }
 ?>
+
+
