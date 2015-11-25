@@ -34,6 +34,15 @@ class Edit extends CI_Controller {
 				 $this->EditModel->commentsEnabled($id, false);
 			}
 	    }
+		
+		if ($this->EditModel->checkUserOwner($this->uri->segment(3, 1), $this->ion_auth->get_user_id())){
+			if (!empty($this->input->post('publicpic'))){
+				 $this->EditModel->publicPicture($id, true);
+			} else {
+				 $this->EditModel->publicPicture($id, false);
+			}
+	    }
+		
         if (! $this->input->post('title') == ''){
             $this->EditModel->editTitle($id, $this->input->post('title'));
         }

@@ -4,6 +4,7 @@ class GalleryModel extends CI_Model {
 	function getPictures(){
   	  	$this->db->select("id,title,description,location"); 
   	  	$this->db->from('pictures');
+		$this->db->where('publicpic', 't');
   	  	$query = $this->db->get();
   	  	
 		return $query->result();
@@ -63,6 +64,10 @@ class GalleryModel extends CI_Model {
     
     public function remove_album($id){
         return $this->db->delete('albums', array('id' => $id));
+    }
+    
+    public function get_album_owner($album_id){
+        return $this->db->select('user_id')->where('id', $album_id)->from('albums')->get()->result();
     }
 }
 ?>

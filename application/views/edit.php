@@ -27,6 +27,13 @@ Add Tags: <input type="tags" name="tags"> (Eralda komaga, ilma tühikuteta)<br>
 				Kommentaarid lubatud
 				<input type="checkbox" name="comments" value="true"><br />
 			<?php } ?>
+			<?php if($picture->publicpic == 't') { ?>
+				Avalik pilt
+				<input type="checkbox" name="publicpic" value="true" checked><br />
+			<?php } else { ?>
+				Avalik pilt
+				<input type="checkbox" name="publicpic" value="true"><br />
+			<?php } ?>
 	 <?php } ?>
 
 
