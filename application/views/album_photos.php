@@ -2,7 +2,8 @@
 <div class="page-header">
   <h1>Pildid <small><?php echo $small_header;?></small></h1>
     <?php if(isset($album_id) && $this->ion_auth->get_user_id() == $this->GalleryModel->get_album_owner($album_id)[0]->user_id){?>
-        <a class="btn btn-info" href=<?php echo site_url('gallery/remove_album/'.$album_id);?>>Delete album</a>
+		<a class="btn btn-success" href="#">Add Photo(Ei tööta hetkel)</a>
+		<a class="btn btn-danger" href=<?php echo site_url('gallery/remove_album/'.$album_id);?>>Delete album</a>
     <?php }?>
   
 </div>
@@ -10,7 +11,18 @@
 		<div class="col-lg-4 col-md-4 col-sm-4">
 			<table>
 				<tr>
-					<th><h4><?php echo rawurldecode($pictures[$i]->title)?></h4><th>
+					<th><?php echo rawurldecode($pictures[$i]->title)?><th>
+				</tr>
+				<tr>
+					<td><?php
+						$description = $pictures[$i]->description;
+						
+						if(strlen($description) < 25) {
+							echo $description;
+						}else {
+							echo substr($description, 0, 25).'...';
+						}?>
+					<td>
 				</tr>
 				<tr>
 					<td><?php echo '<a href='.site_url("picture/".$pictures[$i]->id).'>
