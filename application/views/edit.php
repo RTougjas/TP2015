@@ -49,29 +49,7 @@
 									<td>
 										<?php echo $albums[$i]->title;?>
 									</td>
-									<?php if(sizeOf($photo_in_albums) > 0) {?> 
-										<?php for($j = 0; $j < sizeOf($photo_in_albums); $j++) { ?>
-											<?php if($photo_in_albums[$j]->album_id == $albums[$i]->id) { ?>
-												<td>
-													<?php echo '<input type="checkbox" name="albums[]" value="'.$albums[$i]->id.'" checked>';?>
-												</td>
-												</tr>
-												<?php break?>
-											<?php } ?>
-											<!-- for cases when there will be no break out of this loop. -->
-											<?php if($j == sizeOf($photo_in_albums) - 1) {?>
-												<td>
-													<?php echo '<input type="checkbox" name="albums[]" value="'.$albums[$i]->id.'">';?>
-												</td>
-												</tr>
-											<?php } ?>
-										<?php } ?>
-									<?php } else {?>
-										<td>
-											<?php echo '<input type="checkbox" name="albums[]" value="'.$albums[$i]->id.'" checked>';?>
-										</td>
-										</tr>
-									<?php } ?> <!-- } else { -->
+									
 							<? }?> <!-- for( ; sizeOf($albums); )-->
 						</table>
 					<? } ?> <!-- if(owner) -->
