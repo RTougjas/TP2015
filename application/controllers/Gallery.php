@@ -43,7 +43,7 @@ class Gallery extends CI_Controller {
 			$this->data['small_header'] = $username;
 		}
         $this->load->view('templates/header');
-        $this->load->view('gallery', $this->data); 
+        $this->load->view('gallery', $this->data);
         $this->load->view('templates/footer');
 		
 	}

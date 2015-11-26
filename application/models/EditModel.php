@@ -13,9 +13,23 @@ class EditModel extends CI_Model {
 			return false;
 		}
 		}
+	
+		function checkIfPhotoInAlbum($picture_id, $album_id) {
+			$this->db->select("*");
+			$this->db->from('pictures_album');
+			$this->db->where('picture_id', $picture_id);
+			$this->db->where('album_id', $album_id);
+			$query = $this->db->get();
+			if ($query->num_rows() > 0){
+				return true;
+			} else {
+				return false;
+			}
+		}
+	
 		
 	function getPicture($id){
-		$this->db->select("title,description,location,comments_enabled,publicpic"); 
+		$this->db->select("id,title,description,location,comments_enabled,publicpic"); 
 		$this->db->from('pictures');
 		$this->db->where('id', $id);
 		$query = $this->db->get();
@@ -73,7 +87,23 @@ class EditModel extends CI_Model {
         $this->db->where('tag_id', $tag_id);
         return $this->db->delete('pictures_tags'); 
     }
-        
+	
+	public function remove_from_album($album_id, $picture_id) {
+		$this->db->where('picture_id', $picture_id);
+		$this->db->where('album_id', $album_id);
+		
+		return $this->db->delete('pictures_albums');
+	}
+	
+	public function getAlbums($picture_id) {
+		
+		$this->db->select('album_id');
+		$this->db->from('pictures_albums');
+		$this->db->where('picture_id', $picture_id);
+		$query = $this->db->get();
+		
+		return $query->result();
+	}
 }
 ?>
 

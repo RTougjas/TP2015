@@ -5,13 +5,15 @@ class Edit extends CI_Controller {
 
 	function __Construct(){
         parent::__Construct ();
-        $this->load->model(array('EditModel', 'upload_model')); // load model 
+        $this->load->model(array('EditModel', 'upload_model', 'GalleryModel')); // load model 
         $this->load->helper(array('form', 'url'));
      }
 
     public function index() {
 	    $this->data['picture'] = $this->EditModel->getPicture($this->uri->segment(2, 1));
+		$this->data['albums'] = $this->GalleryModel->getUserAlbums($this->ion_auth->get_user_id());
 		$this->data['tags'] = $this->EditModel->getTags($this->uri->segment(2, 1));
+		$this->data['photo_in_albums'] = $this->EditModel->getAlbums($this->uri->segment(2, 1));
 		$this->data['owner'] = $this->EditModel->checkUserOwner($this->uri->segment(2, 1), $this->ion_auth->get_user_id());
         $this->load->view('templates/header');
         $this->load->view('edit', $this->data);
@@ -27,6 +29,15 @@ class Edit extends CI_Controller {
                 $this->EditModel->remove_tag($tag_id, $id);
             }
         }
+		
+		if(! empty($_POST['albums'])) {
+			$albums = $_POST['albums'];
+			for($i = 0; $i < count($albums); ++$i) {
+				$album_id = $albums[$i];
+				$this->EditModel->remove_from_album($album_id, $id);
+			}
+		}
+		
 		if ($this->EditModel->checkUserOwner($this->uri->segment(3, 1), $this->ion_auth->get_user_id())){
 			if (!empty($this->input->post('comments'))){
 				 $this->EditModel->commentsEnabled($id, true);
