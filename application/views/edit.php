@@ -44,13 +44,7 @@
 							<tr>
 								<th><h3>Asub Sinu albumites</h3></th>
 							</tr>
-							<?php for($i = 0; $i < sizeOf($albums); $i++) {?>
-								<tr>
-									<td>
-										<?php echo $albums[$i]->title;?>
-									</td>
-									
-							<? }?> <!-- for( ; sizeOf($albums); )-->
+							
 						</table>
 					<? } ?> <!-- if(owner) -->
 				</div>
