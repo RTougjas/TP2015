@@ -88,11 +88,19 @@ class EditModel extends CI_Model {
         return $this->db->delete('pictures_tags'); 
     }
 	
-	public function remove_from_album($album_id, $picture_id) {
+	public function remove_from_album($picture_id, $album_id) {
 		$this->db->where('picture_id', $picture_id);
 		$this->db->where('album_id', $album_id);
 		
 		return $this->db->delete('pictures_albums');
+	}
+	
+	public function add_to_album($picture_id, $album_id) {
+		
+		$query = 'INSERT INTO pictures_albums(picture_id, album_id) SELECT '.$picture_id.','.$album_id.' WHERE NOT EXISTS (SELECT picture_id, album_id FROM pictures_albums WHERE picture_id = '.$picture_id.' AND album_id = '.$album_id.')';
+		
+		$this->db->query($query);
+		
 	}
 	
 	public function getAlbums($picture_id) {

@@ -30,11 +30,19 @@ class Edit extends CI_Controller {
             }
         }
 		
-		if(! empty($_POST['albums'])) {
-			$albums = $_POST['albums'];
-			for($i = 0; $i < count($albums); ++$i) {
-				$album_id = $albums[$i];
-				$this->EditModel->remove_from_album($album_id, $id);
+		if(! empty($_POST['albumsChecked'])) {
+			$albums = $_POST['albumsChecked'];
+			$allAlbums = $_POST['allUserAlbums'];
+			for($i = 0; $i < count($allAlbums); $i++) {
+				for($j = 0; $j < count($albums); $j++) {
+					if($allAlbums[$i] == $albums[$j]) {
+						$this->EditModel->add_to_album($id, $allAlbums[$i]);
+						break;
+					}
+					if($j == count($albums) - 1) {
+						$this->EditModel->remove_from_album($id, $allAlbums[$i]);
+					}
+				}
 			}
 		}
 		
