@@ -39,9 +39,7 @@
 			    	</div>		
 				</div>
 				<div class="col-lg-6 col-md-6 col-xs-6">
-					<?php if($owner) {?>
-						
-					<? } ?> <!-- if(owner) -->
+					
 				</div>
 			</div>
   		</div>
