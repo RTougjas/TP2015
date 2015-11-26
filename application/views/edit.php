@@ -40,12 +40,7 @@
 				</div>
 				<div class="col-lg-6 col-md-6 col-xs-6">
 					<?php if($owner) {?>
-						<table class="table">
-							<tr>
-								<th><h3>Asub Sinu albumites</h3></th>
-							</tr>
-							
-						</table>
+						
 					<? } ?> <!-- if(owner) -->
 				</div>
 			</div>
