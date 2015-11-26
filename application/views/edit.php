@@ -10,43 +10,35 @@
 		</div>
   	  	<div class="panel-body">
 			<div class="row">
-				
-				<div class="col-lg-6 col-md-6 col-xs-6">
-					<?php if($owner) {?>
+				<div class="col-lg-6 col-md-6 col-xs-12">
+					<?php echo '<img src="'.$picture->location.'" class="img-responsive">';?> 
+					<br>
+					<?php if($this->ion_auth->logged_in() && $owner) { ?>
 						<table class="table">
 							<tr>
-								<th><h3>Asub Sinu albumites</h3></th>
+								<td>Kommentaarid Lubatud</td>
+				   					<?php if($picture->comments_enabled == 't') { ?>
+										<td><input type="checkbox" name="comments" value="true" checked><br /></td>
+								<?php } else { ?>
+										<td><input type="checkbox" name="comments" value="true"><br /></td>
+								<?php } ?>
 							</tr>
-							<?php for($i = 0; $i < sizeOf($albums); $i++) {?>
-								<tr>
-									<td>
-										<?php echo $albums[$i]->title;?>
-									</td>
-									<?php if(sizeOf($photo_in_albums) > 0) {?> 
-										<?php for($j = 0; $j < sizeOf($photo_in_albums); $j++) { ?>
-											<?php if($photo_in_albums[$j]->album_id == $albums[$i]->id) { ?>
-												<td>
-													<?php echo '<input type="checkbox" name="albums[]" value="'.$albums[$i]->id.'" checked>';?>
-												</td>
-												</tr>
-												<?php break?>
-											<?php } ?>
-											<!-- for cases when there will be no break out of this loop. -->
-											<?php if($j == sizeOf($photo_in_albums) - 1) {?>
-												<td>
-													<?php echo '<input type="checkbox" name="albums[]" value="'.$albums[$i]->id.'">';?>
-												</td>
-											<?php } ?>
-										<?php } ?>
-									<?php } else {?>
-										<td>
-											<?php echo '<input type="checkbox" name="albums[]" value="'.$albums[$i]->id.'" checked>';?>
-										</td>
-									<?php } ?> <!-- } else { -->
-							<? }?> <!-- for( ; sizeOf($albums); )-->
+							<tr>
+							<td>Avalik Pilt</td>
+								<?php if($picture->publicpic == 't') { ?>
+										<td><input type="checkbox" name="publicpic" value="true" checked><br /></td>
+								<?php } else { ?>
+										<td><input type="checkbox" name="publicpic" value="true"><br /></td>
+								<?php } ?>	
 						</table>
-					<? } ?> <!-- if(owner) -->
+					<?php } ?>
+					<br>
+			  		<div class="form-group">
+			  			<label for="text">Description</label>
+						<textarea class="form-control" type="text" rows="5" name="description" placeholder="<?php echo $picture->description;?>"></textarea>
+			    	</div>		
 				</div>
+				
 			</div>
   		</div>
   	  	<div class="panel-footer">
