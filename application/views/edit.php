@@ -4,7 +4,7 @@
   		<div class="panel-heading">
 			<?php echo form_open('edit/do_edit/'.$this->uri->segment(2, 1));?>
 			<div class="form-group">
-				<label for="text">Title</label>
+				<label for="text">Pealkiri</label>
 				<input type="text" class="form-control" name="title" placeholder="<?php echo $picture->title;?>">
   			</div>
 		</div>
@@ -34,11 +34,11 @@
 					<?php } ?>
 					<br>
 			  		<div class="form-group">
-			  			<label for="text">Description</label>
+			  			<label for="text">Pildi kirjeldus</label>
 						<textarea class="form-control" type="text" rows="5" name="description" placeholder="<?php echo $picture->description;?>"></textarea>
 			    	</div>		
 				</div>
-				<div class="col-lg-6 col-md-6 col-xs-6">
+				<div class="col-lg-6 col-md-6 col-xs-12">
 					<?php if($owner) {?>
 						<table class="table">
 							<tr>
@@ -82,7 +82,7 @@
   		</div>
   	  	<div class="panel-footer">
 	  		<div class="form-group">
-	  			<label for="text">Tags(Eralda komaga, ilma tühikuta)</label>
+	  			<label for="text">Märksõnad (Eralda komaga, ilma tühikuta)</label>
 	  			<input type="text" class="form-control" name="tags" placeholder="<?php echo implode(', ',$tags);?>">
 	    	</div>
 				  <?php for($i = 0; $i < count($tags); ++$i){?>
@@ -105,9 +105,9 @@
 						</tr>
 				   <?php }?>
 				</table>
-			</div>
+			</div> <!-- div class=table-responsive -->
 		</div>
+		<button type="submit" class="btn btn-success btn-block">Salvesta</button>
 	</div>
-	<button type="submit" class="btn btn-primary">Salvesta</button>
 </div>
 <div class="col-md-2 col-sm-4"></div>
