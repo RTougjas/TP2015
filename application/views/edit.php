@@ -73,7 +73,7 @@
 									<?php } ?> <!-- } else { -->
 							<? }?> <!-- for( ; sizeOf($albums); )-->
 						</table>
-				<? } ?> <!-- if(owner) -->
+					<? } ?> <!-- if(owner) -->
 				</div>
 			</div>
   		</div>
