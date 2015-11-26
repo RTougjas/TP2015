@@ -54,7 +54,7 @@
 										<?php for($j = 0; $j < sizeOf($photo_in_albums); $j++) { ?>
 											<?php if($photo_in_albums[$j]->album_id == $albums[$i]->id) { ?>
 												<td>
-													<input type="checkbox" name="albums[]" value="<?php echo $albums[$i]->id;?>" checked>
+													<?php echo '<input type="checkbox" name="albums[]" value="'.$albums[$i]->id.'" checked>';?>
 												</td>
 												</tr>
 												<?php break?>
@@ -62,13 +62,13 @@
 											<!-- for cases when there will be no break out of this loop. -->
 											<?php if($j == sizeOf($photo_in_albums) - 1) {?>
 												<td>
-													<input type="checkbox" name="albums[]" value="<?php echo $albums[$i]->id;?>" >
+													<?php echo '<input type="checkbox" name="albums[]" value="'.$albums[$i]->id.'">';?>
 												</td>
 											<?php } ?>
 										<?php } ?>
 									<?php } else {?>
 										<td>
-											<input type="checkbox" name="albums[]" value="<?php echo $albums[$i]->id;?>" >
+											<?php echo '<input type="checkbox" name="albums[]" value="'.$albums[$i]->id.'" checked>';?>
 										</td>
 									<?php } ?> <!-- } else { -->
 							<? }?> <!-- for( ; sizeOf($albums); )-->
