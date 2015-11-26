@@ -39,7 +39,42 @@
 			    	</div>		
 				</div>
 				<div class="col-lg-6 col-md-6 col-xs-6">
-					
+					<?php if($owner) {?>
+						<table class="table">
+							<tr>
+								<th><h3>Asub Sinu albumites</h3></th>
+							</tr>
+							<?php for($i = 0; $i < sizeOf($albums); $i++) {?>
+								<tr>
+									<td>
+										<?php echo $albums[$i]->title;?>
+									</td>
+									<?php if(sizeOf($photo_in_albums) > 0) {?> 
+										<?php for($j = 0; $j < sizeOf($photo_in_albums); $j++) { ?>
+											<?php if($photo_in_albums[$j]->album_id == $albums[$i]->id) { ?>
+												<td>
+													<?php echo '<input type="checkbox" name="albums[]" value="'.$albums[$i]->id.'" checked>';?>
+												</td>
+												</tr>
+												<?php break?>
+											<?php } ?>
+											<!-- for cases when there will be no break out of this loop. -->
+											<?php if($j == sizeOf($photo_in_albums) - 1) {?>
+												<td>
+													<?php echo '<input type="checkbox" name="albums[]" value="'.$albums[$i]->id.'">';?>
+												</td>
+												</tr>
+											<?php } ?>
+										<?php } ?>
+									<?php } else {?>
+										<td>
+											<?php echo '<input type="checkbox" name="albums[]" value="'.$albums[$i]->id.'" checked>';?>
+										</td>
+										</tr>
+									<?php } ?> <!-- } else { -->
+							<?php }?> <!-- for( ; sizeOf($albums); )-->
+						</table>
+					<?php } ?> <!-- if(owner) -->
 				</div>
 			</div>
   		</div>
