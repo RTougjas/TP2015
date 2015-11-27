@@ -18,7 +18,7 @@
      	   		</div>
       	  		<div class="form-group">
         			<label for="text">Tagid</label>
-        			<input type="text" class="form-control" id="tags" name="tags" placeholder="Eraldage komaga, ilma tühikuta">
+        			<input type="text" class="form-control" id="tags" name="tags" placeholder="Eraldage komaga">
      	   		</div>
       	 		<div class="form-group">
         			<label for="fileInput">Lisa failina</label>

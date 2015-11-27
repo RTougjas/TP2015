@@ -82,7 +82,7 @@
   		</div>
   	  	<div class="panel-footer">
 	  		<div class="form-group">
-	  			<label for="text">Märksõnad (Eralda komaga, ilma tühikuta)</label>
+	  			<label for="text">Märksõnad (Eralda komaga)</label>
 	  			<input type="text" class="form-control" name="tags" placeholder="<?php echo implode(', ',$tags);?>">
 	    	</div>
 				  <?php for($i = 0; $i < count($tags); ++$i){?>
