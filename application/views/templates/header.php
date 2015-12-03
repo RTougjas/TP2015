@@ -29,7 +29,7 @@
 		<li><a href="<?php echo site_url("/gallery/AllPhotos");?>"><span class="glyphicon glyphicon-picture" aria-hidden="true"> Pildid</span></a></li>
 		<li><a href="<?php echo site_url("/upload");?>"><span class="glyphicon glyphicon-upload" aria-hidden="true"> Upload</span></a></li>
       </ul>
-      <form class="navbar-form navbar-left" action="<?php echo site_url("/Search")?>" method="POST">
+      <form class="navbar-form navbar-left" action="<?php echo site_url("Search/DoSearch")?>" method="POST">
         <div class="form-group">
           <input type="text" name="search_key" class="form-control" id="text" placeholder="otsing">
         </div>

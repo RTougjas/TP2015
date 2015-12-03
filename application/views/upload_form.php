@@ -5,6 +5,7 @@
         if(isset($error)){
             echo $error;
         }?>
+		<?php echo validation_errors(); ?>
 		<?php echo form_open_multipart('upload/do_upload');?>
 		<h3>Lisa pilt</h3>
 			<form>

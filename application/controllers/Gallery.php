@@ -9,18 +9,28 @@ class Gallery extends CI_Controller {
     }
 
     public function index() {
-		$this->data['albums'] = $this->GalleryModel->getAlbums();
-		$this->data['pictures'] = $this->GalleryModel->getPictures();
+	
+	
+		redirect('gallery/All_albums/0');
+		
+    }
+	
+	public function All_albums() {
+		$this->data['albums'] = $this->GalleryModel->getAlbums($this->uri->segment(3, 0));
+		$this->data['pictures'] = $this->GalleryModel->getPictures(0);
 		$this->data['pictures_in_albums'] = $this->GalleryModel->getAlbumPhotoCount();
 		$this->data['small_header'] = "Kõik albumid";
 		$this->load->view('templates/header');
 		$this->load->view('gallery', $this->data);
         $this->load->view('templates/footer');
-    }
+	
+	
+	}
+	
 	
 	//For getting all photos in database. 
 	public function AllPhotos() {
-		$this->data['pictures'] = $this->GalleryModel->getPictures();
+		$this->data['pictures'] = $this->GalleryModel->getPictures($this->uri->segment(3, 0));
 		$this->data['small_header'] = "Kõik pildid";
 		$this->load->view('templates/header');
 		$this->load->view('album_photos', $this->data);
