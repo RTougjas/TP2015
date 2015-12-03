@@ -32,12 +32,12 @@
 	</div>
 <?php }?>
 <?php if($this->uri->segment(3, 0)>0){
-				echo '<a href="/tp2015/index.php/gallery/All_albums/'.($this->uri->segment(3, 1)-1).'">Eelmised</a>';
+				echo '<a href="index.php/gallery/All_albums/'.($this->uri->segment(3, 1)-1).'">Eelmised</a>';
 		    } else {
 				echo 'Eelmised';
 			}
 		  if($this->GalleryModel->moreAlbums($this->uri->segment(3, 0))){
-				echo '<a href="/tp2015/index.php/gallery/All_albums/'.($this->uri->segment(3, 0)+1).'">Järgmised</a>';
+				echo '<a href="index.php/gallery/All_albums/'.($this->uri->segment(3, 0)+1).'">Järgmised</a>';
 			} else {
 				echo 'Järgmised';
 			}  ?>

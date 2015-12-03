@@ -33,12 +33,12 @@
 		</div>
 	<?php } ?>
 	<?php if($this->uri->segment(4, 0)>0){
-				echo '<a href="/tp2015/index.php/Search/Search_results/'.$keywords."/".($this->uri->segment(4, 1)-1).'">Eelmised</a>';
+				echo '<a href="/index.php/Search/Search_results/'.$keywords."/".($this->uri->segment(4, 1)-1).'">Eelmised</a>';
 		    } else {
 				echo 'Eelmised';
 			}
 		  if($this->SearchModel->morePictures($keywords, $this->uri->segment(4, 0))){
-				echo '<a href="/tp2015/index.php/Search/Search_results/'.$keywords."/".($this->uri->segment(4, 0)+1).'">Järgmised</a>';
+				echo '<a href="/index.php/Search/Search_results/'.$keywords."/".($this->uri->segment(4, 0)+1).'">Järgmised</a>';
 			} else {
 				echo 'Järgmised';
 			}  ?>
