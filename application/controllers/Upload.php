@@ -12,7 +12,7 @@ class Upload extends CI_Controller {
 
     public function index()
     {
-		$this->data['albums'] = $this->GalleryModel->getAlbums();
+		$this->data['albums'] = $this->GalleryModel->getAllAlbums();
         $this->load->view('templates/header');
         //$this->load->view('upload_form', array('error' => ' ' ));
 		$this->load->view('upload_form', $this->data);
