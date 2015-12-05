@@ -44,7 +44,7 @@ class PictureModel extends CI_Model {
 			}
 
 	function getPicture($id){
-		$this->db->select("id,title,description,location,comments_enabled"); 
+		//$this->db->select("id,title,description,location,comments_enabled"); 
 		$this->db->from('pictures');
 		$this->db->where('id', $id);
 		$query = $this->db->get();
