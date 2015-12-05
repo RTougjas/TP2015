@@ -14,8 +14,8 @@ CREATE TABLE IF NOT EXISTS "users" (
     "active" int4,
     "first_name" varchar(50),
     "last_name" varchar(50),
-    "company" varchar(100),
-    "phone" varchar(20),
+    "telephone" integer,
+    "location" varchar(256),
   PRIMARY KEY("id"),
   CONSTRAINT "check_id" CHECK(id >= 0),
   CONSTRAINT "check_active" CHECK(active >= 0)

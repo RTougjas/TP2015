@@ -13,6 +13,14 @@
    			<?php echo lang('edit_user_lname_label', 'last_name');?> 
    			<input type="text" class="form-control" id="last_name" name="last_name" placeholder="">
  	  	</div>
+        <div class="form-group">
+            <label for="telephone">Telefoni number</label>
+            <input type="integer" class="form-control" id="telephone" name="telephone" placeholder="Telefoni number">
+        </div>
+        <div class="form-group">
+            <label for="location">Elukoht</label>
+            <input type="text" class="form-control" id="location" name="location" placeholder="Elukoht">
+        </div>
  	  	<div class="form-group">
    			<?php echo lang('edit_user_password_label', 'password');?>
    			<input type="password" class="form-control" id="password" placeholder="Password">
