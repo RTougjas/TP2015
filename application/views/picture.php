@@ -9,7 +9,7 @@
   	  	<div class="panel-body">
 				<div class="col-lg-6 col-md-6 col-xs-12"><?php echo 'Kirjeldus: '.$picture->description;?></div>
 					<div class="col-lg-7 col-md-6 col-xs-12"><?php echo 'Üleslaaditud: '.date("H:i:s d.m.Y",$picture->created);?></div>
-					<?php if($picture->kihelkond != 'Kihelkond'){ ?>
+					<?php if($picture->kihelkond != ''){ ?>
 						<div class="col-lg-8 col-md-6 col-xs-12"><?php echo 'Kihelkond: '.$picture->kihelkond;?></div>
 						<?php } ?>
 						<?php if($picture->koht != ''){ ?>
