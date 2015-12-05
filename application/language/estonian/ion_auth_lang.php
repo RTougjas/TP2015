@@ -26,10 +26,10 @@ $lang['account_creation_invalid_default_group'] = 'Invalid default group name se
 
 
 // Password
-$lang['password_change_successful']          = 'Salasõna on muudetud.';
-$lang['password_change_unsuccessful']        = 'Salasõna muutmine ebaõnnestus.';
+$lang['password_change_successful']          = 'Parool on edukalt muudetud.';
+$lang['password_change_unsuccessful']        = 'Parooli muutmine ebaõnnestus.';
 $lang['forgot_password_successful']          = 'Sinu e-postile saadeti kiri edasise juhendiga.';
-$lang['forgot_password_unsuccessful']        = 'Salasõna muutmine ebaõnnestus.';
+$lang['forgot_password_unsuccessful']        = 'Parooli muutmine ebaõnnestus.';
 
 // Activation
 $lang['activate_successful']                 = 'Konto on aktiveeritud';

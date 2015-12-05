@@ -18,10 +18,18 @@
         </div>
         <div class="form-group">
             <label for="text">Perenimi</label>
-            <input type="text" class="form-control" id="last_name" name="last_name "placeholder="Perenimi">
+            <input type="text" class="form-control" id="last_name" name="last_name" placeholder="Perenimi">
         </div>
         <div class="form-group">
-            <label for="password">Parool</label>
+            <label for="telephone">Telefoni number</label>
+            <input type="integer" class="form-control" id="telephone" name="telephone" placeholder="Telefoni number">
+        </div>
+        <div class="form-group">
+            <label for="location">Elukoht</label>
+            <input type="text" class="form-control" id="location" name="location" placeholder="Elukoht">
+        </div>
+        <div class="form-group">
+            <label for="password">Parool (Peab olema vähemalt 8 märki pikk)</label>
             <input type="password" class="form-control" id="password" name="password" placeholder="Password">
         </div>
         <div class="form-group">
@@ -30,5 +38,5 @@
         </div>
         <?php echo $recaptcha_html; ?> 
         <input type="submit" class="btn btn-primary" value="Loo kasutaja">
-	</div>
+</div>
 <div class="col-lg-5 col-md-4 col-sm-4"></div>
