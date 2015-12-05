@@ -79,7 +79,9 @@ create table IF NOT EXISTS pictures(
 	omanik character varying(30),
 	varasem_omanik character varying(30),
 	kvaliteet character varying(9),
-	isikud_fotol character varying(2000)
+	isikud_fotol character varying(2000),
+	ligikaudne_aeg character varying(400),
+	kuupaev character varying(15)
 );
 
 

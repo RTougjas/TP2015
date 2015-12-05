@@ -23,7 +23,7 @@ class Upload extends CI_Controller {
     {
 		
         $config['upload_path']          = './uploads/';
-        $config['allowed_types']        = 'gif|jpg|png';
+        $config['allowed_types']        = 'gif|jpg|png|tiff|tif';
         $config['max_size']             = 100000;
         $config['max_width']            = 102400;
         $config['max_height']           = 76800;
@@ -50,16 +50,29 @@ class Upload extends CI_Controller {
 			$publicpic = 'false';
 			if ( !empty($this->input->post('ispublic'))){
 				$publicpic = 'true';
-			}			
+			}
+		
             $info = array(
 			'user_id' => $this->ion_auth->get_user_id(),
             'title' => $this->input->post('title'),
             'description' => $this->input->post('description'),
             'location' => 'http://46.101.241.57/uploads/'.$data['upload_data']['file_name'],
 			'comments_enabled' => $comments_enabled,
-			'publicpic' => $publicpic
+			'publicpic' => $publicpic,
+			'created' => time(),
+			'colored' => $_POST['colored'],
+			'kihelkond' => $this->input->post('kihelkond'),
+			'koht' => $this->input->post('koht'),
+			'digifoto' => $this->input->post('digifoto'),
+			'fotograaf' => $this->input->post('fotograaf'),
+			'omanik' => $this->input->post('omanik'),
+			'varasem_omanik' => $this->input->post('varasem_omanik'),
+			'kvaliteet' => $_POST['kvaliteet'],
+			'isikud_fotol' => $this->input->post('isikud_fotol'),
+			'ligikaudne_aeg' => $this->input->post('ligikaudne_aeg'),
+			'kuupaev' => $this->input->post('kuupaev')
+			
             );
-
 			$this->upload_model->upload($info);
             
             $picture_id = $this->upload_model->get_picture_id($info['location']);
