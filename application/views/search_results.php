@@ -2,7 +2,7 @@
 <div class="page-header">
   <h1>Pildid <small><?php echo $small_header;?></small></h1>
     <?php if(isset($album_id) && $this->ion_auth->get_user_id() == $this->GalleryModel->get_album_owner($album_id)[0]->user_id){?>
-		<a class="btn btn-success" href="#">Add Photo(Ei tÃ¶Ã¶ta hetkel)</a>
+		<a class="btn btn-success" href="#">Add Photo(Ei tööta hetkel)</a>
 		<a class="btn btn-danger" href=<?php echo site_url('gallery/remove_album/'.$album_id);?>>Delete album</a>
     <?php }?>
   
@@ -32,15 +32,14 @@
 			<br>
 		</div>
 	<?php } ?>
-	<?php if($this->uri->segment(3, 0)>0){
-				echo '<a href="/index.php/gallery/AllPhotos/'.($this->uri->segment(3, 1)-1).'">Eelmised</a>';
+	<?php if($this->uri->segment(4, 0)>0){
+				echo '<a href="/index.php/Search/Search_results/'.$keywords."/".($this->uri->segment(4, 1)-1).'">Eelmised</a>';
 		    } else {
 				echo 'Eelmised';
 			}
-		  if($this->GalleryModel->morePictures($this->uri->segment(3, 0))){
-				echo '<a href="/index.php/gallery/AllPhotos/'.($this->uri->segment(3, 0)+1).'">JÃ¤rgmised</a>';
+		  if($this->SearchModel->morePictures($keywords, $this->uri->segment(4, 0))){
+				echo '<a href="/index.php/Search/Search_results/'.$keywords."/".($this->uri->segment(4, 0)+1).'">Järgmised</a>';
 			} else {
-				echo 'JÃ¤rgmised';
+				echo 'Järgmised';
 			}  ?>
 </div>
-

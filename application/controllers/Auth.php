@@ -164,7 +164,7 @@ class Auth extends CI_Controller {
 			{
 				//if the password was successfully changed
 				$this->session->set_flashdata('message', $this->ion_auth->messages());
-				$this->logout();
+                redirect('auth/change_password', 'refresh');
 			}
 			else
 			{
@@ -429,6 +429,8 @@ class Auth extends CI_Controller {
         $this->form_validation->set_rules('identity',$this->lang->line('create_user_validation_identity_label'),'required|is_unique['.$tables['users'].'.'.$identity_column.']');
         $this->form_validation->set_rules('first_name', $this->lang->line('create_user_validation_fname_label'));
         $this->form_validation->set_rules('last_name', $this->lang->line('create_user_validation_lname_label'));
+        $this->form_validation->set_rules('telephone', 'Telefon', 'numeric');
+        $this->form_validation->set_rules('location', 'Elukoht');
         if($identity_column!=='email')
         {
             $this->form_validation->set_rules('email', $this->lang->line('create_user_validation_email_label'), 'required|valid_email');
@@ -443,13 +445,15 @@ class Auth extends CI_Controller {
         if ($this->form_validation->run() == true)
         {
             $this->recaptcha->recaptcha_check_answer();
-            $email    = strtolower($this->input->post('email'));
-            $identity = $this->input->post('identity');
+            $email    = trim(strtolower($this->input->post('email')));
+            $identity = trim($this->input->post('identity'));
             $password = $this->input->post('password');
 
             $additional_data = array(
                 'first_name' => $this->input->post('first_name'),
                 'last_name'  => $this->input->post('last_name'),
+                'telephone'  => $this->input->post('telephone'),
+                'location'   => $this->input->post('location')
             );
         }
         if ($this->form_validation->run() == true && $this->ion_auth->register($identity, $password, $email, $additional_data) && $this->recaptcha->getIsValid())
@@ -494,6 +498,18 @@ class Auth extends CI_Controller {
                 'type'  => 'text',
                 'value' => $this->form_validation->set_value('email'),
             );
+            $this->data['telephone'] = array(
+                'name'  => 'telephone',
+                'id'    => 'telephone',
+                'type'  => 'integer',
+                'value' => $this->form_validation->set_value('telephone'),
+            );
+            $this->data['location'] = array(
+                'name'  => 'telephone',
+                'id'    => 'telephone',
+                'type'  => 'text',
+                'value' => $this->form_validation->set_value('location'),
+            );
             $this->data['password'] = array(
                 'name'  => 'password',
                 'id'    => 'password',
@@ -528,6 +544,8 @@ class Auth extends CI_Controller {
 		// validate form input
 		$this->form_validation->set_rules('first_name', $this->lang->line('edit_user_validation_fname_label'), 'min_length[0]');
 		$this->form_validation->set_rules('last_name', $this->lang->line('edit_user_validation_lname_label'), 'min_length[0]');
+        $this->form_validation->set_rules('telephone', 'Telefon', 'numeric');
+        $this->form_validation->set_rules('location', 'Elukoht');
 
 		if (isset($_POST) && !empty($_POST))
 		{
@@ -642,6 +660,18 @@ class Auth extends CI_Controller {
 			'id'   => 'password_confirm',
 			'type' => 'password'
 		);
+        $this->data['telephone'] = array(
+            'name'  => 'telephone',
+            'id'    => 'telephone',
+            'type'  => 'integer',
+            'value' => $this->form_validation->set_value('telephone'),
+        );
+        $this->data['location'] = array(
+            'name'  => 'telephone',
+            'id'    => 'telephone',
+            'type'  => 'text',
+            'value' => $this->form_validation->set_value('location'),
+        );
 
 		$this->_render_page('auth/edit_user', $this->data);
 	}

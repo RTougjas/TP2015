@@ -71,14 +71,14 @@ class Edit extends CI_Controller {
         if (! $this->input->post('tags') == ''){
             $tags = preg_split("/,/",$this->input->post('tags'));
             for($i = 0; $i < count($tags); ++$i) {
-                if (!$this->upload_model->tag_exists($tags[$i])){
+                if (!$this->upload_model->tag_exists(trim($tags[$i]))){
                     $info = array(
-                       'tag' => $tags[$i]
+                       'tag' => trim($tags[$i])
                     );
                     $this->upload_model->add_tag($info);
                 }
 
-                $tag_id = $this->upload_model->get_tag_id($tags[$i]);
+                $tag_id = $this->upload_model->get_tag_id(trim($tags[$i]));
 
                 $info = array(
                     'picture_id' => $id,

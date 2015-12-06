@@ -14,8 +14,8 @@ CREATE TABLE IF NOT EXISTS "users" (
     "active" int4,
     "first_name" varchar(50),
     "last_name" varchar(50),
-    "company" varchar(100),
-    "phone" varchar(20),
+    "telephone" integer,
+    "location" varchar(256),
   PRIMARY KEY("id"),
   CONSTRAINT "check_id" CHECK(id >= 0),
   CONSTRAINT "check_active" CHECK(active >= 0)
@@ -68,7 +68,20 @@ create table IF NOT EXISTS pictures(
 	location character varying(128) not null,
 	user_id integer references users(id),
 	comments_enabled boolean,
-	publicpic boolean
+	publicpic boolean,
+	colored boolean,
+	created integer,
+	kihelkond character varying(20),
+	koht character varying(40),
+	digifoto boolean,
+	kordinaadid character varying(40),
+	fotograaf character varying(30),
+	omanik character varying(30),
+	varasem_omanik character varying(30),
+	kvaliteet character varying(9),
+	isikud_fotol character varying(2000),
+	ligikaudne_aeg character varying(400),
+	kuupaev character varying(15)
 );
 
 
