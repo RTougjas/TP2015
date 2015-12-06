@@ -118,20 +118,20 @@ CREATE TABLE IF NOT EXISTS pictures_albums(
 );
 
 CREATE VIEW v_photo_search AS
-SELECT pictures.id, title, description, location, user_id, tag FROM 
-pictures
-LEFT JOIN pictures_tags
-ON pictures.id = pictures_tags.picture_id
-LEFT JOIn tags
-ON pictures_tags.tag_id = tags.id;
+    SELECT pictures.id, title, description, location, user_id, tag FROM 
+    pictures
+    LEFT JOIN pictures_tags
+    ON pictures.id = pictures_tags.picture_id
+    LEFT JOIn tags
+    ON pictures_tags.tag_id = tags.id;
 
 CREATE VIEW v_pictures_in_albums AS
-SELECT pictures.id AS picture_id, pictures.title AS picture_title, pictures.description AS picture_description, pictures.location, pictures.user_id AS uploader_id,
-albums.id AS album_id, albums.title AS album_title, albums.description AS album_description, albums.user_id AS album_owner_id FROM pictures
-LEFT JOIN pictures_albums
-ON pictures.id = pictures_albums.picture_id
-RIGHT JOIN albums
-ON albums.id = pictures_albums.album_id;
+    SELECT pictures.id AS picture_id, pictures.title AS picture_title, pictures.description AS picture_description, pictures.location, pictures.user_id AS uploader_id,
+    albums.id AS album_id, albums.title AS album_title, albums.description AS album_description, albums.user_id AS album_owner_id FROM pictures
+    LEFT JOIN pictures_albums
+    ON pictures.id = pictures_albums.picture_id
+    RIGHT JOIN albums
+    ON albums.id = pictures_albums.album_id;
 
 alter table pictures_albums drop constraint pictures_albums_album_id_fkey;
 
