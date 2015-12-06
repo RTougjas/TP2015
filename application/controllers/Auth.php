@@ -45,6 +45,7 @@ class Auth extends CI_Controller {
 	
 	// log the user in
 	function login()
+		
 	{
 		$this->data['title'] = "Login";
 
@@ -62,8 +63,17 @@ class Auth extends CI_Controller {
 			{
 				//if the login is successful
 				//redirect them back to the home page
-				$this->session->set_flashdata('message', $this->ion_auth->messages());
-				redirect('/', 'refresh');
+
+				if(sizeOf($this->session->flashdata('uploadAttempt')) > 0) {
+					redirect("/".$this->session->flashdata('uploadAttempt'));
+				}
+				else {
+					$this->session->set_flashdata('message', $this->ion_auth->messages());
+					redirect('/', 'refresh');
+				}
+				
+				
+	
 			}
 			else
 			{

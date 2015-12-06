@@ -2,6 +2,7 @@
 echo form_open("auth/login");
 ?>
 <div class="col-lg-5 col-md-4 col-sm-4"></div>
+<?php $this->session->keep_flashdata('uploadAttempt'); ?>
 <div class="col-lg-3 col-md-4 col-sm-4">
 	<h3><?php echo lang('login_heading')?></h3>
 		<form>
