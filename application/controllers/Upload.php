@@ -8,6 +8,7 @@ class Upload extends CI_Controller {
         $this->load->model('upload_model');
 		$this->load->model('GalleryModel');
         $this->load->helper(array('form', 'url'));
+        $this->load->library('form_validation');
     }
 
     public function index()
@@ -21,7 +22,7 @@ class Upload extends CI_Controller {
 
     public function do_upload()
     {
-		
+		$this->output->enable_profiler(true);
         $config['upload_path']          = './uploads/';
         $config['allowed_types']        = 'gif|jpg|png|tiff|tif';
         $config['max_size']             = 100000;
@@ -29,18 +30,13 @@ class Upload extends CI_Controller {
         $config['max_height']           = 76800;
 
         $this->load->library('upload', $config);
+        
+        $this->form_validation->set_rules('title', 'Pealkirja', 'required');
+        $this->form_validation->set_rules('description', 'Kirjelduse', 'required');
 		
-        if ( ! $this->upload->do_upload('userfile'))
+        if ($this->upload->do_upload('userfile') && $this->form_validation->run())
         {
-            $error = array('error' => $this->upload->display_errors());
-
-            $this->load->view('templates/header');
-            $this->load->view('upload_form', $error);
-            $this->load->view('templates/footer');
-        }
-        else
-        {
-			//picture table
+            
             $data = array('upload_data' => $this->upload->data());
 
 			$comments_enabled = 'false';
@@ -53,26 +49,26 @@ class Upload extends CI_Controller {
 			}
 		
             $info = array(
-			'user_id' => $this->ion_auth->get_user_id(),
-            'title' => $this->input->post('title'),
-            'description' => $this->input->post('description'),
-            'location' => 'http://46.101.241.57/uploads/'.$data['upload_data']['file_name'],
-			'comments_enabled' => $comments_enabled,
-			'publicpic' => $publicpic,
-			'created' => time(),
-			'colored' => $_POST['colored'],
-			'kihelkond' => $this->input->post('kihelkond'),
-			'koht' => $this->input->post('koht'),
-			'digifoto' => $this->input->post('digifoto'),
-			'fotograaf' => $this->input->post('fotograaf'),
-			'omanik' => $this->input->post('omanik'),
-			'varasem_omanik' => $this->input->post('varasem_omanik'),
-			'kvaliteet' => $_POST['kvaliteet'],
-			'isikud_fotol' => $this->input->post('isikud_fotol'),
-			'ligikaudne_aeg' => $this->input->post('ligikaudne_aeg'),
-			'kuupaev' => $this->input->post('kuupaev')
-			
+                'user_id' => $this->ion_auth->get_user_id(),
+                'title' => $this->input->post('title'),
+                'description' => $this->input->post('description'),
+                'location' => 'http://46.101.241.57/uploads/'.$data['upload_data']['file_name'],
+                'comments_enabled' => $comments_enabled,
+                'publicpic' => $publicpic,
+                'created' => time(),
+                'colored' => $_POST['colored'],
+                'kihelkond' => $this->input->post('kihelkond'),
+                'koht' => $this->input->post('koht'),
+                'digifoto' => $this->input->post('digifoto'),
+                'fotograaf' => $this->input->post('fotograaf'),
+                'omanik' => $this->input->post('omanik'),
+                'varasem_omanik' => $this->input->post('varasem_omanik'),
+                'kvaliteet' => $_POST['kvaliteet'],
+                'isikud_fotol' => $this->input->post('isikud_fotol'),
+                'ligikaudne_aeg' => $this->input->post('ligikaudne_aeg'),
+                'kuupaev' => $this->input->post('kuupaev')
             );
+            
 			$this->upload_model->upload($info);
             
             $picture_id = $this->upload_model->get_picture_id($info['location']);
@@ -103,32 +99,34 @@ class Upload extends CI_Controller {
             $this->load->view('upload_success', $data);
             $this->load->view('templates/footer');
         }
-		
-    }
-    
-    public function getlist(){
-        $this->load->library('ftp');
-        $config['hostname'] = 'www.steffi.ee';
-        $config['username'] = getenv('FTP_USER');
-        $config['password'] = getenv('FTP_PASSWORD');
-        $config['debug']	= TRUE;
-        $config['timeout'] = 10;
-        echo "test1";
-        
-        $ftp_con = $this->ftp->connect($config);
-        if($ftp_con === FALSE){
-            echo "test2";
-            //redirect(baseurl());
-        }
-        else{
-            echo "test3";
-            $list = $this->ftp->list_files();
-            echo "test4";
-            $this->ftp->close();
+        else 
+        {
+            $info = array(
+                'user_id' => $this->ion_auth->get_user_id(),
+                'title' => $this->input->post('title'),
+                'description' => $this->input->post('description'),
+                'koht' => $this->input->post('koht'),
+                'digifoto' => $this->input->post('digifoto'),
+                'fotograaf' => $this->input->post('fotograaf'),
+                'omanik' => $this->input->post('omanik'),
+                'varasem_omanik' => $this->input->post('varasem_omanik'),
+                'isikud_fotol' => $this->input->post('isikud_fotol'),
+                'ligikaudne_aeg' => $this->input->post('ligikaudne_aeg'),
+                'kuupaev' => $this->input->post('kuupaev'),
+                'tags' => $this->input->post('tags')
+            );
+            if(!$this->upload->do_upload('userfile')){
+                $info['error'] = $this->upload->display_errors();
+            }
+            elseif(!$this->form_validation->run()){
+                $info['error'] = $this->form_validation->error_string();
+            }
+
             $this->load->view('templates/header');
-            print_r($list);
+            $this->load->view('upload_form', $info);
             $this->load->view('templates/footer');
         }
+		
     }
 	
 }
