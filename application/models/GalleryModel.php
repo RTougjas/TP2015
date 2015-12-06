@@ -25,7 +25,22 @@ class GalleryModel extends CI_Model {
 		}
 	
 	}
+	public function getAlbumCover($album_id){
+		$this->db->select('picture_id');
+		$this->db->from('pictures_albums');
+		$this->db->where('album_id', $album_id);
+		$query = $this->db->get();
+		$picture_id = $query->result()[0]->picture_id;
 
+		$this->db->select('location');
+		$this->db->from('pictures');
+		$this->db->where('id', $picture_id);
+		$query = $this->db->get();
+		$picture_location = $query->result()[0]->location;
+		return array($picture_id, $picture_location);
+	}
+	
+	
 	function getAllAlbums() { 
 		$this->db->select('albums.id, albums.title, albums.description, albums.user_id, users.username');
 		$this->db->from('albums');

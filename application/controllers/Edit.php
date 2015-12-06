@@ -46,6 +46,8 @@ class Edit extends CI_Controller {
 			}
 		}
 		
+		
+		
 		if ($this->EditModel->checkUserOwner($this->uri->segment(3, 1), $this->ion_auth->get_user_id())){
 			if (!empty($this->input->post('comments'))){
 				 $this->EditModel->commentsEnabled($id, true);
@@ -61,6 +63,35 @@ class Edit extends CI_Controller {
 				 $this->EditModel->publicPicture($id, false);
 			}
 	    }
+		
+		if (! $this->input->post('fotograaf') == ''){
+            $this->EditModel->editFotograaf($id, $this->input->post('fotograaf'));
+        }
+		if (! $this->input->post('omanik') == ''){
+            $this->EditModel->editOmanik($id, $this->input->post('omanik'));
+        }
+		if (! $this->input->post('varasem_omanik') == ''){
+            $this->EditModel->editVarasem_omanik($id, $this->input->post('varasem_omanik'));
+        }
+		if (! $this->input->post('isikud_fotol') == ''){
+            $this->EditModel->editIsikud_fotol($id, $this->input->post('isikud_fotol'));
+        }
+		if (! $this->input->post('kuupaev') == ''){
+            $this->EditModel->editKuupaev($id, $this->input->post('kuupaev'));
+        }
+		if (! $this->input->post('ligikaudne_aeg') == ''){
+            $this->EditModel->editLigikaudne_aeg($id, $this->input->post('ligikaudne_aeg'));
+        }
+		$this->EditModel->editKihelkond($id, $this->input->post('kihelkond'));
+		if (! $this->input->post('koht') == ''){
+            $this->EditModel->editKoht($id, $this->input->post('koht'));
+        }
+		$this->EditModel->editKvaliteet($id, $this->input->post('kvaliteet'));
+		$this->EditModel->editColored($id, $this->input->post('colored'));
+		$this->EditModel->editDigifoto($id, $this->input->post('digifoto'));
+
+		
+		
 		
         if (! $this->input->post('title') == ''){
             $this->EditModel->editTitle($id, $this->input->post('title'));

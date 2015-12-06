@@ -29,7 +29,6 @@ class EditModel extends CI_Model {
 	
 		
 	function getPicture($id){
-		$this->db->select("id,title,description,location,comments_enabled,publicpic"); 
 		$this->db->from('pictures');
 		$this->db->where('id', $id);
 		$query = $this->db->get();
@@ -60,6 +59,63 @@ class EditModel extends CI_Model {
 			$this->db->where('id', $id);
 			$this->db->update('pictures', $data); 
 	}
+	
+	function editFotograaf($id, $fotograaf){
+		$this->db->where('id', $id);
+		$this->db->update('pictures', array('fotograaf' => $fotograaf));
+	}
+	
+	function editOmanik($id, $omanik){
+		$this->db->where('id', $id);
+		$this->db->update('pictures', array('omanik' => $omanik));
+	}
+	
+	function editVarasem_omanik($id, $varasem_omanik){
+		$this->db->where('id', $id);
+		$this->db->update('pictures', array('varasem_omanik' => $varasem_omanik));
+	}
+	
+	function editIsikud_fotol($id, $isikud_fotol){
+		$this->db->where('id', $id);
+		$this->db->update('pictures', array('isikud_fotol' => $isikud_fotol));
+	}
+	
+	function editKuupaev($id, $kuupaev){
+		$this->db->where('id', $id);
+		$this->db->update('pictures', array('kuupaev' => $kuupaev));
+	}
+	
+	function editLigikaudne_aeg($id, $ligikaudne_aeg){
+		$this->db->where('id', $id);
+		$this->db->update('pictures', array('ligikaudne_aeg' => $ligikaudne_aeg));
+	}
+	
+	function editKihelkond($id, $kihelkond){
+		$this->db->where('id', $id);
+		$this->db->update('pictures', array('kihelkond' => $kihelkond));
+	}
+	
+	function editKoht($id, $koht){
+		$this->db->where('id', $id);
+		$this->db->update('pictures', array('koht' => $koht));
+	}
+	
+	function editKvaliteet($id, $kvaliteet){
+		$this->db->where('id', $id);
+		$this->db->update('pictures', array('kvaliteet' => $kvaliteet));
+	}
+	function editColored($id, $colored){
+		$this->db->where('id', $id);
+		$this->db->update('pictures', array('colored' => $colored));
+	}
+	function editDigifoto($id, $digifoto){
+		$this->db->where('id', $id);
+		$this->db->update('pictures', array('digifoto' => $digifoto));
+	}
+	
+	
+	
+	
     
 	public function editDescription($id, $description){
         $data = array(

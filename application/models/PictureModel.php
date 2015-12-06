@@ -3,7 +3,7 @@ class PictureModel extends CI_Model {
     
 	//stdClass Object ( [user_id] => 0 [comment] => Canceriuo [created] => 1447321029 )
 	function getComments($id){
-        $this->db->select("id, user_id, comment, created");
+        $this->db->select("id,user_id,comment,created");
         $this->db->from('comments');
         $this->db->where('picture_id', $id);
         $query = $this->db->get();
@@ -27,7 +27,8 @@ class PictureModel extends CI_Model {
         //print_r($query->result()[0]->comment);
         }
         return $comments;
- }
+    }
+    
 	function enterComment($id, $comment){
         if (! $comment == ''){
             //id, picture_id, user_id, comment
@@ -37,7 +38,7 @@ class PictureModel extends CI_Model {
                'picture_id' => $id,
                'created' => time()
             );
-            $this->db->insert('comments', $data);
+        $this->db->insert('comments', $data);
         }
     }
     
@@ -60,13 +61,27 @@ class PictureModel extends CI_Model {
     
 	function getTags($id){
 		$tags = array();
-		
 		for($i = 0; $i < $this->db->get_where('pictures_tags', array('picture_id' => $id))-> num_rows(); ++$i){
 			array_push($tags, ($this->db->get_where('tags', array('id' => $this->db->get_where('pictures_tags', 
 			array('picture_id' => $id))->result()[$i]->tag_id))->result()[0]->tag));
 		}
-		
 		return $tags;
+    }
+    
+
+
+    
+	function checkUserOwner($id, $user_id){
+		$this->db->select("title"); 
+		$this->db->from('pictures');	
+		$this->db->where('id',$id);
+		$this->db->where('user_id', $user_id);
+		$query = $this->db->get();
+		if ($query->num_rows() > 0){
+			return true;
+		} else {
+			return false;
+		}
     }
 }
 
