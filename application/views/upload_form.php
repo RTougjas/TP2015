@@ -115,6 +115,7 @@
     	</form>
 		<br>
 	<?php } else {
+		$this->session->set_flashdata('uploadAttempt', uri_string());
 		redirect('/auth/login');
 	}?>
 </div>
