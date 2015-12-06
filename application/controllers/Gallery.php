@@ -101,7 +101,11 @@ class Gallery extends CI_Controller {
                 'title' => $title,
                 'description' => $this->input->post('description'),
                 'user_id' => $this->ion_auth->get_user_id(),
-				'created' => time()
+				'created' => time(),
+				'varasem_omanik' => $this->input->post('albumi_varasem_omanik'),
+				'kihelkond' => $this->input->post('kihelkond'),
+				'koht' => $this->input->post('koht'),
+				'ligikaudne_aeg' => $this->input->post('ligikaudne_aeg')
             );
             $this->GalleryModel->create_album($info);
 			$info['info'] = "Albumi ".$info['title']." loomine õnnestus";

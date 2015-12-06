@@ -20,14 +20,16 @@
             <input type="text" class="form-control" id="fotograaf" name="fotograaf" placeholder="Fotograaf">
         </div>
 
-        <div class="form-group">
+        <div class="form-group" >
             <label for="omanik">Pildi Omanik</label>
-            <input type="text" class="form-control" id="omanik" name="omanik" placeholder="Omanik">
+            <input type="text" class="form-control" id="omanik" name="omanik" placeholder="Omanik" 
+			value="<?php echo $album_details[0]->username;?>" disabled>
         </div>
 
         <div class="form-group">
             <label for="varasem_omanik">Varasem Omanik</label>
-            <input type="text" class="form-control" id="varasem_omanik" name="varasem_omanik" placeholder="Varasem Omanik">
+            <input type="text" class="form-control" id="varasem_omanik" name="varasem_omanik" placeholder="Varasem Omanik"
+			value="<?php echo $album_details[0]->varasem_omanik;?>" disabled>
         </div>
 
         <div class="form-group">
@@ -42,10 +44,16 @@
 
         <div class="form-group">
             <label for="ligikaudne_aeg">Ligikaudne aeg</label>
-            <input type="text" class="form-control" id="ligikaudne_aeg" name="ligikaudne_aeg" placeholder="Aeg omasõnadega">
+            <input type="text" class="form-control" id="ligikaudne_aeg" name="ligikaudne_aeg" placeholder="Aeg omasõnadega"
+			value="<?php echo $album_details[0]->ligikaudne_aeg;?>" disabled>
         </div>
 
         <div class="form-group">
+		<?php if(sizeOf($album_details[0]->kihelkond) >0 ) {?>
+			<select class="form-control" name="kihelkond">
+				<option value="<?php echo $album_details[0]->kihelkond;?>" selected><?php echo $album_details[0]->kihelkond;?></option>
+		<?php }?>
+		
         <select class="form-control" name="kihelkond">
         <?php echo '<option value="">Kihelkond</option>' ?>
         <?php foreach($kihelkonnad as $kihelkond){?>
@@ -56,7 +64,8 @@
 
         <div class="form-group">
             <label for="koht">Koht</label>
-            <input type="text" class="form-control" id="koht" name="koht" placeholder="Koht">
+            <input type="text" class="form-control" id="koht" name="koht" placeholder="Koht"
+			value="<?php echo $album_details[0]->koht;?>" disabled>
         </div>
 
         <div class="form-group">

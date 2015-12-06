@@ -88,7 +88,7 @@ class GalleryModel extends CI_Model {
 
 	public function getAlbumDetails($album_id) {
 		
-		$this->db->select('albums.id, albums.title, albums.description, created, albums.user_id, users.username, COUNT(picture_id) AS count');
+		$this->db->select('albums.id, albums.title, albums.description, created, albums.varasem_omanik, albums.kihelkond, albums.koht, albums.ligikaudne_aeg, albums.user_id, users.username, COUNT(picture_id) AS count');
 		$this->db->from('albums');
 		$this->db->join('users', 'albums.user_id = users.id', 'inner');
 		$this->db->join('v_pictures_in_albums', 'albums.id = album_id', 'inner');
