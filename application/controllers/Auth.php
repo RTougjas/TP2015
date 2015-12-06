@@ -505,8 +505,8 @@ class Auth extends CI_Controller {
                 'value' => $this->form_validation->set_value('telephone'),
             );
             $this->data['location'] = array(
-                'name'  => 'telephone',
-                'id'    => 'telephone',
+                'name'  => 'location',
+                'id'    => 'location',
                 'type'  => 'text',
                 'value' => $this->form_validation->set_value('location'),
             );
@@ -567,6 +567,8 @@ class Auth extends CI_Controller {
 				$data = array(
 					'first_name' => $this->input->post('first_name'),
 					'last_name'  => $this->input->post('last_name'),
+					'telephone' => $this->input->post('telephone'),
+					'location' => $this->input->post('location')
 				);
 
 				// update the password if it was posted
@@ -667,8 +669,8 @@ class Auth extends CI_Controller {
             'value' => $this->form_validation->set_value('telephone'),
         );
         $this->data['location'] = array(
-            'name'  => 'telephone',
-            'id'    => 'telephone',
+            'name'  => 'location',
+            'id'    => 'location',
             'type'  => 'text',
             'value' => $this->form_validation->set_value('location'),
         );

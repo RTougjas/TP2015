@@ -47,19 +47,19 @@ if(!$this->session->has_userdata('username')){
                 <?php echo form_open('auth/edit_user/'.$id);?>
       				<div class="form-group">
         				<label for="text">Eesnimi</label>
-        				<input type="text" class="form-control" id="first_name" name="first_name" placeholder="<?php echo $first_name?>">
+        				<input type="text" class="form-control" id="first_name" name="first_name" placeholder="Eesnimi" value="<?php echo $first_name?>">
       	  			</div>
       				<div class="form-group">
         				<label for="text">Perenimi</label>
-        				<input type="text" class="form-control" id="last_name" name="last_name" placeholder="<?php echo $last_name?>">
+        				<input type="text" class="form-control" id="last_name" name="last_name" placeholder="Perenimi" value="<?php echo $last_name?>">
       	  			</div>
                     <div class="form-group">
                         <label for="telephone">Telefoninumber</label>
-                        <input type="integer" class="form-control" id="telephone" name="telephone" placeholder="Telefoninumber">
+                        <input type="integer" class="form-control" id="telephone" name="telephone" placeholder="Telefoninumber" value="<?php echo $telephone;?>">
                     </div>
                     <div class="form-group">
                         <label for="location">Elukoht</label>
-                        <input type="text" class="form-control" id="location" name="location" placeholder="Elukoht">
+                        <input type="text" class="form-control" id="location" name="location" placeholder="Elukoht" value="<?php echo $location;?>">
                     </div>
                     <?php echo form_hidden('id', $id);?>
                     <?php echo form_hidden($csrf); ?>
