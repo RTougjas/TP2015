@@ -32,6 +32,7 @@ $lang['login_forgot_password'] = 'Unustasid oma parooli?';
 // Index
 $lang['index_heading']           = 'Kasutajad';
 $lang['index_subheading']        = 'All on list kasutajatest.';
+$lang['index_username_th']		 = 'Kasutaja';
 $lang['index_fname_th']          = 'Eesnimi';
 $lang['index_lname_th']          = 'Perekonnanimi';
 $lang['index_email_th']          = 'Email';

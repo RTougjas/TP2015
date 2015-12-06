@@ -11,11 +11,11 @@ echo form_open("auth/login");
   	  		</div>
   	  		<div class="form-group">
     			<label for="password">Parool</label>
-    			<input type="password" class="form-control" id="password" name="password" placeholder="Password">
+    			<input type="password" class="form-control" id="password" name="password" placeholder="Parool">
  	   		</div>
   	  		<div class="checkbox">
     			<label>
-      			<input type="checkbox"> Remember me
+      			<input type="checkbox"> Jäta meelde
     			</label>
   	  		</div>
   	  		<button type="submit" class="btn btn-primary">Logi sisse</button>

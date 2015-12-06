@@ -30,14 +30,14 @@ if(!$this->session->has_userdata('username')){
 				</tr>
 				<tr>
 					<td>
-						<a class="btn btn-primary" href="<?php echo site_url("profile/uploads/".$id."/".rawurlencode($username));?>">Pildid
+						<a class="btn btn-default" href="<?php echo site_url("profile/uploads/".$id."/".rawurlencode($username));?>">Pildid
 						<span class="badge"><?php echo $posts;?></span></a>
 					</td>
 					<td>
 						&#160
 					</td>
 					<td>
-						<a class="btn btn-primary" href="<?php echo site_url("gallery/albums/".$id."/".rawurlencode($username));?>">Albumid
+						<a class="btn btn-default" href="<?php echo site_url("gallery/albums/".$id."/".rawurlencode($username));?>">Albumid
 						<span class="badge"><?php echo $album_count;?></span></a>
 					</td>
 				</tr>
@@ -54,8 +54,8 @@ if(!$this->session->has_userdata('username')){
         				<input type="text" class="form-control" id="last_name" name="last_name" placeholder="<?php echo $last_name?>">
       	  			</div>
                     <div class="form-group">
-                        <label for="telephone">Telefoni number</label>
-                        <input type="integer" class="form-control" id="telephone" name="telephone" placeholder="Telefoni number">
+                        <label for="telephone">Telefoninumber</label>
+                        <input type="integer" class="form-control" id="telephone" name="telephone" placeholder="Telefoninumber">
                     </div>
                     <div class="form-group">
                         <label for="location">Elukoht</label>
@@ -63,16 +63,16 @@ if(!$this->session->has_userdata('username')){
                     </div>
                     <?php echo form_hidden('id', $id);?>
                     <?php echo form_hidden($csrf); ?>
-      	  			<button type="submit" class="btn btn-default">Salvesta</button>
+      	  			<button type="submit" class="btn btn-success">Salvesta</button>
 					<br>
 			<?php } ?>
 	  </div>
 	</div>
-	<?php if($this->ion_auth->logged_in() && $this->session->userdata('user_id') == $id) {?>
-		
+	<?php if($this->ion_auth->logged_in() && $this->session->userdata('user_id') == $id) {?>	
 		<a class="btn btn-primary" href="<?php echo site_url("gallery/create_album");?>">Loo uus album</a>
 		<br>
-	<?php } ?>	
+	<?php } ?>
+	<br>
 </div>
 <div class="col-lg-4 col-md-4 col-sm-4"></div>
 

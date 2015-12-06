@@ -81,7 +81,7 @@
 				<div class="form-group">
 				<select class="form-control" name="colored">
 				<option value="true">Värvifoto</option>
-				<option value="false">Must ja valge foto</option>
+				<option value="false">Mustvalge foto</option>
 				</select>
 				</div>
 				
@@ -97,17 +97,23 @@
         			<input type="file" id="userfile" name="userfile" size="20">
        				<p class="help-block">.jpg .png .gif .tif .tiff</p>
       			</div>
-				<div class="form-group">
-        			<label for="checkbox">Kommentaarid lubatud</label>
-        			<input type="checkbox" class="form-control" id="comments" name="comments" value='true' checked>
-     	   		</div>
-				<div class="form-group">
-        			<label for="checkbox">Avalik pilt</label>
-        			<input type="checkbox" class="form-control" id="ispublic" name="ispublic" value='true' checked>
-     	   		</div>
+				<div class="row">
+					<table class="table">
+						<tr>
+							<td>kommentaarid lubatud</td>
+							<td><input type="checkbox" id="comments" name="comments" value='true' checked></td>
+						</tr>
+						<tr>
+							<td>Avalik pilt</td>
+							<td><input type="checkbox" id="ispublic" name="ispublic" value='true' checked></td>
+						</tr>
+					</table>
+				</div>
 				<br>
-      	  		<input type="submit" class="btn btn-primary" value="upload">
+      	  		<input type="submit" class="btn btn-primary" value="Lae pilt">
+				<br>
     	</form>
+		<br>
 	<?php } else {
 		redirect('/auth/login');
 	}?>
