@@ -18,9 +18,20 @@ class Picture extends CI_Controller {
     }
  
 	public function comment($id){
-                $this->PictureModel->enterComment($id, $this->input->post('comment'));
-				redirect('/picture/'.$id);
+        $this->PictureModel->enterComment($id, $this->input->post('comment'));
+        redirect('/picture/'.$id);
+    }
+    
+    public function remove_comment($id){
+        $info = $this->PictureModel->get_comment_info($id);
+        if($this->ion_auth->get_user_id() == $info->user_id || $this->ion_auth->is_admin() || $this->ion_auth->get_user_id() == $this->PictureModel->getPicture($info->picture_id)->user_id){
+            $this->PictureModel->remove_comment($id);
+            redirect('/picture/'.$info->picture_id);
         }
+        else{
+            return show_error("You don't have permissions to delete this comment");
+        }
+    }
  
 }
 ?>
