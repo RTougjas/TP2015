@@ -35,7 +35,7 @@
 					<br>
 			  		<div class="form-group">
 			  			<label for="text">Pildi kirjeldus</label>
-						<textarea class="form-control" type="text" rows="5" name="description" placeholder="<?php echo $picture->description;?>"></textarea>
+						<textarea class="form-control" type="text" rows="5" name="description" ><?php echo $picture->description;?></textarea>
 			    	</div>		
 				</div>
 				<div class="col-lg-6 col-md-6 col-xs-12">
