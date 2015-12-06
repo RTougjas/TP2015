@@ -6,7 +6,7 @@ class GalleryModel extends CI_Model {
   	  	$this->db->from('pictures');
 		$this->db->where('publicpic', 't');
 		$this->db->order_by('id','asc');
-		$this->db->limit(9, $offset*9); 
+		$this->db->limit(12, $offset*12); 
   	  	$query = $this->db->get();
   	  	
 		return $query->result();
@@ -16,7 +16,7 @@ class GalleryModel extends CI_Model {
 		$this->db->select("id,title,description,location"); 
   	  	$this->db->from('pictures');
 		$this->db->where('publicpic', 't');
-		$this->db->limit(9, ($offset+1)*9); 
+		$this->db->limit(12, ($offset+1)*12); 
   	  	$query = $this->db->get();
   	  	if($query->num_rows() > 0){
 			return true;
@@ -39,7 +39,7 @@ class GalleryModel extends CI_Model {
 		$this->db->select('albums.id, albums.title, albums.description, albums.user_id, users.username');
 		$this->db->from('albums');
 		$this->db->join('users', 'albums.user_id = users.id', 'inner');
-		$this->db->limit(9, ($offset)*9);
+		$this->db->limit(12, ($offset)*12);
 		$query = $this->db->get();
 		return $query->result();
 	}
@@ -48,7 +48,7 @@ class GalleryModel extends CI_Model {
 		$this->db->select('albums.id, albums.title, albums.description, albums.user_id, users.username');
 		$this->db->from('albums');
 		$this->db->join('users', 'albums.user_id = users.id', 'inner');
-		$this->db->limit(9, ($offset+1)*9);
+		$this->db->limit(12, ($offset+1)*12);
 		$query = $this->db->get();
 		if($query->num_rows() > 0){
 			return true;

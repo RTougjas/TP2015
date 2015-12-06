@@ -2,8 +2,8 @@
 <div class="page-header">
   <h1>Pildid <small><?php echo $small_header;?></small></h1>
     <?php if(isset($album_id) && $this->ion_auth->get_user_id() == $this->GalleryModel->get_album_owner($album_id)[0]->user_id){?>
-		<a class="btn btn-success" href="#">Add Photo(Ei tööta hetkel)</a>
-		<a class="btn btn-danger" href=<?php echo site_url('gallery/remove_album/'.$album_id);?>>Delete album</a>
+		<a class="btn btn-success" href="<?php echo site_url("/upload");?>">Lae albumisse pilt</a>
+		<a class="btn btn-danger" href=<?php echo site_url('gallery/remove_album/'.$album_id);?>>Kustuta album</a>
     <?php }?>
   
 </div>
@@ -24,7 +24,7 @@
 	</div>
 </div>
 <?php for($i = 0; $i < sizeOf($pictures); $i++) {?>
-	<div class="col-lg-4 col-md-4 col-sm-4">
+	<div class="col-lg-3 col-md-3 col-sm-6">
 			<table>
 				<tr>
 					<th><?php echo rawurldecode($pictures[$i]->title)?><th>

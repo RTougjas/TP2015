@@ -1,16 +1,15 @@
 <div class="col-md-2 col-sm-4"></div>
 <div class="container">
 	<div class="panel panel-default">
-  	  	<div class="panel-heading">
-			<?php echo "<h3>".$picture->title."</h3><br>";?>
-			<a class="btn btn-info" href="<?php echo site_url("edit/".$picture->id);?>">Muuda Andmeid</a>
-			<a class="btn btn-warning" href="<?php echo $picture->location;?>">Täissuuruses</a>
-		</div>
   	  	<div class="panel-body">
 			<div class="col-lg-6 col-md-6 col-xs-12">
 				<table class="table">
 					<br>
 					<ul class="list-group">
+						<li class="list-group-item" style="word-wrap:break-word">
+							<?php echo "<h3>".$picture->title."</h3><br>";?>
+							<?php echo $picture->description;?>
+						</li>
 						<?php if($picture->omanik != ''){ ?>
 							<li class="list-group-item">Omanik <?php echo '<b>'.$picture->omanik.'</b>';?></li>
 						<?php } ?>
@@ -22,7 +21,7 @@
 
 					<tr>
 						<?php if($picture->kihelkond != ''){ ?>
-							<td>Kihelkond <?php echo $picture->kihelkond;?></td>
+							<td>Kihelkond <?php echo '<b>'.$picture->kihelkond.'</b>';?></td>
 						<?php } ?>
 					</tr>
 					<tr>
@@ -67,22 +66,17 @@
 					</tr>
 				</table>
 				<br>
-				<table>
-					<tr>
-						<th><h4>Kirjeldus</h4></th>
-					</tr>
-					<tr>
-						<td><?php echo $picture->description;?></td>
-					</tr>
-				</table>
 			</div>
-				<div class="row">
-					<div class="col-lg-6 col-md-6 col-xs-12">
-						<br>
-						<?php echo '<img src="'.$picture->location.'" class="img-responsive">';?>
-						</div>
+			<div class="row">
+				<div class="col-lg-6 col-md-6 col-xs-12">
+					<br>
+					<?php echo '<img src="'.$picture->location.'" class="img-responsive">';?>
+					<br>
+					<a class="btn btn-info" href="<?php echo site_url("edit/".$picture->id);?>">Muuda Andmeid</a>
+					<a class="btn btn-warning" href="<?php echo $picture->location;?>">Täissuuruses</a>
 					</div>
-  		</div>
+				</div>
+  			</div>
   	  	<div class="panel-footer"><?php echo implode(', ',$tags);?><br></div>
 	</div>
 	<?php if ($picture->comments_enabled == 't'){?>
