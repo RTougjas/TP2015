@@ -84,7 +84,13 @@
   	  	<div class="panel panel-default">
     		<div class="panel-heading">
       		  	<h4 class="panel-title">
-        			<a data-toggle="collapse" href="#collapse1">Kommentaarid<?php echo '('.count($comments).')'; ?></a>
+					<?php if($this->ion_auth->logged_in()) {?>
+        				<a data-toggle="collapse" href="#collapse1">Kommentaarid<?php echo '('.count($comments).')'; ?></a>
+					<?php } else { ?>
+						<p><span class="label label-default">Kommenteerimiseks logi sisse</span></p>
+						<a data-toggle="collapse" href="#collapse1">Kommentaarid<?php echo '('.count($comments).')'; ?></a>
+
+					<?php } ?>
       		  	</h4>
    		 	</div>
     		<div id="collapse1" class="panel-collapse collapse">
