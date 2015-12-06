@@ -101,6 +101,10 @@
 								<?php } else { ?>
 				    				<a href="<?php echo site_url('/profile/'.urlencode($comments[$i][0]));?>">
 									<?php echo $comments[$i][0];?></a></h3>
+                                <?php if($this->ion_auth->get_user_id() == $comments[$i][4] || $this->ion_auth->is_admin() 
+                                         || $this->ion_auth->get_user_id() == $picture->user_id){?>
+                                <a href="<?php echo site_url('picture/remove_comment/'.$comments[$i][3]);?>">Kustuta kommentaar</a>
+                                <?php } ?>
 							<?php }?>
 				  			  	</div>
 				  			  	<div class="panel-body" style="text:word-wrap"><?php echo $comments[$i][1]; ?></div>

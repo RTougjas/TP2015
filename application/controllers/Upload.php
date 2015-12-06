@@ -22,7 +22,6 @@ class Upload extends CI_Controller {
 
     public function do_upload()
     {
-		$this->output->enable_profiler(true);
         $config['upload_path']          = './uploads/';
         $config['allowed_types']        = 'gif|jpg|png|tiff|tif';
         $config['max_size']             = 100000;
