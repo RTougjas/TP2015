@@ -61,6 +61,18 @@ class PictureModel extends CI_Model {
 		
 		return $tags;
 		}
+	function checkUserOwner($id, $user_id){
+		$this->db->select("title"); 
+		$this->db->from('pictures');	
+		$this->db->where('id',$id);
+		$this->db->where('user_id', $user_id);
+		$query = $this->db->get();
+		if ($query->num_rows() > 0){
+			return true;
+		} else {
+			return false;
+		}
+		}
 }
 
 ?>
