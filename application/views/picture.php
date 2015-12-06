@@ -72,7 +72,9 @@
 					<br>
 					<?php echo '<img src="'.$picture->location.'" class="img-responsive">';?>
 					<br>
+					<?php if($this->ion_auth->logged_in() && $this->PictureModel->checkUserOwner($this->uri->segment(2, 1),$this->ion_auth->get_user_id())) { ?>
 					<a class="btn btn-info" href="<?php echo site_url("edit/".$picture->id);?>">Muuda Andmeid</a>
+					<?php } ?>
 					<a class="btn btn-warning" href="<?php echo $picture->location;?>">Täissuuruses</a>
 					</div>
 				</div>
