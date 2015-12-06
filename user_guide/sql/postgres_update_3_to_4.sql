@@ -65,3 +65,5 @@ alter table users drop column company,
     drop column phone,
     add column telephone integer,
     add column location varchar(256);
+	
+alter table albums add column created integer;

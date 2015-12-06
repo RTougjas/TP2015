@@ -80,10 +80,7 @@ class Gallery extends CI_Controller {
 	public function albumDetails($album_id) {
 		
 		$this->data['album_details'] = $this->GalleryModel->getAlbumDetails($album_id);
-        $this->load->view('templates/header');
-        $this->load->view('upload_form_photo', $this->data); 
-        $this->load->view('templates/footer');
-		
+        $this->load->view('upload_form_photo', $this->data); 		
 	}
     
     public function create_album(){
@@ -103,11 +100,15 @@ class Gallery extends CI_Controller {
             $info = array(
                 'title' => $title,
                 'description' => $this->input->post('description'),
-                'user_id' => $this->ion_auth->get_user_id()
+                'user_id' => $this->ion_auth->get_user_id(),
+				'created' => time()
             );
-
             $this->GalleryModel->create_album($info);
+			$info['info'] = "Albumi ".$info['title']." loomine õnnestus";
+			$this->session->set_flashdata('info', $info['info']);
+			redirect('upload', 'refresh');
         }
+		
 		$this->load->view('templates/header');
         $this->load->view('create_album');
 		$this->load->view('templates/footer');
