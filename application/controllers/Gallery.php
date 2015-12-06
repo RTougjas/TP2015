@@ -76,6 +76,15 @@ class Gallery extends CI_Controller {
         $this->load->view('templates/footer');
 		
 	}
+	
+	public function albumDetails($album_id) {
+		
+		$this->data['album_details'] = $this->GalleryModel->getAlbumDetails($album_id);
+        $this->load->view('templates/header');
+        $this->load->view('upload_form_photo', $this->data); 
+        $this->load->view('templates/footer');
+		
+	}
     
     public function create_album(){
         $this->load->helper('form');
@@ -99,9 +108,9 @@ class Gallery extends CI_Controller {
 
             $this->GalleryModel->create_album($info);
         }
-        $this->load->view('templates/header');
+		$this->load->view('templates/header');
         $this->load->view('create_album');
-        $this->load->view('templates/footer');
+		$this->load->view('templates/footer');
     }
     
     public function remove_album($id){
