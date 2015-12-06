@@ -17,6 +17,8 @@
                     'username' =>$result[0]->username,
                     'first_name' =>$result[0]->first_name,
                     'last_name' =>$result[0]->last_name,
+					'telephone' =>$result[0]->telephone,
+					'location' =>$result[0]->location,
                     'posts' => $this->Profile_model->count_posts($result[0]->id),
 					'album_count' => $this->Profile_model->count_albums($result[0]->id),
                     'csrf' => $this->_get_csrf_nonce()

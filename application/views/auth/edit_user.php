@@ -15,7 +15,7 @@
  	  	</div>
         <div class="form-group">
             <label for="telephone">Telefoni number</label>
-            <input type="integer" class="form-control" id="telephone" name="telephone" placeholder="Telefoninumber" value="<?php echo $user->phone;?>">
+            <input type="integer" class="form-control" id="telephone" name="telephone" placeholder="Telefoninumber" value="<?php echo $user->telephone;?>">
         </div>
         <div class="form-group">
             <label for="location">Elukoht</label>
