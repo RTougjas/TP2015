@@ -7,52 +7,81 @@
 			<a class="btn btn-warning" href="<?php echo $picture->location;?>">Täissuuruses</a>
 		</div>
   	  	<div class="panel-body">
-				<div class="col-lg-6 col-md-6 col-xs-12"><?php echo 'Kirjeldus: '.$picture->description;?></div>
-					<div class="col-lg-7 col-md-6 col-xs-12"><?php echo 'Üleslaaditud: '.date("H:i:s d.m.Y",$picture->created);?></div>
-					<?php if($picture->kihelkond != ''){ ?>
-						<div class="col-lg-8 col-md-6 col-xs-12"><?php echo 'Kihelkond: '.$picture->kihelkond;?></div>
+			<div class="col-lg-6 col-md-6 col-xs-12">
+				<table class="table">
+					<br>
+					<ul class="list-group">
+						<?php if($picture->omanik != ''){ ?>
+							<li class="list-group-item">Omanik <?php echo '<b>'.$picture->omanik.'</b>';?></li>
 						<?php } ?>
-						<?php if($picture->koht != ''){ ?>
-							<div class="col-lg-9 col-md-6 col-xs-12"><?php echo 'Koht: '.$picture->koht;?></div>
-						<?php } ?>	
-							<?php if($picture->fotograaf != ''){ ?>
-								<div class="col-lg-10 col-md-6 col-xs-12"><?php echo 'Fotograaf: '.$picture->fotograaf;?></div>
-							<?php } ?>	
-								<?php if($picture->omanik != ''){ ?>
-									<div class="col-lg-11 col-md-6 col-xs-12"><?php echo 'Omanik: '.$picture->omanik;?></div>
-								<?php } ?>	
-									<?php if($picture->varasem_omanik != ''){ ?>
-										<div class="col-lg-12 col-md-6 col-xs-12"><?php echo 'Varasem Omanik: '.$picture->varasem_omanik;?></div>
-									<?php } ?>	
-										<?php if($picture->isikud_fotol != ''){ ?>
-											<div class="col-lg-13 col-md-6 col-xs-12"><?php echo 'Isikud fotol: '.$picture->isikud_fotol;?></div>
-										<?php } ?>	
-											<?php if($picture->kuupaev != ''){ ?>
-												<div class="col-lg-14 col-md-6 col-xs-12"><?php echo 'Kuupäev: '.$picture->kuupaev;?></div>
-											<?php } ?>	
-												<?php if($picture->ligikaudne_aeg != ''){ ?>
-													<div class="col-lg-15 col-md-6 col-xs-12"><?php echo 'Ligikaudne aeg: '.$picture->ligikaudne_aeg;?></div>
-												<?php } ?>	
-													<?php if($picture->colored == 't'){ ?>
-														<div class="col-lg-16 col-md-6 col-xs-12"><?php echo 'Värvid: Värvipilt';?></div>
-													<?php } else { ?>	
-														<div class="col-lg-16 col-md-6 col-xs-12"><?php echo 'Värvid: Mustvalge';?></div>
-													<?php } ?>	
-														<?php if($picture->digifoto == 't'){ ?>
-															<div class="col-lg-17 col-md-6 col-xs-12"><?php echo 'Jäädvustamis viis: Digifoto';?></div>
-														<?php } else { ?>	
-															<div class="col-lg-17 col-md-6 col-xs-12"><?php echo 'Jäädvustamis viis: Digiteeritud foto';?></div>
-														<?php } ?>	
-															<div class="col-lg-18 col-md-6 col-xs-12"><?php echo 'Kvaliteet: '.$picture->kvaliteet;?></div>
+						<?php if($picture->varasem_omanik != ''){ ?>
+							<li class="list-group-item">varasem omanik <?php echo '<b>'.$picture->varasem_omanik.'</b>';?></li>
+						<?php } ?>
+					  <li class="list-group-item">Laetud <?php echo '<b>'.date("H:i:s d.m.Y",$picture->created).'</b>';?></li>
+					</ul>
 
-							
-							
-						<div class="row">
-							<div class="col-lg-6 col-md-6 col-xs-12">
-								<br>
-								<?php echo '<img src="'.$picture->location.'" class="img-responsive">';?>
-							</div>
+					<tr>
+						<?php if($picture->kihelkond != ''){ ?>
+							<td>Kihelkond <?php echo $picture->kihelkond;?></td>
+						<?php } ?>
+					</tr>
+					<tr>
+						<?php if($picture->koht != ''){ ?>
+							<td>Koht <?php echo '<b>'.$picture->koht.'</b>';?></td>
+						<?php } ?>	
+					</tr>
+					<tr>
+						<?php if($picture->fotograaf != ''){ ?>
+							<td>Fotograaf <?php echo '<b>'.$picture->fotograaf.'</b>';?></td>
+						<?php } ?>
+					</tr>
+					<tr>
+						<?php if($picture->isikud_fotol != ''){ ?>
+							<td>Isikud fotol <?php echo '<b>'.$picture->isikud_fotol.'</b>';?></td>
+						<?php } ?>
+					</tr>
+					<tr>
+						<?php if($picture->kuupaev != ''){ ?>
+							<td>Kuupäev <?php echo '<b>'.$picture->kuupaev.'</b>';?></td>
+						<?php } ?>
+					</tr>
+					<tr>
+						<?php if($picture->ligikaudne_aeg != ''){ ?>
+							<td>Ligikaudne aeg <?php echo '<b>'.$picture->ligikaudne_aeg.'</b>';?></td>
+						<?php } ?>
+					</tr>		
+					<tr>
+						<?php if($picture->colored == 't'){ ?>
+							<td><b>Värviline </b>
+						<?php } else { ?>	
+							<td><b>Mustvalge </b>
+						<?php } ?>
+						<?php if($picture->digifoto == 't'){ ?>
+							<b>Digifoto</b></td>
+						<?php } else { ?>	
+							<b>Digiteeritud foto</b></td>
+						<?php } ?>
+					</tr>
+					<tr>
+						<td>Kvaliteet <?php echo '<b>'.$picture->kvaliteet.'</b>';?></td>
+					</tr>
+				</table>
+				<br>
+				<table>
+					<tr>
+						<th><h4>Kirjeldus</h4></th>
+					</tr>
+					<tr>
+						<td><?php echo $picture->description;?></td>
+					</tr>
+				</table>
+			</div>
+				<div class="row">
+					<div class="col-lg-6 col-md-6 col-xs-12">
+						<br>
+						<?php echo '<img src="'.$picture->location.'" class="img-responsive">';?>
 						</div>
+					</div>
   		</div>
   	  	<div class="panel-footer"><?php echo implode(', ',$tags);?><br></div>
 	</div>

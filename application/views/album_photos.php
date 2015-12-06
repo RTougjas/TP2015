@@ -7,8 +7,24 @@
     <?php }?>
   
 </div>
-	<?php for($i = 0; $i < sizeOf($pictures); $i++) {?>
-		<div class="col-lg-4 col-md-4 col-sm-4">
+<div class="row">
+	<div class="text-center">
+		<ul class="pagination">
+			<?php if($this->uri->segment(3, 0)>0){ ?>
+				<li><a href="<?php echo '/index.php/gallery/AllPhotos/'.($this->uri->segment(3, 1)-1).''?>" aria-label="Previous"><span aria-hidden="true">&laquo; eelmised</span></a></li>
+				<?php } else { ?>
+					<li class="disabled"><a href="#" aria-label="Previous"><span aria-hidden="true">&laquo; eelmised</span></a></li>
+			<?php } ?>
+			<?php if($this->GalleryModel->morePictures($this->uri->segment(3, 0))) { ?>
+				<li><a href="<?php echo '/index.php/gallery/AllPhotos/'.($this->uri->segment(3, 0)+1).''?>" aria-label="Next"><span aria-hidden="true">järgmised &raquo;</span></a></li>
+			<?php } else { ?>
+				<li class="disabled"><a href="#" aria-label="Next"><span aria-hidden="true">järgmised &raquo;</span></a></li>
+			<?php } ?>
+  	  	</ul>
+	</div>
+</div>
+<?php for($i = 0; $i < sizeOf($pictures); $i++) {?>
+	<div class="col-lg-4 col-md-4 col-sm-4">
 			<table>
 				<tr>
 					<th><?php echo rawurldecode($pictures[$i]->title)?><th>
@@ -32,15 +48,21 @@
 			<br>
 		</div>
 	<?php } ?>
-	<?php if($this->uri->segment(3, 0)>0){
-				echo '<a href="/index.php/gallery/AllPhotos/'.($this->uri->segment(3, 1)-1).'">Eelmised</a>';
-		    } else {
-				echo 'Eelmised';
-			}
-		  if($this->GalleryModel->morePictures($this->uri->segment(3, 0))){
-				echo '<a href="/index.php/gallery/AllPhotos/'.($this->uri->segment(3, 0)+1).'">Järgmised</a>';
-			} else {
-				echo 'Järgmised';
-			}  ?>
+</div>
+<div class="row">
+	<div class="text-center">
+		<ul class="pagination">
+			<?php if($this->uri->segment(3, 0)>0){ ?>
+				<li><a href="<?php echo '/index.php/gallery/AllPhotos/'.($this->uri->segment(3, 1)-1).''?>" aria-label="Previous"><span aria-hidden="true">&laquo; eelmised</span></a></li>
+				<?php } else { ?>
+					<li class="disabled"><a href="#" aria-label="Previous"><span aria-hidden="true">&laquo; eelmised</span></a></li>
+			<?php } ?>
+			<?php if($this->GalleryModel->morePictures($this->uri->segment(3, 0))) { ?>
+				<li><a href="<?php echo '/index.php/gallery/AllPhotos/'.($this->uri->segment(3, 0)+1).''?>" aria-label="Next"><span aria-hidden="true">järgmised &raquo;</span></a></li>
+			<?php } else { ?>
+				<li class="disabled"><a href="#" aria-label="Next"><span aria-hidden="true">järgmised &raquo;</span></a></li>
+			<?php } ?>
+  	  	</ul>
+	</div>
 </div>
 
