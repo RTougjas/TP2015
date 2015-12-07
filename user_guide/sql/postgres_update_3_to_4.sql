@@ -67,3 +67,17 @@ alter table users drop column company,
     add column location varchar(256);
 	
 alter table albums add column created integer;
+
+create table if not exists people(
+    id serial primary key not null,
+    name varchar(100) not null,
+    birthday date,
+    location varchar(25),
+    life text
+);
+
+create table lifestory(
+    comment text not null,
+    person_id integer,
+    constraint lifestory_people_person_id_fkey foreign key (person_id) REFERENCES people(id) on delete cascade
+);

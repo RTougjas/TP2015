@@ -168,6 +168,10 @@ class EditModel extends CI_Model {
 		
 		return $query->result();
 	}
+    
+    public function edit_person($id, $info){
+        return $this->db->update('people', $info, array('id' => $id));
+    }
 }
 ?>
 

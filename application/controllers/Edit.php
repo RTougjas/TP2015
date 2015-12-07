@@ -5,8 +5,9 @@ class Edit extends CI_Controller {
 
 	function __Construct(){
         parent::__Construct ();
-        $this->load->model(array('EditModel', 'upload_model', 'GalleryModel')); // load model 
+        $this->load->model(array('EditModel', 'upload_model', 'GalleryModel', 'Profile_model')); // load model 
         $this->load->helper(array('form', 'url'));
+        $this->load->library('form_validation');
      }
 
     public function index() {
@@ -127,5 +128,55 @@ class Edit extends CI_Controller {
         $this->load->view('edit_success');
         $this->load->view('templates/footer');
     }
+    
+    public function edit_person($id){
+        $this->form_validation->set_rules('birthday', 'Sünniaeg', 'max_length[10]|callback_date_check');
+        if($this->form_validation->run()){
+            if (! $this->input->post('name') == ''){
+                $data['name'] = $this->input->post('name');
+            }
+            if (! $this->input->post('birthday') == ''){
+                $data['birthday'] = $this->input->post('birthday');
+            }
+            if (! $this->input->post('location') == ''){
+                $data['location'] = $this->input->post('location');
+            }
+            $data['enabled'] = $this->input->post('enabled');
+            $this->EditModel->edit_person($id, $data);
+            redirect('profile/person/'.$id);
+        }
+        else{
+            $data = array(
+                'name' => $this->input->post('name'),
+                'birthday' => $this->input->post('birthday'),
+                'location' => $this->input->post('location'),
+            );
+            $data['person'] = $this->Profile_model->get_person($this->uri->segment(3, 1))[0];
+            $data['error'] = $this->form_validation->error_string();
+            $this->load->view('templates/header');
+            $this->load->view('people/edit', $data); 
+            $this->load->view('templates/footer');
+        }
+    }
+    
+    function date_check($date){
+        if(strlen($date) == 0){
+            return true;
+        }
+        else{
+            $year = (int) substr($date, 0, 4);
+            $month = (int) substr($date, 5, 2);
+            $day = (int) substr($date, 8, 2);
+            if(checkdate($month, $day, $year)){
+                return true;
+            }
+            else{
+                $this->form_validation->set_message('date_check', '{field} pole õiges formaadis või kuupäev ei eksisteeri');
+                return false;
+            }
+        }
+    }
+    
+        
 }
 ?>
