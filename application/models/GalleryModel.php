@@ -81,14 +81,29 @@ class GalleryModel extends CI_Model {
 		return $query->result();
 	}
 		
-	public function getUserAlbums($user_id) {
+	public function getUserAlbums($user_id, $offset) {
 		$this->db->select('albums.id, albums.title, albums.description, users.username');
 		$this->db->from('albums');
 		$this->db->join('users', 'albums.user_id = users.id', 'inner');
 		$this->db->where('albums.user_id', $user_id);
+		$this->db->limit(12, $offset*12);
 		$query = $this->db->get();
 	
 		return $query->result();
+	}
+	
+	public function moreUserAlbums($user_id, $offset) {
+		$this->db->select('albums.id, albums.title, albums.description, users.username');
+		$this->db->from('albums');
+		$this->db->join('users', 'albums.user_id = users.id', 'inner');
+		$this->db->where('albums.user_id', $user_id);
+		$this->db->limit(12, ($offset+1)*12);
+		$query = $this->db->get();
+		if($query->num_rows() > 0){
+			return true;
+		} else {
+			return false;
+		}
 	}
 	
 	public function getAlbumPhotos($album_id, $offset) {
