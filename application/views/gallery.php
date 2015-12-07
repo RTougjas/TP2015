@@ -37,9 +37,7 @@
 <div class="row">
 	<div class="text-center">
 		<ul class="pagination">
-		
 			<?php if($this->uri->segment(3, 0)>0){ ?>
-			
 				<li><a href="<?php echo '/index.php/gallery/All_albums/'.($this->uri->segment(3, 1)-1).''?>" aria-label="Previous"><span aria-hidden="true">&laquo; eelmised</span></a></li>
 				
 				<?php } else { ?>
