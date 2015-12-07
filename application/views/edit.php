@@ -64,26 +64,26 @@
             </div>
 
             <div class="form-group">
-            <select class="form-control" name="kihelkond">
-            <?php echo '<option value="">Kihelkond</option>' ?>
-            <?php foreach($kihelkonnad as $kihelkond){?>
-			<?php if($picture->kihelkond == $kihelkond){?>
-            <?php echo '<option value="'.$kihelkond.'" selected="selected">'.$kihelkond.'</option>'?>
-			<?php } else { ?>
-			<?php echo '<option value="'.$kihelkond.'">'.$kihelkond.'</option>'?>
-            <?php } ?>
-			<?php } ?>
-            </select>
+            	<select class="form-control" name="kihelkond">
+            		<?php echo '<option value="">Kihelkond</option>' ;?>
+            		<?php foreach($kihelkonnad as $kihelkond){?>
+						<?php if($picture->kihelkond == $kihelkond){?>
+            				<?php echo '<option value="'.$kihelkond.'" selected="selected">'.$kihelkond.'</option>'?>
+						<?php } else { ?>
+							<?php echo '<option value="'.$kihelkond.'">'.$kihelkond.'</option>';?>
+            			<?php } ?>
+					<?php } ?>
+            	</select>
             </div>
-
             <div class="form-group">
                 <label for="koht">Koht</label>
-                <?php echo '<input type="text" class="form-control" id="koht" name="koht" placeholder='.$picture->koht.'"';?> <?php if(isset($koht)){ echo "value=".$koht;} ?>>
+                <?php echo '<input type="text" class="form-control" id="koht" name="koht" placeholder="'.$picture->koht.'"';?> <?php if(isset($koht)){ echo "value=".$koht;} ?>
             </div>
-			
+		</div>
 			
             <div class="form-group">
-            <select class="form-control" name="kvaliteet">
+				<label for="kvaliteet">Kvaliteet</label>
+            	<select class="form-control" name="kvaliteet">
             <option value="">Kvaliteet</option>
             <?php if($picture->kvaliteet == 'hea' || $picture->kvaliteet == 'Hea') { ?>
 					 <option value="Hea" selected="selected">Hea</option>
