@@ -38,26 +38,24 @@
 	<div class="text-center">
 		<ul class="pagination">
 		
-			<?php if($this->uri->segment(3, 0)>0){ ?>
+			<?php if($this->uri->segment(5, 0)>0){ ?>
 			
-				<li><a href="<?php echo '/index.php/gallery/All_albums/'.($this->uri->segment(3, 1)-1).''?>" aria-label="Previous"><span aria-hidden="true">&laquo; eelmised</span></a></li>
+				<li><a href="<?php echo '/index.php/gallery/albums/'.$this->uri->segment(3, 0).'/'.$this->uri->segment(4, 1).'/'.($this->uri->segment(5, 0)-1);?>" aria-label="Previous"><span aria-hidden="true">&laquo; eelmised</span></a></li>
 				
 				<?php } else { ?>
 					
 					<li class="disabled"><a href="#" aria-label="Previous"><span aria-hidden="true">&laquo; eelmised</span></a></li>
 			<?php } ?>
 			
-			<?php if($this->GalleryModel->moreAlbums($this->uri->segment(3, 0))) { ?>
+			<?php if($this->GalleryModel->moreUserAlbums($id, $this->uri->segment(5, 0))) { ?>
 			
-				<li><a href="<?php echo '/index.php/gallery/All_albums/'.($this->uri->segment(3, 0)+1).''?>" aria-label="Next"><span aria-hidden="true">j√§rgmised &raquo;</span></a></li>
+				<li><a href="<?php echo '/index.php/gallery/albums/'.$this->uri->segment(3, 0).'/'.$this->uri->segment(4, 1).'/'.($this->uri->segment(5, 0)+1);?>" aria-label="Next"><span aria-hidden="true">j‰rgmised &raquo;</span></a></li>
 
 			<?php } else { ?>
 			
-				<li class="disabled"><a href="#" aria-label="Next"><span aria-hidden="true">j√§rgmised &raquo;</span></a></li>
+				<li class="disabled"><a href="#" aria-label="Next"><span aria-hidden="true">j‰rgmised &raquo;</span></a></li>
 				
 			<?php } ?>
   	  	</ul>
 	</div>
 </div>
-
-

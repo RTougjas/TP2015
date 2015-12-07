@@ -30,7 +30,8 @@
         }
         
         public function uploads($id, $username){
-            $this->data['pictures'] = $this->Profile_model->get_user_pictures($id);
+            $this->data['pictures'] = $this->Profile_model->get_user_pictures($id, $this->uri->segment(5, 0));
+			$this->data['id'] = $id;
             $username = rawurldecode($username);
 			if($username == "0") {
 				$this->data['small_header'] = "";
@@ -39,7 +40,7 @@
 				$this->data['small_header'] = $username;
 			}
             $this->load->view('templates/header');
-            $this->load->view('album_photos', $this->data); 
+            $this->load->view('user_photos', $this->data); 
             $this->load->view('templates/footer');
         }
         

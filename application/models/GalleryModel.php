@@ -81,27 +81,58 @@ class GalleryModel extends CI_Model {
 		return $query->result();
 	}
 		
-	public function getUserAlbums($user_id) {
+	public function getUserAlbums($user_id, $offset) {
 		$this->db->select('albums.id, albums.title, albums.description, users.username');
 		$this->db->from('albums');
 		$this->db->join('users', 'albums.user_id = users.id', 'inner');
 		$this->db->where('albums.user_id', $user_id);
+		$this->db->limit(12, $offset*12);
 		$query = $this->db->get();
 	
 		return $query->result();
 	}
 	
-	public function getAlbumPhotos($album_id) {
+	public function moreUserAlbums($user_id, $offset) {
+		$this->db->select('albums.id, albums.title, albums.description, users.username');
+		$this->db->from('albums');
+		$this->db->join('users', 'albums.user_id = users.id', 'inner');
+		$this->db->where('albums.user_id', $user_id);
+		$this->db->limit(12, ($offset+1)*12);
+		$query = $this->db->get();
+		if($query->num_rows() > 0){
+			return true;
+		} else {
+			return false;
+		}
+	}
+	
+	public function getAlbumPhotos($album_id, $offset) {
 		$this->db->select('id, title, description, location');
 		$this->db->from('pictures');
 		$this->db->join('pictures_albums', 'id = picture_id', 'inner');
 		$this->db->where('album_id', $album_id);
+		$this->db->limit(12, $offset*12);
 		$query = $this->db->get();
 		
 		return $query->result();
 	}
+	public function moreAlbumPhotos($album_id, $offset) {
+		$this->db->select('id, title, description, location');
+		$this->db->from('pictures');
+		$this->db->join('pictures_albums', 'id = picture_id', 'inner');
+		$this->db->where('album_id', $album_id);
+		$this->db->limit(12, ($offset+1)*12);
+		$query = $this->db->get();
+		if($query->num_rows() > 0){
+			return true;
+		} else {
+			return false;
+		}
+	}
+	
 
-	public function getAlbumDetails($album_id) {
+
+  	public function getAlbumDetails($album_id) {
 		
 		$this->db->select('albums.id, albums.title, albums.description, created, albums.varasem_omanik, albums.kihelkond, albums.koht, albums.ligikaudne_aeg, albums.user_id, users.username, COUNT(picture_id) AS count');
 		$this->db->from('albums');
@@ -109,12 +140,10 @@ class GalleryModel extends CI_Model {
 		$this->db->join('v_pictures_in_albums', 'albums.id = album_id', 'inner');
 		$this->db->where('albums.id', $album_id);
 		$this->db->group_by(array('users.username', 'albums.id'));
-
 		$query = $this->db->get();
 		
 		return $query->result();
 	}
-	  
     public function create_album($info){
         return $this->db->insert('albums', $info);
 
