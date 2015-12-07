@@ -82,3 +82,12 @@ create table lifestory(
     person_id integer,
     constraint lifestory_people_person_id_fkey foreign key (person_id) REFERENCES people(id) on delete cascade
 );
+
+alter table albums ADD column varasem_omanik CHARACTER VARYING(64);
+
+ALTER TABLE albums ADD column kihelkond CHARACTER VARYING(30);
+
+alter table albums ADD column koht CHARACTER VARYING(40);
+
+alter table albums add column ligikaudne_aeg character varying(400);
+
