@@ -1,4 +1,4 @@
-<div class="container">
+Ôªø<div class="container">
 <div class="page-header">
   <h1>Pildid <small><?php echo $small_header;?></small></h1>
     <?php if(isset($album_id) && $this->ion_auth->get_user_id() == $this->GalleryModel->get_album_owner($album_id)[0]->user_id){?>
@@ -47,9 +47,9 @@
 			<?php } ?>
 			
 			<?php if($this->GalleryModel->moreAlbumPhotos($album_id,$this->uri->segment(5, 0))) { ?>
-				<li><a href="<?php echo '/index.php/gallery/albumPhotos/'.$this->uri->segment(3, 1).'/Album/'.($this->uri->segment(5, 0)+1);?>" aria-label="Next"><span aria-hidden="true">j‰rgmised &raquo;</span></a></li>
+				<li><a href="<?php echo '/index.php/gallery/albumPhotos/'.$this->uri->segment(3, 1).'/Album/'.($this->uri->segment(5, 0)+1);?>" aria-label="Next"><span aria-hidden="true">j√§rgmised &raquo;</span></a></li>
 			<?php } else { ?>
-				<li class="disabled"><a href="#" aria-label="Next"><span aria-hidden="true">j‰rgmised &raquo;</span></a></li>
+				<li class="disabled"><a href="#" aria-label="Next"><span aria-hidden="true">j√§rgmised &raquo;</span></a></li>
 			<?php } ?>
   	  	</ul>
 	</div>
