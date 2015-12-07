@@ -32,7 +32,7 @@
       </ul>
       <form class="navbar-form navbar-left" action="<?php echo site_url("Search/DoSearch")?>" method="POST">
         <div class="form-group">
-          <input type="text" name="search_key" class="form-control" id="text" placeholder="otsing">
+          <input type="text" name="search_key" class="form-control" id="text" placeholder="otsing" autocomplete="off">
         </div>
       </form>
       <ul class="nav navbar-nav navbar-right">
