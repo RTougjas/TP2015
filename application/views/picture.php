@@ -7,11 +7,14 @@
 					<br>
 					<ul class="list-group">
 						<li class="list-group-item" style="word-wrap:break-word">
-							<?php echo "<h3>".$picture->title."</h3><br>";?>
+							<?php echo "<b>".$picture->title."</b><br>";?>
 							<?php echo $picture->description;?>
 						</li>
 						<?php if($picture->omanik != ''){ ?>
-							<li class="list-group-item">Omanik <?php echo '<b>'.$picture->omanik.'</b>';?></li>
+							<li class="list-group-item">Omanik
+								<a href="<?php echo site_url('/profile/'.$picture->omanik);?>"><?php echo '<b>'.$picture->omanik.'</b>';?></a>
+								
+							</li>
 						<?php } ?>
 						<?php if($picture->varasem_omanik != ''){ ?>
 							<li class="list-group-item">varasem omanik <?php echo '<b>'.$picture->varasem_omanik.'</b>';?></li>
