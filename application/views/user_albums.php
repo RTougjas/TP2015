@@ -7,7 +7,7 @@
 <?php for($i = 0; $i < sizeOf($albums); $i++) {?>
 	<?php for($j = 0; $j < sizeOf($pictures_in_albums); $j++) {
 		if($pictures_in_albums[$j]->album_id == $albums[$i]->id && $pictures_in_albums[$j]->count > 0) {?>
-			<div class="col-lg-4 col-md-3 col-sm-6">
+			<div class="col-lg-3 col-md-3 col-sm-6">
 				<div class="panel panel-default">
 					<div class="panel-heading">
 						<?php global $count;
@@ -24,7 +24,7 @@
 						<div class="col-lg-12 col-md-12 col-xs-12">
 						
 							<?php $album_cover = $this->GalleryModel->getAlbumCover($albums[$i]->id); ?>
-							<?php echo '<a href='.site_url("picture/".$album_cover[0]).'><img src="'.$album_cover[1].'" class="img-rounded" alt="borked" height="200" width="200"></a>';?>
+							<?php echo '<a href='.site_url("picture/".$album_cover[0]).'><img src="'.$album_cover[1].'" class="img-responsive" alt="borked" height="200" width="200"></a>';?>
 							
 						</div>
 					</div>
@@ -38,26 +38,24 @@
 	<div class="text-center">
 		<ul class="pagination">
 		
-			<?php if($this->uri->segment(3, 0)>0){ ?>
+			<?php if($this->uri->segment(5, 0)>0){ ?>
 			
-				<li><a href="<?php echo '/index.php/gallery/All_albums/'.($this->uri->segment(3, 1)-1).''?>" aria-label="Previous"><span aria-hidden="true">&laquo; eelmised</span></a></li>
+				<li><a href="<?php echo '/index.php/gallery/albums/'.$this->uri->segment(3, 0).'/'.$this->uri->segment(4, 1).'/'.($this->uri->segment(5, 0)-1);?>" aria-label="Previous"><span aria-hidden="true">&laquo; eelmised</span></a></li>
 				
 				<?php } else { ?>
 					
 					<li class="disabled"><a href="#" aria-label="Previous"><span aria-hidden="true">&laquo; eelmised</span></a></li>
 			<?php } ?>
 			
-			<?php if($this->GalleryModel->moreAlbums($this->uri->segment(3, 0))) { ?>
+			<?php if($this->GalleryModel->moreUserAlbums($id, $this->uri->segment(5, 0))) { ?>
 			
-				<li><a href="<?php echo '/index.php/gallery/All_albums/'.($this->uri->segment(3, 0)+1).''?>" aria-label="Next"><span aria-hidden="true">j√§rgmised &raquo;</span></a></li>
+				<li><a href="<?php echo '/index.php/gallery/albums/'.$this->uri->segment(3, 0).'/'.$this->uri->segment(4, 1).'/'.($this->uri->segment(5, 0)+1);?>" aria-label="Next"><span aria-hidden="true">j‰rgmised &raquo;</span></a></li>
 
 			<?php } else { ?>
 			
-				<li class="disabled"><a href="#" aria-label="Next"><span aria-hidden="true">j√§rgmised &raquo;</span></a></li>
+				<li class="disabled"><a href="#" aria-label="Next"><span aria-hidden="true">j‰rgmised &raquo;</span></a></li>
 				
 			<?php } ?>
   	  	</ul>
 	</div>
 </div>
-
-

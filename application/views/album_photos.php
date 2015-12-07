@@ -7,8 +7,9 @@
     <?php }?>
   
 </div>
+
 <?php for($i = 0; $i < sizeOf($pictures); $i++) {?>
-	<div class="col-lg-3 col-md-3 col-sm-6">
+	<div class="col-lg-4 col-md-3 col-sm-3">
 			<table>
 				<tr>
 					<th><?php echo rawurldecode($pictures[$i]->title)?><th>

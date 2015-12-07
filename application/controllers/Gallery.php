@@ -43,8 +43,9 @@ class Gallery extends CI_Controller {
 	*/
 	public function albums($id, $username) {
         $username = rawurldecode($username);
-		$this->data['albums'] = $this->GalleryModel->getUserAlbums($id);
-		$this->data['pictures'] = $this->GalleryModel->getPictures();
+		$this->data['albums'] = $this->GalleryModel->getUserAlbums($id, $this->uri->segment(5, 0));
+		$this->data['id'] = $id;
+		$this->data['pictures'] = $this->GalleryModel->getPictures(0);
 		$this->data['pictures_in_albums'] = $this->GalleryModel->getAlbumPhotoCount();
 		if($username == "0") {
 			$this->data['small_header'] = "";
@@ -53,7 +54,7 @@ class Gallery extends CI_Controller {
 			$this->data['small_header'] = $username;
 		}
         $this->load->view('templates/header');
-        $this->load->view('gallery', $this->data);
+        $this->load->view('user_albums', $this->data);
         $this->load->view('templates/footer');
 		
 	}
