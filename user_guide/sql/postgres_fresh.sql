@@ -108,7 +108,8 @@ CREATE TABLE IF NOT EXISTS albums(
     id serial primary key not null,
     title varchar(64),
     description text,
-    user_id integer not null references users(id)
+    user_id integer not null references users(id),
+    created integer
 );
 
 CREATE TABLE IF NOT EXISTS pictures_albums(
@@ -146,4 +147,17 @@ references pictures(id) on update cascade on delete cascade;
 alter table pictures_tags add constraint pictures_tags_picture_id_fkey foreign key (picture_id)
 references pictures(id) on update cascade on delete cascade;
 
-alter table pictures_tags drop column id;
+create table if not exists people(
+	id serial primary key not null,
+	name varchar(100) not null,
+	birthday date,
+	location varchar(25),
+	life text,
+    enabled boolean
+);
+
+create table lifestory(
+	comment text not null,
+	person_id integer,
+	constraint lifestory_people_person_id_fkey foreign key (person_id) REFERENCES people(id) on delete cascade
+);
