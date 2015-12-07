@@ -67,7 +67,7 @@ class Upload extends CI_Controller {
                 'ligikaudne_aeg' => $this->input->post('ligikaudne_aeg'),
                 'kuupaev' => $this->input->post('kuupaev')
             );
-            
+			
 			$this->upload_model->upload($info);
             
             $picture_id = $this->upload_model->get_picture_id($info['location']);
@@ -93,10 +93,13 @@ class Upload extends CI_Controller {
 				}
 				
 			}
+			$info['info'] = "Your file was successfully uploaded";
+			$this->session->set_flashdata('info', $info['info']);
+			redirect('upload', 'refresh');
 			
-            $this->load->view('templates/header');
-            $this->load->view('upload_success', $data);
-            $this->load->view('templates/footer');
+            //$this->load->view('templates/header');
+            //$this->load->view('upload_success', $data);
+            //$this->load->view('templates/footer');
         }
         else 
         {
@@ -119,11 +122,17 @@ class Upload extends CI_Controller {
             }
             elseif(!$this->form_validation->run()){
                 $info['error'] = $this->form_validation->error_string();
-            }
 
-            $this->load->view('templates/header');
-            $this->load->view('upload_form', $info);
-            $this->load->view('templates/footer');
+            }
+			//$info['albums'] = $this->GalleryModel->getAlbums($this->uri->segment(3, 0));
+			//$this->load->view('templates/header');
+            $this->load->view('upload_form_photo', $info);
+            //$this->load->view('templates/footer');
+			
+			$this->session->set_flashdata('error', $info['error']);
+			redirect('upload', 'refresh');
+
+			
         }
 		
     }

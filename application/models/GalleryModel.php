@@ -115,6 +115,20 @@ class GalleryModel extends CI_Model {
 		}
 	}
 	
+
+
+  	public function getAlbumDetails($album_id) {
+		
+		$this->db->select('albums.id, albums.title, albums.description, created, albums.varasem_omanik, albums.kihelkond, albums.koht, albums.ligikaudne_aeg, albums.user_id, users.username, COUNT(picture_id) AS count');
+		$this->db->from('albums');
+		$this->db->join('users', 'albums.user_id = users.id', 'inner');
+		$this->db->join('v_pictures_in_albums', 'albums.id = album_id', 'inner');
+		$this->db->where('albums.id', $album_id);
+		$this->db->group_by(array('users.username', 'albums.id'));
+		$query = $this->db->get();
+		
+		return $query->result();
+	}
 	/*
 	public function getAlbumPhotos($album_id) {
 		$this->db->select('picture_id AS id, picture_title AS title, picture_description AS description, location');
