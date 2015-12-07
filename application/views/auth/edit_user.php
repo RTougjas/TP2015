@@ -29,6 +29,30 @@
    			<?php echo lang('edit_user_password_confirm_label', 'password_confirm');?>
    			<input type="password" class="form-control" id="password_confirm" name="password_confirm" placeholder="Parool uuesti">
 	   	</div>
+          <?php if ($this->ion_auth->is_admin()): ?>
+            <table class="table">
+          <h3><?php echo lang('edit_user_groups_heading');?></h3>
+          <?php foreach ($groups as $group):?>
+              <label class="checkbox">
+                  <tr>
+              <?php
+                  $gID=$group['id'];
+                  $checked = null;
+                  $item = null;
+                  foreach($currentGroups as $grp) {
+                      if ($gID == $grp->id) {
+                          $checked= ' checked="checked"';
+                      break;
+                      }
+                  }
+              ?>
+              <td><input type="checkbox" name="groups[]" value="<?php echo $group['id'];?>"<?php echo $checked;?>></td>
+              <td><?php echo htmlspecialchars($group['name'],ENT_QUOTES,'UTF-8');?></td>
+              </tr>
+                </label>
+          <?php endforeach?>
+            </table>
+      <?php endif ?>
        	<?php echo form_hidden('id', $user->id);?>
        	<?php echo form_hidden($csrf); ?>
  	  	<button type="submit" class="btn btn-success">Salvesta</button>
