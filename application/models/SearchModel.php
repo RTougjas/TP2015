@@ -40,7 +40,7 @@ class SearchModel extends CI_Model {
 			 	$this->db->or_where('id', $row->id);
 		 	}
 	 	}
-		$this->db->limit(9, $offset*9); 
+		//$this->db->limit(9, $offset*9); 
 	 	$q = $this->db->get();
 	 	return $q->result();
  	}

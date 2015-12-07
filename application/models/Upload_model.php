@@ -3,8 +3,23 @@
     class Upload_model extends CI_Model {
         
         public function upload($info){
-            return $this->db->insert('pictures', $info);
+            $this->db->insert('pictures', $info);
+			$this->db->select('lastval()');
+			$query = $this->db->get();
+			return $query->result();
         }
+		
+		//For getting last photo id. 
+		public function retrieveLastPhotoId() {
+			$this->db->select('lastval()');
+			$query = $this->db->get();
+			return $query->result();
+		}
+		
+		public function addPhotoToAlbum($info) {
+			return $this->db->insert('pictures_albums', $info);
+	
+		}
         
         public function get_picture_id($location){
             $this->db->select("id"); 

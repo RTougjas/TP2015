@@ -19,7 +19,7 @@ class Upload extends CI_Controller {
 		$this->load->view('upload_form', $this->data);
         $this->load->view('templates/footer');
     }
-
+	
     public function do_upload()
     {
         $config['upload_path']          = './uploads/';
@@ -60,7 +60,7 @@ class Upload extends CI_Controller {
                 'koht' => $this->input->post('koht'),
                 'digifoto' => $this->input->post('digifoto'),
                 'fotograaf' => $this->input->post('fotograaf'),
-                'omanik' => $this->input->post('omanik'),
+                'omanik' => $this->session->userdata('username'),
                 'varasem_omanik' => $this->input->post('varasem_omanik'),
                 'kvaliteet' => $_POST['kvaliteet'],
                 'isikud_fotol' => $this->input->post('isikud_fotol'),
@@ -68,8 +68,16 @@ class Upload extends CI_Controller {
                 'kuupaev' => $this->input->post('kuupaev')
             );
 			
-			$this->upload_model->upload($info);
-            
+			$lastId = $this->upload_model->upload($info)[0]->lastval;
+			$album_id = $this->input->post('album_id');
+			
+			$pictures_albums = array(
+				'picture_id' => $lastId,
+				'album_id' => $album_id
+			);
+			
+            $this->upload_model->addPhotoToAlbum($pictures_albums);
+			
             $picture_id = $this->upload_model->get_picture_id($info['location']);
 			
 			$tags = preg_split("/,/",$this->input->post('tags'));

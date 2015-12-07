@@ -29,10 +29,11 @@
         <li><a href="<?php echo site_url("/gallery");?>"><span class="glyphicon glyphicon-folder-open" aria-hidden="true"> Albumid</span></a></li>
 		<li><a href="<?php echo site_url("/gallery/AllPhotos");?>"><span class="glyphicon glyphicon-picture" aria-hidden="true"> Pildid</span></a></li>
 		<li><a href="<?php echo site_url("/upload");?>"><span class="glyphicon glyphicon-upload" aria-hidden="true"> Upload</span></a></li>
+        <li><a href="<?php echo site_url("profile/all_people");?>"><span class="glyphicon glyphicon-user" aria-hidden="true"> Isikud</span></a></li>
       </ul>
       <form class="navbar-form navbar-left" action="<?php echo site_url("Search/DoSearch")?>" method="POST">
         <div class="form-group">
-          <input type="text" name="search_key" class="form-control" id="text" placeholder="otsing">
+          <input type="text" name="search_key" class="form-control" id="text" placeholder="otsing" autocomplete="off">
         </div>
       </form>
       <ul class="nav navbar-nav navbar-right">

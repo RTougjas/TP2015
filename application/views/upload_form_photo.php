@@ -2,10 +2,10 @@
 
 
 <div class="col-lg-12 col-md-12 col-sm-12">
-	
 	<h3>Lisa pilt</h3>
 	<form action="<?php echo site_url('upload/do_upload');?>" method="POST" enctype="multipart/form-data">
-        <div class="form-group">
+        <input type="hidden" value="<?php echo $album_details[0]->id;?>" name="album_id" id="album_id">
+		<div class="form-group">
             <label for="title">Pildi pealkiri</label>
             <input type="text" class="form-control" id="title" name="title" placeholder="Pealkiri">
         </div>
@@ -25,11 +25,17 @@
             <input type="text" class="form-control" id="omanik" name="omanik" placeholder="Omanik" 
 			value="<?php echo $album_details[0]->username;?>" disabled>
         </div>
-
+		
         <div class="form-group">
-            <label for="varasem_omanik">Varasem Omanik</label>
-            <input type="text" class="form-control" id="varasem_omanik" name="varasem_omanik" placeholder="Varasem Omanik"
-			value="<?php echo $album_details[0]->varasem_omanik;?>" disabled>
+			<?php if(strlen($album_details[0]->varasem_omanik) > 0 ) {?>
+	            <label for="varasem_omanik">Varasem Omanik</label>
+	            <input type="text" class="form-control" id="varasem_omanik" name="varasem_omanik" placeholder="Varasem Omanik"
+				value="<?php echo $album_details[0]->varasem_omanik;?>" >
+			<?php } else { ?>
+	            <label for="varasem_omanik">Varasem Omanik</label>
+	            <input type="text" class="form-control" id="varasem_omanik" name="varasem_omanik" placeholder="Varasem Omanik"
+				value="">		
+			<?php } ?>
         </div>
 
         <div class="form-group">
@@ -43,29 +49,37 @@
         </div>
 
         <div class="form-group">
-            <label for="ligikaudne_aeg">Ligikaudne aeg</label>
-            <input type="text" class="form-control" id="ligikaudne_aeg" name="ligikaudne_aeg" placeholder="Aeg omasõnadega"
-			value="<?php echo $album_details[0]->ligikaudne_aeg;?>" disabled>
+			<?php if(strlen($album_details[0]->ligikaudne_aeg) > 0 ) {?>
+            	<label for="ligikaudne_aeg">Ligikaudne aeg</label>
+            	<input type="text" class="form-control" id="ligikaudne_aeg" name="ligikaudne_aeg" placeholder="Aeg omasõnadega"
+				value="<?php echo $album_details[0]->ligikaudne_aeg;?>" >
+			<?php } else { ?>
+	            <label for="ligikaudne_aeg">Ligikaudne aeg</label>
+	            <input type="text" class="form-control" id="ligikaudne_aeg" name="ligikaudne_aeg" placeholder="Aeg omasõnadega"
+				value="">		
+			<?php } ?>
         </div>
-
-        <div class="form-group">
-		<?php if(sizeOf($album_details[0]->kihelkond) >0 ) {?>
-			<select class="form-control" name="kihelkond">
-				<option value="<?php echo $album_details[0]->kihelkond;?>" selected><?php echo $album_details[0]->kihelkond;?></option>
-		<?php }?>
-		
-        <select class="form-control" name="kihelkond">
-        <?php echo '<option value="">Kihelkond</option>' ?>
-        <?php foreach($kihelkonnad as $kihelkond){?>
-        <?php echo '<option value="'.$kihelkond.'">'.$kihelkond.'</option>'?>
-        <?php } ?>
+		<div class="form-group">
+		<select class="form-control" name="kihelkond">
+			<?php if(strlen($album_details[0]->kihelkond) > 0 ) {?>
+					<option value="<?php echo $album_details[0]->kihelkond;?>" selected><?php echo $album_details[0]->kihelkond;?></option>
+		<?php } else { ?>
+        		<?php foreach($kihelkonnad as $kihelkond) { ?>
+        			<option value="<?php echo $kihelkond;?>"><?php echo $kihelkond;?></option>
+        		<?php } ?>
+			<?php } ?>
         </select>
-        </div>
-
+		</div>
         <div class="form-group">
-            <label for="koht">Koht</label>
-            <input type="text" class="form-control" id="koht" name="koht" placeholder="Koht"
-			value="<?php echo $album_details[0]->koht;?>" disabled>
+			<?php if(strlen($album_details[0]->koht) > 0 ) {?>
+	            <label for="koht">Koht</label>
+	            <input type="text" class="form-control" id="koht" name="koht" placeholder="Koht"
+				value="<?php echo $album_details[0]->koht;?>" >
+			<?php } else { ?>
+	            <label for="koht">Koht</label>
+	            <input type="text" class="form-control" id="koht" name="koht" placeholder="Koht"
+				value="" >
+			<?php } ?>
         </div>
 
         <div class="form-group">
