@@ -62,7 +62,7 @@ class Gallery extends CI_Controller {
 		Album title is for presenting purposes.
 	*/
 	public function albumPhotos($album_id, $album_title) {
-		$this->data['pictures'] = $this->GalleryModel->getAlbumPhotos($album_id);
+		$this->data['pictures'] = $this->GalleryModel->getAlbumPhotos($album_id, $this->uri->segment(5, 0));
         $this->data['album_id'] = $album_id;
         $album_title = rawurldecode($album_title);
 		if($album_title == "0") {
@@ -72,7 +72,7 @@ class Gallery extends CI_Controller {
 			$this->data['small_header'] = $album_title;
 		}
         $this->load->view('templates/header');
-        $this->load->view('album_photos', $this->data); 
+        $this->load->view('photos_in_album', $this->data); 
         $this->load->view('templates/footer');
 		
 	}
