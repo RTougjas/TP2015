@@ -152,7 +152,8 @@ create table if not exists people(
 	name varchar(100) not null,
 	birthday date,
 	location varchar(25),
-	life text
+	life text,
+    enabled boolean
 );
 
 create table lifestory(
