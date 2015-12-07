@@ -65,5 +65,16 @@ alter table users drop column company,
     drop column phone,
     add column telephone integer,
     add column location varchar(256);
+<<<<<<< Local Changes
 	
 alter table albums add column created integer;
+
+alter table albums ADD column varasem_omanik CHARACTER VARYING(64);
+
+ALTER TABLE albums ADD column kihelkond CHARACTER VARYING(30);
+
+alter table albums ADD column koht CHARACTER VARYING(40);
+
+alter table albums add column ligikaudne_aeg character varying(400);
+=======
+>>>>>>> External Changes
