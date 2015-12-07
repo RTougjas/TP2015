@@ -25,12 +25,12 @@
             <input type="text" class="form-control" id="omanik" name="omanik" placeholder="Omanik" 
 			value="<?php echo $album_details[0]->username;?>" disabled>
         </div>
-
+		
         <div class="form-group">
 			<?php if(strlen($album_details[0]->varasem_omanik) > 0 ) {?>
 	            <label for="varasem_omanik">Varasem Omanik</label>
 	            <input type="text" class="form-control" id="varasem_omanik" name="varasem_omanik" placeholder="Varasem Omanik"
-				value="<?php echo $album_details[0]->varasem_omanik;?>" disabled>
+				value="<?php echo $album_details[0]->varasem_omanik;?>" >
 			<?php } else { ?>
 	            <label for="varasem_omanik">Varasem Omanik</label>
 	            <input type="text" class="form-control" id="varasem_omanik" name="varasem_omanik" placeholder="Varasem Omanik"
@@ -52,7 +52,7 @@
 			<?php if(strlen($album_details[0]->ligikaudne_aeg) > 0 ) {?>
             	<label for="ligikaudne_aeg">Ligikaudne aeg</label>
             	<input type="text" class="form-control" id="ligikaudne_aeg" name="ligikaudne_aeg" placeholder="Aeg omasõnadega"
-				value="<?php echo $album_details[0]->ligikaudne_aeg;?>" disabled>
+				value="<?php echo $album_details[0]->ligikaudne_aeg;?>" >
 			<?php } else { ?>
 	            <label for="ligikaudne_aeg">Ligikaudne aeg</label>
 	            <input type="text" class="form-control" id="ligikaudne_aeg" name="ligikaudne_aeg" placeholder="Aeg omasõnadega"
@@ -74,7 +74,7 @@
 			<?php if(strlen($album_details[0]->koht) > 0 ) {?>
 	            <label for="koht">Koht</label>
 	            <input type="text" class="form-control" id="koht" name="koht" placeholder="Koht"
-				value="<?php echo $album_details[0]->koht;?>" disabled>
+				value="<?php echo $album_details[0]->koht;?>" >
 			<?php } else { ?>
 	            <label for="koht">Koht</label>
 	            <input type="text" class="form-control" id="koht" name="koht" placeholder="Koht"
