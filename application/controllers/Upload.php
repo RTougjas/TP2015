@@ -60,7 +60,7 @@ class Upload extends CI_Controller {
                 'koht' => $this->input->post('koht'),
                 'digifoto' => $this->input->post('digifoto'),
                 'fotograaf' => $this->input->post('fotograaf'),
-                'omanik' => $this->session->userdata($this->ion_auth->get_user_id()),
+                'omanik' => $this->session->userdata('username'),
                 'varasem_omanik' => $this->input->post('varasem_omanik'),
                 'kvaliteet' => $_POST['kvaliteet'],
                 'isikud_fotol' => $this->input->post('isikud_fotol'),
