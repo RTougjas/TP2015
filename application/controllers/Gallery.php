@@ -4,7 +4,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class Gallery extends CI_Controller {
     function __Construct(){
         parent::__Construct ();
-        $this->load->model('GalleryModel'); // load model 
+        $this->load->model('GalleryModel'); // load model
         $this->load->library(array('session'));
     }
 
@@ -79,7 +79,7 @@ class Gallery extends CI_Controller {
 	}
 	
 	public function albumDetails($album_id) {
-		
+
 		$this->data['album_details'] = $this->GalleryModel->getAlbumDetails($album_id);
         $this->load->view('upload_form_photo', $this->data); 		
 	}
