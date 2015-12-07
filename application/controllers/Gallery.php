@@ -10,7 +10,6 @@ class Gallery extends CI_Controller {
 
     public function index() {
 	
-	
 		redirect('gallery/All_albums/0');
 		
     }
