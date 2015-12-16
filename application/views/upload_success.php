@@ -1,4 +1,4 @@
 <div class="alert alert-success" role="alert">
-	Your file was successfully uploaded
+	Pilt on edukalt annetatud.
 	<p><?php echo anchor('upload', 'Upload Another File!'); ?></p>
 </div>

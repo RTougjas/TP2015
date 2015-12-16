@@ -38,7 +38,7 @@
 	            <input type="text" class="form-control" id="albumi_varasem_omanik" name="albumi_varasem_omanik" placeholder="Albumi varasem Omanik">
 	        </div>
             <br>
-            <input type="submit" class="btn btn-primary" value="create">
+            <input type="submit" class="btn btn-primary" value="Loo album">
 	<?php } else {
 		redirect('/auth/login');
 	}?>
