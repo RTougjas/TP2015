@@ -91,9 +91,6 @@ class Edit extends CI_Controller {
 		$this->EditModel->editColored($id, $this->input->post('colored'));
 		$this->EditModel->editDigifoto($id, $this->input->post('digifoto'));
 
-		
-		
-		
         if (! $this->input->post('title') == ''){
             $this->EditModel->editTitle($id, $this->input->post('title'));
         }
@@ -143,7 +140,14 @@ class Edit extends CI_Controller {
             }
             $data['enabled'] = $this->input->post('enabled');
             $this->EditModel->edit_person($id, $data);
-            redirect('profile/person/'.$id);
+            //redirect('profile/person/'.$id, 'refresh');
+			
+			$data['person'] = $this->Profile_model->get_person($this->uri->segment(3, 1))[0];
+			$data['success'] = "Andmed on edukalt uuendatud";
+            $this->load->view('templates/header');
+            $this->load->view('people/edit', $data); 
+            $this->load->view('templates/footer');
+			
         }
         else{
             $data = array(
