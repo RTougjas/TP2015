@@ -9,6 +9,7 @@
                         <?php echo "<h3>".$info->name."</h3>";?>
                             <?php if($this->ion_auth->is_admin()) { ?>
                             <a class="btn btn-info" href="<?php echo site_url("edit/edit_person/".$info->id);?>">Muuda Andmeid</a>
+							<a class="btn btn-danger" href=<?php echo site_url('edit/delete_person/'.$info->id);?>>Eemalda isik</a>
                             <?php } ?>
                     </li>
                     <?php if($info->name != ''){ ?>

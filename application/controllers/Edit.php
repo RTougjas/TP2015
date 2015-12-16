@@ -158,7 +158,17 @@ class Edit extends CI_Controller {
             $this->load->view('templates/footer');
         }
     }
-    
+	
+	public function delete_person($id) {
+		$this->EditModel->delete_person($this->uri->segment(3, 1))[0];
+		
+        $data['people'] = $this->Profile_model->get_people();
+        $this->load->view('templates/header');
+        $this->load->view('people/all_people', $data); 
+        $this->load->view('templates/footer');
+		
+	}
+		
     function date_check($date){
         if(strlen($date) == 0){
             return true;
