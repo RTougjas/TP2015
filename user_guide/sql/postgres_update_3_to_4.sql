@@ -91,3 +91,7 @@ alter table albums ADD column koht CHARACTER VARYING(40);
 
 alter table albums add column ligikaudne_aeg character varying(400);
 
+alter table lifestory add column contributor_id integer;
+
+alter table lifestory add column contributor_username character varying(100)
+
