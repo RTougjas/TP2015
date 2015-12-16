@@ -31,7 +31,15 @@
                                     <div class="panel-body" style="text:word-wrap"><?php echo $info->life; ?></div>
                                 <?php } ?>
                                 <?php for($i = 0; $i < count($story); ++$i){?>
-                                        <div class="panel-body" style="text:word-wrap"><?php echo $story[$i]->comment; ?></div>
+                                        
+											<blockquote>
+												<?php echo $story[$i]->comment; ?>
+												<p><small>
+													<?php echo "<a href=".site_url('/profile/'.urlencode($story[$i]->contributor_username)).">"
+								                    		.$story[$i]->contributor_username."</a>";?>
+												</small></p>
+											</blockquote>
+											
                                     <?php }?>
                             <?php } else { ?>
                                 <div class="panel-group">

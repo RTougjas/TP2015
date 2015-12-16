@@ -92,7 +92,9 @@
         public function add_story($id){
             $info = array(
                 'person_id' => $id,
-                'comment' => $this->input->post('comment')
+                'comment' => $this->input->post('comment'),
+				'contributor_id' => $this->ion_auth->get_user_id(),
+				'contributor_username' => $this->session->userdata('username')
             );
             $this->Profile_model->add_story($info); 
             redirect('profile/person/'.$id);
