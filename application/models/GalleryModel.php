@@ -87,7 +87,6 @@ class GalleryModel extends CI_Model {
 		$this->db->from('albums');
 		$this->db->join('users', 'albums.user_id = users.id', 'inner');
 		$this->db->where('albums.user_id', $user_id);
-		$this->db->limit(12, $offset*12);
 		$query = $this->db->get();
 	
 		return $query->result();
