@@ -170,8 +170,14 @@ class EditModel extends CI_Model {
 	}
     
     public function edit_person($id, $info){
+				
         return $this->db->update('people', $info, array('id' => $id));
     }
+	
+	public function delete_person($id) {
+		$this->db->where('id', $id);
+		return $this->db->delete('people');
+	}
 }
 ?>
 

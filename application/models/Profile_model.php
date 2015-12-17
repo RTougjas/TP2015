@@ -56,7 +56,8 @@
         }
         
         public function insert_person($info){
-            return $this->db->insert('people', $info);
+			
+           	return $this->db->insert('people', $info);
         }
         
         public function get_people(){

@@ -91,9 +91,6 @@ class Edit extends CI_Controller {
 		$this->EditModel->editColored($id, $this->input->post('colored'));
 		$this->EditModel->editDigifoto($id, $this->input->post('digifoto'));
 
-		
-		
-		
         if (! $this->input->post('title') == ''){
             $this->EditModel->editTitle($id, $this->input->post('title'));
         }
@@ -143,7 +140,14 @@ class Edit extends CI_Controller {
             }
             $data['enabled'] = $this->input->post('enabled');
             $this->EditModel->edit_person($id, $data);
-            redirect('profile/person/'.$id);
+            //redirect('profile/person/'.$id, 'refresh');
+			
+			$data['person'] = $this->Profile_model->get_person($this->uri->segment(3, 1))[0];
+			$data['success'] = "Andmed on edukalt uuendatud";
+            $this->load->view('templates/header');
+            $this->load->view('people/edit', $data); 
+            $this->load->view('templates/footer');
+			
         }
         else{
             $data = array(
@@ -158,7 +162,17 @@ class Edit extends CI_Controller {
             $this->load->view('templates/footer');
         }
     }
-    
+	
+	public function delete_person($id) {
+		$this->EditModel->delete_person($this->uri->segment(3, 1))[0];
+		
+        $data['people'] = $this->Profile_model->get_people();
+        $this->load->view('templates/header');
+        $this->load->view('people/all_people', $data); 
+        $this->load->view('templates/footer');
+		
+	}
+		
     function date_check($date){
         if(strlen($date) == 0){
             return true;

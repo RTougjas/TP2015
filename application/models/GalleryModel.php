@@ -80,6 +80,7 @@ class GalleryModel extends CI_Model {
 		
 		return $query->result();
 	}
+
 	
 	public function getUserAlbumsNoOffset($user_id) {
 		$this->db->select('albums.id, albums.title, albums.description, users.username');
@@ -91,6 +92,7 @@ class GalleryModel extends CI_Model {
 		return $query->result();
 	}
 	
+
 	public function getUserAlbums($user_id, $offset) {
 		$this->db->select('albums.id, albums.title, albums.description, users.username');
 		$this->db->from('albums');

@@ -9,6 +9,7 @@
                         <?php echo "<h3>".$info->name."</h3>";?>
                             <?php if($this->ion_auth->is_admin()) { ?>
                             <a class="btn btn-info" href="<?php echo site_url("edit/edit_person/".$info->id);?>">Muuda Andmeid</a>
+							<a class="btn btn-danger" href=<?php echo site_url('edit/delete_person/'.$info->id);?>>Eemalda isik</a>
                             <?php } ?>
                     </li>
                     <?php if($info->name != ''){ ?>
@@ -30,7 +31,15 @@
                                     <div class="panel-body" style="text:word-wrap"><?php echo $info->life; ?></div>
                                 <?php } ?>
                                 <?php for($i = 0; $i < count($story); ++$i){?>
-                                        <div class="panel-body" style="text:word-wrap"><?php echo $story[$i]->comment; ?></div>
+                                        
+											<blockquote>
+												<?php echo $story[$i]->comment; ?>
+												<p><small>
+													<?php echo "<a href=".site_url('/profile/'.urlencode($story[$i]->contributor_username)).">"
+								                    		.$story[$i]->contributor_username."</a>";?>
+												</small></p>
+											</blockquote>
+											
                                     <?php }?>
                             <?php } else { ?>
                                 <div class="panel-group">
