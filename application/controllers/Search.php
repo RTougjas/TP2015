@@ -27,7 +27,7 @@ class Search extends CI_Controller {
 			$this->data['pictures'] = $this->SearchModel->getSearchResults($keywords2, $this->uri->segment(4, 0));
 			$this->data['keywords'] = $this->uri->segment(3, "yolo");
 			$this->data['small_header'] = "Otsingu tulemused";
-	        $this->load->view('search_results', $this->data);
+	        $this->load->view('photos', $this->data);
 		}
 		$this->load->view('templates/footer');
 	
