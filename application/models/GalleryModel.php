@@ -160,7 +160,6 @@ albums.created, albums.varasem_omanik, albums.kihelkond, albums.koht, albums.lig
 			$this->db->select('*');
 			$this->db->from('v_pictures_in_albums');
 			$this->db->where('album_id', $album_id);
-			//$this->db->where('publicpic', 't');
 			$this->db->limit(24, $offset * 24);
 			$query = $this->db->get();
 		

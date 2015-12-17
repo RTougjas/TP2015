@@ -43,6 +43,22 @@
             $this->load->view('photos', $this->data); 
             $this->load->view('templates/footer');
         }
+		
+		public function albums($id, $username) {
+			$this->data['albums'] = $this->Profile_model->get_user_albums($id, $this->uri->segment(5,0));
+			$this->data['id'] = $id;
+            $username = rawurldecode($username);
+			if($username == "0") {
+				$this->data['small_header'] = "";
+			}
+			else {
+				$this->data['small_header'] = $username;
+			}
+            $this->load->view('templates/header');
+            $this->load->view('gallery', $this->data); 
+            $this->load->view('templates/footer');
+			
+		}
         
         public function create_person(){
             $this->form_validation->set_rules('name', 'Nime', 'required');

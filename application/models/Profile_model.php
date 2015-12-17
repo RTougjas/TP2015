@@ -41,7 +41,7 @@
                 return 0;
             }
         }
-        //Displays user photos from profile => 'kasutaja pildid'
+        //Displays user photos from profile => 'kasutaja pildid' from top navbar.
         public function get_user_pictures($id, $offset){
 			if($this->ion_auth->get_user_id() == $id) {
 				return $this->db->select('*')->from('pictures')->where('user_id', $id)->limit(24, $offset * 24)->get()->result();
@@ -50,6 +50,16 @@
 				return $this->db->select('*')->from('pictures')->where('user_id', $id)->where('publicpic', 't')->limit(24, $offset * 24)->get()->result();
 			}
         }
+		//displays user albums from profle => 'kasutaja albumid' From top navbar. 
+		public function get_user_albums($id, $offset) {
+				$this->db->select('*');
+				$this->db->from('albums');
+				$this->db->where('user_id', $id);
+				$this->db->limit(24, $offset * 24);
+				$query = $this->db->get();
+				
+				return $query->result();
+		}
         
         function moreUserPictures($id, $offset) { 
             $query = $this->db->select('*')->from('pictures')->where('user_id', $id)->limit(24, ($offset + 1) * 24)->get(); 
@@ -59,6 +69,15 @@
                 return false;
             }
         }
+		
+		public function moreUserAlbums($id, $offset) {
+            $query = $this->db->select('*')->from('albums')->where('user_id', $id)->limit(24, ($offset + 1) * 24)->get(); 
+            if($query->num_rows() > 0){
+                return true;
+            } else {
+                return false;
+            }
+		}
         
         public function insert_person($info){
 			

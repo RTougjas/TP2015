@@ -70,7 +70,7 @@ class Gallery extends CI_Controller {
         $username = rawurldecode($username);
 		$this->data['albums'] = $this->GalleryModel->getAllUserAlbumsOffset($id, $this->uri->segment(5, 0));
 		$this->data['id'] = $id;
-		$this->data['pictures'] = $this->GalleryModel->getAlbumPhotosOffset(0, 3);
+		//$this->data['pictures'] = $this->GalleryModel->getAlbumPhotosOffset(0, 3);
 		$this->data['albums_photo_count'] = $this->GalleryModel->getAllAlbumsPhotoCount();
 		//if you change small_header here, make sure to change it in view - photos.php also.
 		if($username == "0") {
