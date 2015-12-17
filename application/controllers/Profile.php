@@ -40,7 +40,7 @@
 				$this->data['small_header'] = $username;
 			}
             $this->load->view('templates/header');
-            $this->load->view('user_photos', $this->data); 
+            $this->load->view('photos', $this->data); 
             $this->load->view('templates/footer');
         }
         

@@ -7,7 +7,10 @@ if(!$this->session->has_userdata('username')){
 <div class="col-lg-4 col-md-4 col-sm-4"></div>
 <div class="col-lg-4 col-md-4 col-sm-4">
 	<div class="panel panel-default">
-	  <div class="panel-heading"><h3>Kasutaja andmed</h3></div>
+	  <div class="panel-heading">
+		  <h3>Kasutaja andmed</h3>
+		  <a class="btn btn-danger" href="#">Raporteeri</a>
+	  </div>
 	  <div class="panel-body">
 		  	<table>
 				<tr>
@@ -30,16 +33,14 @@ if(!$this->session->has_userdata('username')){
 				</tr>
 				<tr>
 					<td>
-						<a class="btn btn-default" href="<?php echo site_url("profile/uploads/".$id."/".rawurlencode($username));?>">Pildid
-						<span class="badge"><?php echo $posts;?></span></a>
+						<a class="btn btn-warning" href="<?php echo site_url("profile/uploads/".$id."/".rawurlencode($username));?>">Kasutaja pildid</a>
 					</td>
+				</tr>
+				<tr>
 					<td>
-						&#160
-					</td>
-					<td>
-						<a class="btn btn-default" href="<?php echo site_url("gallery/albums/".$id."/".rawurlencode($username));?>">Albumid
-						<span class="badge"><?php echo $album_count;?></span></a>
-					</td>
+						<br>
+						<a class="btn btn-warning" href="<?php echo site_url("gallery/allUserAlbums/".$id."/".rawurlencode($username));?>">kasutaja albumid</a>
+					</td>	
 				</tr>
 			</table>
 			<br>
