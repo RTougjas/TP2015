@@ -10,13 +10,28 @@ class Gallery extends CI_Controller {
 
     public function index() {
 	
-		redirect('gallery/getAllAlbums');
+		redirect('gallery/getAlbums');
 		
     }
 	
 	// Controller used for displaying all albums when clicking on Albums navigation link on top navigation bar. 
 	public function getAllAlbums() {
 		$this->data['albums'] = $this->GalleryModel->getAllAlbums();
+		$this->data['albums_photo_count'] = $this->GalleryModel->getAllAlbumsPhotoCount();
+		
+		//change this to use lang helper class. 
+		$this->data['small_header'] = "Kõik albumid";
+		
+		$this->load->view('templates/header');
+		$this->load->view('gallery', $this->data);
+        $this->load->view('templates/footer');
+		
+		
+	}
+	
+	
+	public function getAlbums() {
+		$this->data['albums'] = $this->GalleryModel->getAllAlbumsOffset($this->uri->segment(3, 0));
 		$this->data['albums_photo_count'] = $this->GalleryModel->getAllAlbumsPhotoCount();
 		
 		//change this to use lang helper class. 

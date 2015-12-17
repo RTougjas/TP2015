@@ -38,7 +38,7 @@
 		<div class="text-center">
 			<ul class="pagination">
 				<?php if($this->uri->segment(3, 0)>0){ ?>
-					<li><a href="<?php echo '/index.php/gallery/All_albums/'.($this->uri->segment(3, 1)-1).''?>" aria-label="Previous"><span aria-hidden="true">&laquo; eelmised</span></a></li>
+					<li><a href="<?php echo '/index.php/gallery/getAlbums/'.($this->uri->segment(3, 1)-1).''?>" aria-label="Previous"><span aria-hidden="true">&laquo; eelmised</span></a></li>
 				
 					<?php } else { ?>
 					
@@ -47,7 +47,7 @@
 			
 				<?php if($this->GalleryModel->isMoreAlbums($this->uri->segment(3, 0))) { ?>
 			
-					<li><a href="<?php echo '/index.php/gallery/All_albums/'.($this->uri->segment(3, 0)+1).''?>" aria-label="Next"><span aria-hidden="true">järgmised &raquo;</span></a></li>
+					<li><a href="<?php echo '/index.php/gallery/getAlbums/'.($this->uri->segment(3, 0)+1).''?>" aria-label="Next"><span aria-hidden="true">järgmised &raquo;</span></a></li>
 
 				<?php } else { ?>
 			

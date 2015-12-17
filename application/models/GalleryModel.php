@@ -35,8 +35,10 @@ albums.created, albums.varasem_omanik, albums.kihelkond, albums.koht, albums.lig
 	
 	// returns all albums, limits result. 
 	public function getAllAlbumsOffset($offset) {
-		$this->db->select('*');
+		$this->db->select('albums.id, albums.title, albums.description, albums.user_id, users.username, 
+albums.created, albums.varasem_omanik, albums.kihelkond, albums.koht, albums.ligikaudne_aeg');
 		$this->db->from('albums');
+		$this->db->join('users', 'albums.user_id = users.id', 'inner');
 		$this->db->limit(3, $offset * 3);
 		$query = $this->db->get();
 		
