@@ -33,7 +33,7 @@
             $this->db->select('count(*) as posts');
             $this->db->from('pictures');
             $this->db->where('user_id', $id);
-            
+            $this->db->where('publicpic', 't');
             $query = $this->db->get();
             if ($query->num_rows() == 1) {
                 return $query->result()[0]->posts;

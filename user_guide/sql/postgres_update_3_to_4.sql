@@ -18,9 +18,10 @@ CREATE VIEW v_photo_search AS
     ON pictures.id = pictures_tags.picture_id
     LEFT JOIn tags
     ON pictures_tags.tag_id = tags.id;
-
+	
+	
 CREATE VIEW v_pictures_in_albums AS
-    SELECT pictures.id AS picture_id, pictures.title AS picture_title, pictures.description AS picture_description, pictures.location, pictures.user_id AS uploader_id,
+SELECT pictures.id, pictures.title AS picture_title, pictures.description AS picture_description, pictures.location, pictures.publicpic, pictures.user_id AS uploader_id,
     albums.id AS album_id, albums.title AS album_title, albums.description AS album_description, albums.user_id AS album_owner_id FROM pictures
     LEFT JOIN pictures_albums
     ON pictures.id = pictures_albums.picture_id

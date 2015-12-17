@@ -12,7 +12,7 @@ class Edit extends CI_Controller {
 
     public function index() {
 	    $this->data['picture'] = $this->EditModel->getPicture($this->uri->segment(2, 1));
-		$this->data['albums'] = $this->GalleryModel->getUserAlbumsNoOffset($this->ion_auth->get_user_id());
+		$this->data['albums'] = $this->GalleryModel->getAllUserAlbums($this->ion_auth->get_user_id());
 		$this->data['tags'] = $this->EditModel->getTags($this->uri->segment(2, 1));
 		$this->data['photo_in_albums'] = $this->EditModel->getAlbums($this->uri->segment(2, 1));
 		$this->data['owner'] = $this->EditModel->checkUserOwner($this->uri->segment(2, 1), $this->ion_auth->get_user_id());
