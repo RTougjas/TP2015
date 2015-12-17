@@ -41,18 +41,18 @@
                 return 0;
             }
         }
-        
+        //Displays user photos from profile => 'kasutaja pildid'
         public function get_user_pictures($id, $offset){
 			if($this->ion_auth->get_user_id() == $id) {
-				return $this->db->select('*')->from('pictures')->where('user_id', $id)->limit(12, $offset*12)->get()->result();
+				return $this->db->select('*')->from('pictures')->where('user_id', $id)->limit(24, $offset * 24)->get()->result();
 			}
 			else {
-				return $this->db->select('*')->from('pictures')->where('user_id', $id)->where('publicpic', 't')->limit(12, $offset*12)->get()->result();
+				return $this->db->select('*')->from('pictures')->where('user_id', $id)->where('publicpic', 't')->limit(24, $offset * 24)->get()->result();
 			}
         }
         
         function moreUserPictures($id, $offset) { 
-            $query = $this->db->select('*')->from('pictures')->where('user_id', $id)->limit(12, ($offset+1)*12)->get(); 
+            $query = $this->db->select('*')->from('pictures')->where('user_id', $id)->limit(24, ($offset + 1) * 24)->get(); 
             if($query->num_rows() > 0){
                 return true;
             } else {

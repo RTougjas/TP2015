@@ -27,8 +27,9 @@ class SearchModel extends CI_Model {
 	 $result = $query->result();
 	 
 	 if(sizeOf($result) > 0) {
-	 	$this->db->select();
+		$this->db->select();
 	 	$this->db->from('pictures');
+		$this->db->where('publicpic', 't');
 	 	$first = true;
 	 
 	 	foreach ($result as $row) {

@@ -33,13 +33,13 @@ if(!$this->session->has_userdata('username')){
 				</tr>
 				<tr>
 					<td>
-						<a class="btn btn-warning" href="<?php echo site_url("profile/uploads/".$id."/".rawurlencode($username));?>">Kasutaja pildid</a>
+						<a class="btn btn-default" href="<?php echo site_url("profile/uploads/".$id."/".rawurlencode($username));?>">Kasutaja pildid</a>
 					</td>
 				</tr>
 				<tr>
 					<td>
 						<br>
-						<a class="btn btn-warning" href="<?php echo site_url("gallery/allUserAlbums/".$id."/".rawurlencode($username));?>">kasutaja albumid</a>
+						<a class="btn btn-default" href="<?php echo site_url("gallery/allUserAlbums/".$id."/".rawurlencode($username));?>">kasutaja albumid</a>
 					</td>	
 				</tr>
 			</table>

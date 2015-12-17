@@ -130,27 +130,52 @@ albums.created, albums.varasem_omanik, albums.kihelkond, albums.koht, albums.lig
 	}
 	// returns all PUBLIC photos belonging to that particular album, specified by album ID.
 	public function getAlbumPhotos($album_id) {
-		$this->db->select('*');
-		$this->db->from('v_pictures_in_albums');
-		$this->db->where('album_id', $album_id);
-		$this->db->where('publicpic', 't');
-		$query = $this->db->get();
+		$owner = $this->get_album_owner($album_id);
+		if($this->ion_auth->get_user_id() == $owner[0]->user_id) {
+			$this->db->select('*');
+			$this->db->from('v_pictures_in_albums');
+			$this->db->where('album_id', $album_id);
+			//$this->db->where('publicpic', 't');
+			$query = $this->db->get();
 		
-		return $query->result();
+			return $query->result();
+		}
+		else {
+			$this->db->select('*');
+			$this->db->from('v_pictures_in_albums');
+			$this->db->where('album_id', $album_id);
+			$this->db->where('publicpic', 't');
+			$query = $this->db->get();
+		
+			return $query->result();
+		}
 	}
 	
 	/* 	returns all public photos belonging to that particular album, which is specified by album ID.
 		Limits query results to 12. 
 	*/
 	public function getAlbumPhotosOffset($album_id, $offset) {
-		$this->db->select('*');
-		$this->db->from('v_pictures_in_albums');
-		$this->db->where('album_id', $album_id);
-		$this->db->where('publicpic', 't');
-		$this->db->limit(24, $offset * 24);
-		$query = $this->db->get();
+		$owner = $this->get_album_owner($album_id);
+		if($this->ion_auth->get_user_id() == $owner[0]->user_id) {
+			$this->db->select('*');
+			$this->db->from('v_pictures_in_albums');
+			$this->db->where('album_id', $album_id);
+			//$this->db->where('publicpic', 't');
+			$this->db->limit(24, $offset * 24);
+			$query = $this->db->get();
 		
-		return $query->result();
+			return $query->result();
+		}
+		else {
+			$this->db->select('*');
+			$this->db->from('v_pictures_in_albums');
+			$this->db->where('album_id', $album_id);
+			$this->db->where('publicpic', 't');
+			$this->db->limit(24, $offset * 24);
+			$query = $this->db->get();
+		
+			return $query->result();
+		}
 	}
 	
 	// returns boolean value, representing if there is more than X number of photos in that specific album. 

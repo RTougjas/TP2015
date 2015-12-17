@@ -45,8 +45,8 @@ class Gallery extends CI_Controller {
 	}
 	
 	public function getAlbumOwner($album_id) {
-		$this->data['owner'] = $this->GalleryModel->get_album_owner($album_id);
 		
+		$this->data['owner'] = $this->GalleryModel->get_album_owner($album_id);
 		$this->load->view('templates/header');
 		$this->load->view('gallery', $this->data);
         $this->load->view('templates/footer');
@@ -91,6 +91,7 @@ class Gallery extends CI_Controller {
 	public function albumPhotos($album_id, $album_title) {
 		$this->data['pictures'] = $this->GalleryModel->getAlbumPhotosOffset($album_id, $this->uri->segment(5, 0));
         $this->data['album_id'] = $album_id;
+		$this->data['owner'] = $this->GalleryModel->get_album_owner($album_id);
         $album_title = rawurldecode($album_title);
 		if($album_title == "0") {
 			$this->data['small_header'] = "";
