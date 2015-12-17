@@ -85,8 +85,11 @@ class PictureModel extends CI_Model {
     }
 	
 	public function getAlbumsWhereThis($picture_id) {
-		$this->db->select('album_id');
+				
+		$this->db->select('picture_id, pictures.title AS picture_title, album_id, albums.title AS album_title');
 		$this->db->from('pictures_albums');
+		$this->db->join('pictures', 'picture_id = pictures.id', 'inner');
+		$this->db->join('albums', 'album_id = albums.id', 'inner');
 		$this->db->where('picture_id', $picture_id);
 		
 		$query = $this->db->get();

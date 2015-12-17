@@ -14,6 +14,13 @@
 							<li class="list-group-item">Omanik
 								<a href="<?php echo site_url('/profile/'.$picture->omanik);?>"><?php echo '<b>'.$picture->omanik.'</b>';?></a>
 							</li>
+							<li class="list-group-item">Asub albumites:
+							<?php for($i = 0; $i < sizeOf($photo_albums); $i++) { ?>
+								<p><b><a href="<?php echo site_url("gallery/albumPhotos/".$photo_albums[$i]->album_id."/".rawurlencode($photo_albums[$i]->album_title));?>">
+																	<?php echo $photo_albums[$i]->album_title;?></a></b></p>
+								
+							<?php } ?>
+							</li>
 						<?php } ?>
 
 						<?php if($picture->varasem_omanik != ''){ ?>
@@ -75,10 +82,12 @@
 					<br>
 					<?php echo '<img src="'.$picture->location.'" class="img-responsive">';?>
 					<br>
+				
 					<?php if($this->ion_auth->logged_in() && $this->PictureModel->checkUserOwner($this->uri->segment(2, 1),$this->ion_auth->get_user_id())) { ?>
 					<a class="btn btn-info" href="<?php echo site_url("edit/".$picture->id);?>">Muuda Andmeid</a>
 					<?php } ?>
 					<a class="btn btn-warning" href="<?php echo $picture->location;?>">Täissuuruses</a>
+					
 					</div>
 				</div>
   			</div>
