@@ -33,7 +33,7 @@ albums.created, albums.varasem_omanik, albums.kihelkond, albums.koht, albums.lig
 		return $query->result();
 	}
 	
-	// returns all albums, limits query. 
+	// returns all albums, limits result. 
 	public function getAllAlbumsOffset($offset) {
 		$this->db->select('*');
 		$this->db->from('albums');
