@@ -4,6 +4,9 @@
 	<?php for($i = 0; $i < sizeOf($pictures); $i++) {?>
 		<div class="row">
   	  		<div class="col lg-12 col-md-12 col-sm-12 col-xs-12">
+				<?php if($pictures[$i]->publicpic == 'f') { ?>
+					<h3><a class="btn btn-danger" href="<?php echo site_url("edit/".$pictures[$i]->id);?>">Pilt on privaatne</a></h3>
+				<?php } ?>
     			<a href="<?php echo site_url("picture/".$pictures[$i]->id);?>" class="thumbnail">
 					<img src="<?php echo $pictures[$i]->location;?>" alt="...">
 			   	</a>

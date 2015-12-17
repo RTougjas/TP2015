@@ -43,7 +43,12 @@
         }
         
         public function get_user_pictures($id, $offset){
-            return $this->db->select('*')->from('pictures')->where('user_id', $id)->limit(12, $offset*12)->get()->result(); 
+			if($this->ion_auth->get_user_id() == $id) {
+				return $this->db->select('*')->from('pictures')->where('user_id', $id)->limit(12, $offset*12)->get()->result();
+			}
+			else {
+				return $this->db->select('*')->from('pictures')->where('user_id', $id)->where('publicpic', 't')->limit(12, $offset*12)->get()->result();
+			}
         }
         
         function moreUserPictures($id, $offset) { 

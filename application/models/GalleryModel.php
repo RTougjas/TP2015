@@ -39,7 +39,7 @@ albums.created, albums.varasem_omanik, albums.kihelkond, albums.koht, albums.lig
 albums.created, albums.varasem_omanik, albums.kihelkond, albums.koht, albums.ligikaudne_aeg');
 		$this->db->from('albums');
 		$this->db->join('users', 'albums.user_id = users.id', 'inner');
-		$this->db->limit(3, $offset * 3);
+		$this->db->limit(24, $offset * 24);
 		$query = $this->db->get();
 		
 		return $query->result();
@@ -48,7 +48,7 @@ albums.created, albums.varasem_omanik, albums.kihelkond, albums.koht, albums.lig
 	public function isMoreAlbums($offset) {
 		$this->db->select('*');
 		$this->db->from('albums');
-		$this->db->limit(3, ($offset + 1) * 3);
+		$this->db->limit(24, ($offset + 1) * 24);
 		$query = $this->db->get();
 		if($query->num_rows() > 0){
 			return true;
@@ -75,7 +75,7 @@ albums.created, albums.varasem_omanik, albums.kihelkond, albums.koht, albums.lig
 		$this->db->from('albums');
 		$this->db->join('users', 'albums.user_id = users.id', 'inner');
 		$this->db->where('albums.user_id', $user_id);
-		$this->db->limit(3, $offset * 3);
+		$this->db->limit(24, $offset * 24);
 		$query = $this->db->get();
 		
 		return $query->result();
@@ -88,7 +88,7 @@ albums.created, albums.varasem_omanik, albums.kihelkond, albums.koht, albums.lig
 		$this->db->select('*');
 		$this->db->from('albums');
 		$this->db->where('user_id', $user_id);
-		$this->db->limit(3, ($offset + 1) * 3);
+		$this->db->limit(24, ($offset + 1) * 24);
 		$query = $this->db->get();
 		if($query->num_rows() > 0){
 			return true;
@@ -99,13 +99,13 @@ albums.created, albums.varasem_omanik, albums.kihelkond, albums.koht, albums.lig
 	
 	// Queryies count of public photos in all albums. 
 	public function getAllAlbumsPhotoCount() {
-		$this->db->select('album_id, COUNT(id) AS count');
-		$this->db->from('v_pictures_in_albums');
-		$this->db->where('publicpic', 't');
-		$this->db->group_by('album_id', 'album_title');
-		$query = $this->db->get();
+			$this->db->select('album_id, COUNT(id) AS count');
+			$this->db->from('v_pictures_in_albums');
+			$this->db->where('publicpic', 't');
+			$this->db->group_by('album_id', 'album_title');
+			$query = $this->db->get();
 		
-		return $query->result();
+			return $query->result();
 	}
 	
 	// Queryies cover photo for specific album, determined by album ID.
@@ -147,7 +147,7 @@ albums.created, albums.varasem_omanik, albums.kihelkond, albums.koht, albums.lig
 		$this->db->from('v_pictures_in_albums');
 		$this->db->where('album_id', $album_id);
 		$this->db->where('publicpic', 't');
-		$this->db->limit(3, $offset * 3);
+		$this->db->limit(24, $offset * 24);
 		$query = $this->db->get();
 		
 		return $query->result();
@@ -159,7 +159,7 @@ albums.created, albums.varasem_omanik, albums.kihelkond, albums.koht, albums.lig
 		$this->db->from('v_pictures_in_albums');
 		$this->db->where('album_id', $album_id);
 		$this->db->where('publicpic', 't');
-		$this->db->limit(3, ($offset + 1) * 3);
+		$this->db->limit(24, ($offset + 1) * 24);
 		$query = $this->db->get();
   	  	if($query->num_rows() > 0){
 			return true;
@@ -183,7 +183,7 @@ albums.created, albums.varasem_omanik, albums.kihelkond, albums.koht, albums.lig
 		$this->db->select('*');
 		$this->db->from('pictures');
 		$this->db->where('publicpic', 't');
-		$this->db->limit(3, $offset * 3);
+		$this->db->limit(24, $offset * 24);
 		$query = $this->db->get();
 		
 		return $query->result();
@@ -193,7 +193,7 @@ albums.created, albums.varasem_omanik, albums.kihelkond, albums.koht, albums.lig
 		$this->db->select('*');
 		$this->db->from('pictures');
 		$this->db->where('publicpic', 't');
-		$this->db->limit(3, ($offset + 1) * 3);
+		$this->db->limit(24, ($offset + 1) * 24);
 		$query = $this->db->get();
   	  	if($query->num_rows() > 0){
 			return true;
@@ -204,7 +204,7 @@ albums.created, albums.varasem_omanik, albums.kihelkond, albums.koht, albums.lig
 	// returns all user photos. 
 	// When user is the same, that is logged in, it returns all photos, otherwise only public photos. 
 	public function getAllUserPhotos($user_id) {
-		if($this->ion_auth->get_user_id == $user_id) {
+		if($this->ion_auth->get_user_id() == $user_id) {
 			$this->db->select('*');
 			$this->db->from('pictures');
 			$this->db->where('user_id', $user_id);
@@ -224,11 +224,11 @@ albums.created, albums.varasem_omanik, albums.kihelkond, albums.koht, albums.lig
 	}
 	// returns all user photos, but limits query results. 
 	public function getAllUserPhotosOffset($user_id, $offset) {
-		if($this->ion_auth->get_user_id == $user_id) {
+		if($this->ion_auth->get_user_id() == $user_id) {
 			$this->db->select('*');
 			$this->db->from('pictures');
 			$this->db->where('user_id', $user_id);
-			$this->db->limit(3, $offset * 3);
+			$this->db->limit(24, $offset * 24);
 			$query = $this->db->get();
 		
 			return $query->result();
@@ -238,7 +238,7 @@ albums.created, albums.varasem_omanik, albums.kihelkond, albums.koht, albums.lig
 			$this->db->from('pictures');
 			$this->db->where('publicpic', 't');
 			$this->db->where('user_id', $user_id);
-			$this->db->limit(3, $offset * 3);
+			$this->db->limit(24, $offset * 24);
 			$query = $this->db->get();
 		
 			return $query->result();
@@ -246,11 +246,11 @@ albums.created, albums.varasem_omanik, albums.kihelkond, albums.koht, albums.lig
 	}
 	
 	public function isMoreAllUserPhotos($user_id, $offset) {
-		if($this->ion_auth->get_user_id == $user_id) {
+		if($this->ion_auth->get_user_id() == $user_id) {
 			$this->db->select('*');
 			$this->db->from('pictures');
 			$this->db->where('user_id', $user_id);
-			$this->db->limit(3, $offset * 3);
+			$this->db->limit(24, $offset * 24);
 			$query = $this->db->get();
 	  	  	
 			if($query->num_rows() > 0){
@@ -264,7 +264,7 @@ albums.created, albums.varasem_omanik, albums.kihelkond, albums.koht, albums.lig
 			$this->db->from('pictures');
 			$this->db->where('publicpic', 't');
 			$this->db->where('user_id', $user_id);
-			$this->db->limit(3, $offset * 3);
+			$this->db->limit(24, $offset * 24);
 			$query = $this->db->get();
 	  	  	
 			if($query->num_rows() > 0){

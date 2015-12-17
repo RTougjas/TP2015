@@ -53,8 +53,10 @@ class PictureModel extends CI_Model {
 
 	function getPicture($id){
 		//$this->db->select("id,title,description,location,comments_enabled"); 
+		$this->db->select('*');
 		$this->db->from('pictures');
 		$this->db->where('id', $id);
+		//$this->db->where('publicpic', 't');
 		$query = $this->db->get();
 		return $query->result()[0];
     }
@@ -67,9 +69,6 @@ class PictureModel extends CI_Model {
 		}
 		return $tags;
     }
-    
-
-
     
 	function checkUserOwner($id, $user_id){
 		$this->db->select("title"); 
