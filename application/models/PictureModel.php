@@ -83,6 +83,15 @@ class PictureModel extends CI_Model {
 			return false;
 		}
     }
+	
+	public function getAlbumsWhereThis($picture_id) {
+		$this->db->select('album_id');
+		$this->db->from('pictures_albums');
+		$this->db->where('picture_id', $picture_id);
+		
+		$query = $this->db->get();
+		return $query->result();
+	}
 }
 
 ?>

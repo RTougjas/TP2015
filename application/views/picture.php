@@ -13,9 +13,9 @@
 						<?php if($picture->omanik != ''){ ?>
 							<li class="list-group-item">Omanik
 								<a href="<?php echo site_url('/profile/'.$picture->omanik);?>"><?php echo '<b>'.$picture->omanik.'</b>';?></a>
-								
 							</li>
 						<?php } ?>
+
 						<?php if($picture->varasem_omanik != ''){ ?>
 							<li class="list-group-item">varasem omanik <?php echo '<b>'.$picture->varasem_omanik.'</b>';?></li>
 						<?php } ?>
