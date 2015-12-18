@@ -436,7 +436,7 @@ class Auth extends CI_Controller {
         $this->data['identity_column'] = $identity_column;
 
         // validate form input
-        $this->form_validation->set_rules('identity',$this->lang->line('create_user_validation_identity_label'),'required|is_unique['.$tables['users'].'.'.$identity_column.']');
+        $this->form_validation->set_rules('identity',$this->lang->line('create_user_validation_identity_label'),'required|trim|is_unique['.$tables['users'].'.username]');
         $this->form_validation->set_rules('first_name', $this->lang->line('create_user_validation_fname_label'));
         $this->form_validation->set_rules('last_name', $this->lang->line('create_user_validation_lname_label'));
         $this->form_validation->set_rules('telephone', 'Telefon', 'numeric');
